@@ -6,8 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="NewFolder - Copy %283%29\" />
-    <Folder Include="NewFolder - Copy %284%29\" />
+    <Compile Remove="NewFolder - Copy %283%29\**" />
+    <Compile Remove="NewFolder - Copy %284%29\**" />
+    <EmbeddedResource Remove="NewFolder - Copy %283%29\**" />
+    <EmbeddedResource Remove="NewFolder - Copy %284%29\**" />
+    <None Remove="NewFolder - Copy %283%29\**" />
+    <None Remove="NewFolder - Copy %284%29\**" />
   </ItemGroup>
 
 </Project>
