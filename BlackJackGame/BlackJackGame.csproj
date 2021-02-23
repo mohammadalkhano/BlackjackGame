@@ -5,4 +5,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="NewFolder - Copy %283%29\" />
+    <Folder Include="NewFolder - Copy %284%29\" />
+  </ItemGroup>
+
 </Project>
