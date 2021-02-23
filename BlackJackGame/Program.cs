@@ -1,4 +1,5 @@
 ﻿using System;
+using BlackJackGame;
 
 namespace BlackJackGame
 {
@@ -6,7 +7,8 @@ namespace BlackJackGame
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+            Game.RunGame();
         }
     }
 }

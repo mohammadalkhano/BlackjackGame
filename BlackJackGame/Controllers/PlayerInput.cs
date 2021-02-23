@@ -7,8 +7,10 @@ namespace BlackJackGame
 {
     public class PlayerInput
     {
-        private var numberOfPlayers;
-        private var selectTable;
-        private global::System.Int32 newCard;
+        public int NumberOfPlayers { get; set; }
+        public int ActiveTable { get; set; }
+        public bool NewCard { get; set; }
+    
     }
+
 }
