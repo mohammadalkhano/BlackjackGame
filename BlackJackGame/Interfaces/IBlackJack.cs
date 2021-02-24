@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BlackJackGame
+﻿namespace BlackJackGame
 {
     public interface IBlackJack
     {
@@ -12,5 +6,12 @@ namespace BlackJackGame
         ///Declare our methods herer! Then implements the interface.
         /// </summary>
         void CreatePlayer();
+        void ResetDeck();
+        void GiveCard();
+        void RunGame();
+        int SeclectPlayers();
+        int SelectTable();
+
+
     }
 }
