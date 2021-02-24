@@ -1,2 +1,3 @@
 # TDD Project-Black jack Game.
-Link to test plan: https://docs.google.com/spreadsheets/d/1rp_ZIuFx-Iw8Xrgxe2lXDe3C7Jet-sOqLsj1fkK1mFc/edit?ts=6033b202#gid=0 
+Link to BlackJack Project Plan Psuedokod and Test Scenarios: https://docs.google.com/document/d/1uCwqJ6U6UxF9TxcxOfG_Fp7vwFDjBpTG_Fdk7-c1Baw/edit?ts=6034d6ce 
+

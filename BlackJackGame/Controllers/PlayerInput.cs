@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace BlackJackGame
+﻿namespace BlackJackGame
 {
     public class PlayerInput
     {
-        private int numberOfPlayers;
-        private int selectTable;
-        private global::System.Int32 newCard;
+        public int NumberOfPlayers { get; set; }
+        public int ActiveTable { get; set; }
+        public bool NewCard { get; set; }
+    
     }
+
 }
