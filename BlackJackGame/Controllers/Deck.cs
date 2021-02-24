@@ -2,15 +2,15 @@
 {
     public class Deck
     {
-        private var numberOfPlayers;
-        private var cards;
+        private int numberOfPlayers;
+        private int cards;
 
-        public void ResetCards()
+        public void ResetDeck()
         {
             throw new System.NotImplementedException();
         }
 
-        public void GetCard()
+        public void GiveCard()
         {
             throw new System.NotImplementedException();
         }
