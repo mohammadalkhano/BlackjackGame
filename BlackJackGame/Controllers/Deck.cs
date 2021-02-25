@@ -44,21 +44,34 @@ namespace BlackJackGame
             List<string> randomCards = new List<string>();
             for (int i = 0; i < 4; i++)
             {
-                var random = new Random();                
-                var randomList = deck.OrderBy(i => random.Next());
+                var random = new Random();
+                var randomList = deck.OrderBy(i => random.Next(0, 208));
                 foreach (var item in randomList)
                 {
-                    /*----Used to get the symbol printed when you print the list---*/
-                    //Console.OutputEncoding = Encoding.UTF8;
                     randomCards.Add(item);
-                    
                 }
             }
             return randomCards;
         }
-        public void GetCard()
+        /*         
+         GetCard(){}
+         var score = List<>[List.length - 1]
+         var card= List<>[List.length - 1]
+         var switchCase = card[0]*/
+        public string GetCard(List<string> Cards)
         {
-            throw new System.NotImplementedException();
+
+            var random = new Random();
+            var randomList = Cards.OrderBy(i => random.Next(0, 208));
+
+            //var card1 = Cards[Cards.Count - 1];
+            //Cards.RemoveAt(card1.IndexOf(card1));
+
+            var card = Cards.FirstOrDefault();
+            Cards.Remove(card);
+
+
+            return card;
         }
 
         public void ResetCards()
