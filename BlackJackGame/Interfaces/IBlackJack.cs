@@ -3,7 +3,7 @@
     public interface IBlackJack
     {
         /// <summary>
-        ///Declare our methods herer! Then implements the interface.
+        ///Declare our methods here! Then implements the interface.
         /// </summary>
         void CreatePlayer();
         void ResetDeck();
