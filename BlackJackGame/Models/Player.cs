@@ -5,15 +5,19 @@ namespace BlackJackGame
 {
     public class Player
     {
-        public int Bet { get; set; } = 0;
+        public int Bet { get; set; }
         public List<string> Cards { get; set; }
         public string Name { get; set; }
-        public int Score { get; set; } = 0;
-        public bool Stay { get; set; } = false;
+        public int Score { get; set; }
+        public bool Stay { get; set; }
 
         public Player(int playerNumber)
         {
+            Bet = 0;
+            Cards = new List<string>();
             Name = "Player " + playerNumber;
+            Score = 0;
+            Stay = false;
         }
 
         public static void CreatePlayer(int numberOfPlayers)
