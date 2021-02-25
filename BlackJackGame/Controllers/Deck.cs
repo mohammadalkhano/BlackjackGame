@@ -16,7 +16,7 @@ namespace BlackJackGame
         /// Generates the card.
         /// </summary>
         /// <returns></returns>
-        public List<string> GenerateCard()
+        public List<string> GenerateCard() // GenerateDeck
         {
             List<string> listOfCards = new List<string>();
             for (int i = 0; i < cardType.Length; i++)
@@ -34,7 +34,7 @@ namespace BlackJackGame
         /// </summary>
         /// <param name="Cards">The cards.</param>
         /// <returns></returns>
-        public List<string> GetCard(List<string>Cards)
+        public List<string> GetCard(List<string>Cards) //BuildDeckForGame(List<string> deck)
         {
             List<string> randomCards = new List<string>();
             for (int i = 0; i < 4; i++)
