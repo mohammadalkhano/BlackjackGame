@@ -53,18 +53,20 @@ namespace BlackJackGame
             }
             return randomCards;
         }
+
         
-        public string GetCard(List<string> deck)
+        public string GetCard(List<string> Cards)
         {
 
             var random = new Random();
-            var randomList = deck.OrderBy(i => random.Next(0, 208));
-           
-            var card = deck[deck.Count - 1];
-            deck.RemoveAt(deck.IndexOf(card));
+            var randomList = Cards.OrderBy(i => random.Next(0, 208));
 
-            //var card1 = deck.FirstOrDefault();
-            //deck.Remove(card1);
+            //var card1 = Cards[Cards.Count - 1];
+            //Cards.RemoveAt(card1.IndexOf(card1));
+
+            var card = Cards.FirstOrDefault();
+            Cards.Remove(card);
+
 
             return card;
         }
