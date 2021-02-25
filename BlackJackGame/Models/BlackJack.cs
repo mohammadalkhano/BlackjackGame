@@ -1,4 +1,6 @@
-﻿namespace BlackJackGame
+﻿using System;
+
+namespace BlackJackGame
 {
     public class BlackJack 
     {
@@ -7,12 +9,12 @@
             throw new NotImplementedException();
         }
 
-        public void GiveCard()
+        public static void GiveCard(string openOrClose)
         {
             throw new NotImplementedException();
         }
 
-        public void ResetDeck()
+        public static void ResetDeck()
         {
             throw new NotImplementedException();
         }
@@ -22,14 +24,18 @@
             throw new NotImplementedException();
         }
 
-        public int SeclectNumberOfPlayers()
+        public static int SeclectNumberOfPlayers()
         {
             throw new NotImplementedException();
         }
 
-        public int SelectTable()
+        public static int SelectTable()
         {
             throw new NotImplementedException();
+        }
+        public static bool PlayAgain()
+        {
+            return false;
         }
     }
 }
