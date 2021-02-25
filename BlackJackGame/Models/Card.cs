@@ -8,11 +8,8 @@ namespace BlackJackGame.Models
 {
     public class Card
     {
-        public string CardNumber { get; set; }
+        public string Number { get; set; }
+        public string Type { get; set; }
 
-        public Card(string value)
-        {
-            value = CardNumber;
-        }
     }
 }
