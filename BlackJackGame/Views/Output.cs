@@ -2,17 +2,17 @@
 {
     public class Output
     {
-        public void ShowMenu()
+        public static void ShowMenu()
         {
             throw new System.NotImplementedException();
         }
 
-        public void ShowCards()
+        public static void ShowCards()
         {
             throw new System.NotImplementedException();
         }
 
-        public void ShowActivePlayers()
+        public static void ShowActivePlayers()
         {
             throw new System.NotImplementedException();
         }
