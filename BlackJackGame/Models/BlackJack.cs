@@ -9,9 +9,9 @@ namespace BlackJackGame
             throw new NotImplementedException();
         }
 
-        public static void GiveCard(string openOrClose)
+        public static int GiveCard(string openOrClose)
         {
-            throw new NotImplementedException();
+            return 100;
         }
 
         public static void ResetDeck()
