@@ -24,7 +24,7 @@ namespace BlackJackGame
             throw new NotImplementedException();
         }
 
-        public static int SeclectNumberOfPlayers()
+        public static int SeclectPlayers()
         {
             throw new NotImplementedException();
         }
