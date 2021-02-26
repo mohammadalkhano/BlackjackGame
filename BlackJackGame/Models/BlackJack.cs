@@ -1,4 +1,6 @@
-﻿namespace BlackJackGame
+﻿using System;
+
+namespace BlackJackGame
 {
     public class BlackJack 
     {
@@ -7,12 +9,12 @@
             throw new NotImplementedException();
         }
 
-        public void GiveCard()
+        public static int GiveCard(string openOrClose)
         {
-            throw new NotImplementedException();
+            return 100;
         }
 
-        public void ResetDeck()
+        public static void ResetDeck()
         {
             throw new NotImplementedException();
         }
@@ -22,14 +24,23 @@
             throw new NotImplementedException();
         }
 
-        public int SeclectNumberOfPlayers()
+        public static int SeclectPlayers()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("How many players?");            
+
+            return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 4);
+
         }
 
-        public int SelectTable()
+        public static int SelectTable()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Select table:");
+
+            return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 7);
+        }
+        public static bool PlayAgain()
+        {
+            return false;
         }
     }
 }
