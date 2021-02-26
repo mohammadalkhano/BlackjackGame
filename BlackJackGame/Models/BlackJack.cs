@@ -1,13 +1,19 @@
 ﻿using System;
 
+
 namespace BlackJackGame
 {
-    public class BlackJack 
-    {
-        public void CreatePlayer()
+
+
+
+    public static class BlackJack
         {
+      
+        public static void CreatePlayer()
+            {
             throw new NotImplementedException();
-        }
+            }
+
 
         public static int GiveCard(string openOrClose)
         {
@@ -16,13 +22,15 @@ namespace BlackJackGame
 
         public static void ResetDeck()
         {
-            throw new NotImplementedException();
-        }
 
-        public void RunGame()
-        {
             throw new NotImplementedException();
-        }
+          }
+
+        public static void RunGame()
+            {
+            
+            }
+
 
         public static int SeclectPlayers()
         {
@@ -41,6 +49,6 @@ namespace BlackJackGame
         public static bool PlayAgain()
         {
             return false;
+
         }
     }
-}
