@@ -16,9 +16,9 @@
 
             while (gameRunning == true)
             {
-                FirstGive(activePlayers);
+                FirstGive(activePlayers, 100, 1000);
                 PlayPlayers(activePlayers);
-                if (activePlayers.Count > 1)
+                if (activePlayers.Count > 1)//House is always playing
                     PlayHouse(activePlayers);
 
                 CheckWinners(activePlayers);
@@ -28,13 +28,13 @@
 
         }
 
-        private static void FirstGive(List<Player> listOfPlayers)
+        private static void FirstGive(List<Player> listOfPlayers, int minBet, int maxBet)
         {
             foreach (var player in listOfPlayers)  // FirstGive();
             {
                 if (player.Name != "house")
                 {
-                    player.Bet = PlaceBet(100, 1000);
+                    player.Bet = PlaceBet(minBet, maxBet);
                     player.Score += BlackJack.GiveCard("open");
                     player.Score += BlackJack.GiveCard("open");
 
