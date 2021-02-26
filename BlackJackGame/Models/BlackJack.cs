@@ -26,12 +26,17 @@ namespace BlackJackGame
 
         public static int SeclectPlayers()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("How many players?");            
+
+            return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 4);
+
         }
 
         public static int SelectTable()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Select table:");
+
+            return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 7);
         }
         public static bool PlayAgain()
         {
