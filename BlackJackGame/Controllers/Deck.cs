@@ -53,7 +53,11 @@ namespace BlackJackGame
             }
             return randomCards;
         }
-        
+        /// <summary>
+        /// Gets the card.
+        /// </summary>
+        /// <param name="deck">The deck.</param>
+        /// <returns></returns>
         public string GetCard(List<string> deck)
         {
 
