@@ -9,7 +9,7 @@ namespace BlackJackGame
         public bool NewCard { get; set; }
 
 
-        public int InvalidInputCheck()
+        public static int InvalidInputCheck()
         {
             int parseOK;
             while (!Int32.TryParse(Console.ReadLine(), out parseOK))
@@ -18,12 +18,16 @@ namespace BlackJackGame
             }
             return parseOK;
         }
-        public bool CheckMinMaxInput(int input, int min, int max)
+        public static int CheckMinMaxInput(int input, int min, int max)
         {
-            if (input >= min && input <= max)
-                return true;
-            else
-                return false;
+
+            while (input < min || input > max)
+            {
+                Console.WriteLine($"Please chose between {min} and  {max}");
+                input = InvalidInputCheck();
+            }
+
+            return input;
         }
 
     }
