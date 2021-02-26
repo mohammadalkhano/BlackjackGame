@@ -45,7 +45,7 @@ namespace BlackJackGame
             for (int i = 0; i < 4; i++)
             {
                 var random = new Random();
-                var randomList = deck.OrderBy(i => random.Next(0, 208));
+                var randomList = deck.OrderBy(i => random.Next(104, 156));
                 foreach (var item in randomList)
                 {
                     randomCards.Add(item);
@@ -54,19 +54,22 @@ namespace BlackJackGame
             return randomCards;
         }
 
+        /// <summary>
+        /// Gets the card.
+        /// </summary>
+        /// <param name="deck">The deck.</param>
+        /// <returns></returns>
+        public string GetCard(List<string> deck)
         
-        public string GetCard(List<string> Cards)
         {
-
             var random = new Random();
-            var randomList = Cards.OrderBy(i => random.Next(0, 208));
+            var randomList = deck.OrderBy(i => random.Next(104, 156));
 
-            //var card1 = Cards[Cards.Count - 1];
-            //Cards.RemoveAt(card1.IndexOf(card1));
+            var card = deck[deck.Count - 1];
+            deck.RemoveAt(card.IndexOf(card));
 
-            var card = Cards.FirstOrDefault();
-            Cards.Remove(card);
-
+            //var card1 = deck.FirstOrDefault();
+            //deck.Remove(card1);
 
             return card;
         }
