@@ -2,9 +2,13 @@
 
 namespace BlackJackGame
 {
-    public class BlackJack 
+
+
+
+    public static class BlackJack
     {
-        public void CreatePlayer()
+
+        public static void CreatePlayer()
         {
             throw new NotImplementedException();
         }
@@ -19,14 +23,14 @@ namespace BlackJackGame
             throw new NotImplementedException();
         }
 
-        public void RunGame()
+        public static void RunGame()
         {
-            throw new NotImplementedException();
+
         }
 
         public static int SeclectPlayers()
         {
-            Console.WriteLine("How many players?");            
+            Console.WriteLine("How many players?");
 
             return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 4);
 
@@ -41,6 +45,7 @@ namespace BlackJackGame
         public static bool PlayAgain()
         {
             return false;
+
         }
     }
 }

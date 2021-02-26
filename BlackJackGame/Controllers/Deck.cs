@@ -62,7 +62,6 @@ namespace BlackJackGame
         public string GetCard(List<string> deck)
         
         {
-
             var random = new Random();
             var randomList = deck.OrderBy(i => random.Next(104, 156));
 
