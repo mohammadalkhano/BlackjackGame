@@ -12,6 +12,7 @@
             Output.ShowMenu();
             var activePlayers = Player.CreatePlayer(BlackJack.SeclectPlayers());
             var table = BlackJack.SelectTable();
+            //Tables();
             BlackJack.ResetDeck();
 
             while (gameRunning == true)
@@ -80,7 +81,7 @@
             {
                 if (player.Name == "house")
                 {
-                    player.Score += ShowDarkCard();
+                    player.Score += 0; //ShowDarkCard();
 
                     while (player.Score < 17)
                     {
@@ -116,5 +117,17 @@
         {
             return tableMin;
         }
+        //public static int[] Tables(int table)
+        //{
+        //    int[] minMax;
+        //    switch (table)
+        //    {
+        //        case 1:
+
+        //    }
+
+        //    return minMax;
+        //}
+
     }
 }

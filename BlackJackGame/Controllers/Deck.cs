@@ -93,7 +93,11 @@ namespace BlackJackGame
         /// </summary>
         public static void ResetCards()
         {
+
+            //throw new System.NotImplementedException();
+
             Deck.SuffleList(BuildDeckForGame(GenerateDeck()));
+
         }
     }
 }
