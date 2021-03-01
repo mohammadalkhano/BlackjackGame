@@ -96,17 +96,33 @@ namespace BlackJackGame
         /// <returns></returns>
         public static int GetCard(List<string> cards)
         {
-
             //var card = Cards.FirstOrDefault();
             //Cards.Remove(card);
 
             int score = 0;
+            //var card = cards[^1];
             var card = cards[cards.Count - 1];
-
-
-
             cards.Remove(card);
 
+            if (card.StartsWith("Q")|| card.StartsWith("K") || card.StartsWith("J"))
+            {
+                score = 10;
+            }
+            else if(card.StartsWith("A"))
+            {
+                score = Console.Read();
+                score = score.Equals(1) ? 1 : 11;
+            
+            }
+            else
+            {
+                Int32.TryParse(card, out int intType);
+                //int intType=0;
+                //List<int> scoreList = card.ToCharArray ().Where
+                //        (x => int.TryParse(x.ToString(), out intType))
+                //    .Select(x => int.Parse(x.ToString())).ToList();
+                score = intType;
+            }
             return score;
         }
 
@@ -115,8 +131,7 @@ namespace BlackJackGame
         /// </summary>
         public static List<string> ResetCards()
         {
-           return Deck.SuffleList(BuildDeckForGame(GenerateDeck()));            
-
+           return Deck.SuffleList(BuildDeckForGame(GenerateDeck()));
         }
     }
 }
