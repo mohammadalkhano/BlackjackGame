@@ -100,14 +100,14 @@ namespace BlackJackGame
             //var card = Cards.FirstOrDefault();
             //Cards.Remove(card);
 
-            int score;
+            int score = 0;
             var card = cards[cards.Count - 1];
 
 
 
             cards.Remove(card);
 
-            return score
+            return score;
         }
 
         /// <summary>
