@@ -29,5 +29,33 @@ namespace BlackJackGame.Tests
         {
             Assert.Fail();
         }
+
+        [TestMethod()]
+        public void BuildDeckForGameTest()
+        {
+            var list = new List<string>() { "A", "C", "D" };
+            var expected = 12;
+            var actual = Deck.BuildDeckForGame(list);
+            Assert.AreEqual(expected, actual.Count());
+        }
+        [TestMethod()]
+        public void BuildDeckForGameTestWithGenerateDeck()
+        {
+            var list = Deck.GenerateDeck();
+            var expected = 208;
+            var actual = Deck.BuildDeckForGame(list);
+            Assert.AreEqual(expected, actual.Count());
+        }
+        /*Testar metoden om den ska retunera random list :) EJ Klar!*/
+        //[TestMethod()]
+        //public void SuffleListTest()
+        //{
+        //    var list = Deck.GenerateDeck();
+        //    var deek= Deck.BuildDeckForGame(list);
+
+        //    var notExpected = deek;
+        //    var actual = Deck.SuffleList(deek);
+        //    Assert.AreEqual(notExpected, actual);
+        //}
     }
 }
