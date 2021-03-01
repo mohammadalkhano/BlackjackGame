@@ -29,9 +29,15 @@
             }
 
         }
-        private static void PlaceBets(List<Player> listOfPlayers, int minBet, int maxBet)
+        /// <summary>
+        /// Asks user to place their bet between min and max
+        /// </summary>
+        /// <param name="players">List of active players</param>
+        /// <param name="minBet">Min amount of bet according to table rules</param>
+        /// <param name="maxBet">Max amount of bet according to table rules</param>
+        private static void PlaceBets(List<Player> players, int minBet, int maxBet)
         {
-            foreach (var player in listOfPlayers)
+            foreach (var player in players)
             {
                 if (player.Name != "house")
                 {
@@ -40,10 +46,14 @@
                 }
             }
         }
-        private static void FirstGive(List<Player> listOfPlayers)
+        /// <summary>
+        /// Hands two cards to each players, not "house"
+        /// </summary>
+        /// <param name="players">List of active players</param>
+        private static void FirstGive(List<Player> players)
         {
             var rand = new Random();
-            foreach (var player in listOfPlayers)
+            foreach (var player in players)
             {
                 player.Score = 0;
                 player.Stay = false;
@@ -62,7 +72,7 @@
                 }
             }
 
-            foreach (var player in listOfPlayers)
+            foreach (var player in players)
             {
                 if (player.Name == "house")
                 {
@@ -72,11 +82,15 @@
                 }
             }
         }
-        private static void PlayPlayers(List<Player> listOfPlayers)
+        /// <summary>
+        /// Plays each players turn, asking "Hit" or "Stay" until they stop or exceed 21
+        /// </summary>
+        /// <param name="players">List of active players</param>
+        private static void PlayPlayers(List<Player> players)
         {
             var rand = new Random();
 
-            foreach (var player in listOfPlayers) //PlayPlayers();
+            foreach (var player in players) //PlayPlayers();
             {
                 if (player.Name != "house")
                 {
@@ -102,11 +116,15 @@
                 }
             }
         }
-        private static void PlayHouse(List<Player> listOfPlayers)
+        /// <summary>
+        /// Plays "house" automatic until score exceeds 16
+        /// </summary>
+        /// <param name="players">List of active players</param>
+        private static void PlayHouse(List<Player> players)
         {
             var rand = new Random();
 
-            foreach (var player in listOfPlayers) //PlayHouse();
+            foreach (var player in players) //PlayHouse();
             {
                 if (player.Name == "house")
                 {
@@ -121,10 +139,12 @@
                 }
             }
         }
+        /// <summary>
+        /// Matches players scor with house to check winners
+        /// </summary>
+        /// <param name="list">List of active players</param>
         private static void CheckWinners(List<Player> list)
         {
-            //var house = list.Where(_ => _.Name.StartsWith("house"));
-            //var players = list.Where(_ => _.Name.StartsWith("Player"));
             var houseScore = 0;
 
             foreach (var player in list)
@@ -155,6 +175,10 @@
             }
 
         }
+        /// <summary>
+        /// Asks user to play again
+        /// </summary>
+        /// <returns>Bool value</returns>
         private static bool PlayAgain()
         {
             Console.WriteLine("Do you want to play another round?\n\n[1] Yes \n[2]  No");
@@ -164,6 +188,11 @@
             else
                 return false;
         }
+        /// <summary>
+        /// Prints message if user gets 21 first round
+        /// </summary>
+        /// <param name="playerName">Name of player</param>
+        /// <param name="playerBet">Players bet</param>
         private static void BlackJackWin(string playerName, int playerBet)
         {
             Console.WriteLine($"Conratulations {playerName}! You got Black Jack and won {playerBet + (playerBet * 1.5)} ");
