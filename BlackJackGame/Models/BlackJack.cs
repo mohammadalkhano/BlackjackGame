@@ -65,6 +65,7 @@ namespace BlackJackGame
                     list.Add(10000);
                     break;
             }
+
             return list;
         }
 
