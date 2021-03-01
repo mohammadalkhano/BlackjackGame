@@ -73,7 +73,7 @@ namespace BlackJackGame
 
         public void ResetCards()
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
     }
 }

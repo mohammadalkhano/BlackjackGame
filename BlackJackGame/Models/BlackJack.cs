@@ -11,7 +11,7 @@ namespace BlackJackGame
 
         public static void CreatePlayer()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
 
@@ -23,7 +23,7 @@ namespace BlackJackGame
         public static void ResetDeck()
         {
 
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public static void RunGame()
