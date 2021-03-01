@@ -13,6 +13,10 @@ namespace BlackJackGame
         public static string[] cards { get; set; } = new string[13] { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Q", "J", "K" };
         public static string[] cardType { get; set; } = new string[4] { "♥", "♣", "♠", "♦" };
 
+
+        public static List<string> newDeck = BuildDeckForGame(GenerateDeck());
+
+
         /*----Tänkte att skapa list of Card klassen för att underlätta åtgången på Card Number----*/
         /*public List<Card> MyCards { get; set; } = new List<Card>
         {new Card { Number ="2", Type= "H" } };*/
@@ -31,6 +35,8 @@ namespace BlackJackGame
                     listOfCards.Add(cards[j] + cardType[i]);
                 }
             }
+
+
             return listOfCards;
         }
 
@@ -42,6 +48,7 @@ namespace BlackJackGame
         public static List<string> BuildDeckForGame(List<string> deck)
         {
             List<string> gameDeck = new List<string>();
+
             for (int i = 0; i < 4; i++)
             {
                 foreach (var item in deck)
@@ -49,16 +56,26 @@ namespace BlackJackGame
                     gameDeck.Add(item);
                 }
             }
+
+
             return gameDeck;
         }
+
+        
+        
         /// <summary>
         /// Suffles the list.
         /// </summary>
         /// <param name="deck">The deck.</param>
         /// <returns></returns>
         public static List<string> SuffleList(List<string> deck)
+
         {
             List<string> randomCards = new List<string>();
+
+
+            //var random = new Random();
+            //var randomList = Cards.OrderBy(i => random.Next(0, 208));
 
             var random = new Random();
             var randomList = deck.OrderBy(i => random.Next(0,208));
@@ -67,33 +84,54 @@ namespace BlackJackGame
                 randomCards.Add(item);
             }
 
+
             return randomCards;
         }
+
 
         /// <summary>
         /// Gets the card.
         /// </summary>
         /// <param name="deck">The deck.</param>
         /// <returns></returns>
-        public static string GetCard(List<string> deck)
+        public static int GetCard(List<string> cards)
         {
-            var random = new Random();
-            var randomList = deck.OrderBy(i => random.Next(104, 156));
+            //var card = Cards.FirstOrDefault();
+            //Cards.Remove(card);
 
-            var card = deck[deck.Count - 1];
-            deck.RemoveAt(card.IndexOf(card));
+            int score = 0;
+            //var card = cards[^1];
+            var card = cards[cards.Count - 1];
+            cards.Remove(card);
 
-            //var card1 = deck.FirstOrDefault();
-            //deck.Remove(card1);
-
-            return card;
+            if (card.StartsWith("Q")|| card.StartsWith("K") || card.StartsWith("J"))
+            {
+                score = 10;
+            }
+            else if(card.StartsWith("A"))
+            {
+                score = Console.Read();
+                score = score.Equals(1) ? 1 : 11;
+            
+            }
+            else
+            {
+                Int32.TryParse(card, out int intType);
+                //int intType=0;
+                //List<int> scoreList = card.ToCharArray ().Where
+                //        (x => int.TryParse(x.ToString(), out intType))
+                //    .Select(x => int.Parse(x.ToString())).ToList();
+                score = intType;
+            }
+            return score;
         }
+
         /// <summary>
         /// Resets the cards.
         /// </summary>
         public static List<string> ResetCards()
         {
-           return Deck.SuffleList(BuildDeckForGame(GenerateDeck()));            
+           return Deck.SuffleList(BuildDeckForGame(GenerateDeck()));
         }
     }
 }
