@@ -89,11 +89,11 @@ namespace BlackJackGame
             return card;
         }
         /// <summary>
-        /// Resets the cards .
+        /// Resets the cards.
         /// </summary>
-        public static void ResetCards()
+        public static List<string> ResetCards()
         {
-            Deck.SuffleList(BuildDeckForGame(GenerateDeck()));
+           return Deck.SuffleList(BuildDeckForGame(GenerateDeck()));            
         }
     }
 }
