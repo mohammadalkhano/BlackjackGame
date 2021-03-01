@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 
 namespace BlackJackGame
 {
@@ -40,17 +40,33 @@ namespace BlackJackGame
 
         }
 
-        public static int SelectTable()
+        public static List<int> SelectTable()
         {
             Console.WriteLine("Select table:");
 
-            return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 4);
-        }
-        public static bool PlayAgain()
-        {
-            
-            return false;
+            var list = new List<int>();
 
+            switch (PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 4))
+            {
+                case 1:
+                    list.Add(100);
+                    list.Add(1000);
+                    break;
+                case 2:
+                    list.Add(100);
+                    list.Add(2000);
+                    break;
+                case 3:
+                    list.Add(200);
+                    list.Add(5000);
+                    break;
+                case 4:
+                    list.Add(1000);
+                    list.Add(10000);
+                    break;
+            }
+            return list;
         }
+
     }
 }

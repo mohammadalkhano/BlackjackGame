@@ -13,6 +13,10 @@ namespace BlackJackGame
         public static string[] cards { get; set; } = new string[13] { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Q", "J", "K" };
         public static string[] cardType { get; set; } = new string[4] { "♥", "♣", "♠", "♦" };
 
+
+        public static List<string> newDeck = BuildDeckForGame(GenerateDeck());
+
+
         /*----Tänkte att skapa list of Card klassen för att underlätta åtgången på Card Number----*/
         /*public List<Card> MyCards { get; set; } = new List<Card>
         {new Card { Number ="2", Type= "H" } };*/
@@ -31,6 +35,8 @@ namespace BlackJackGame
                     listOfCards.Add(cards[j] + cardType[i]);
                 }
             }
+
+
             return listOfCards;
         }
 
@@ -49,6 +55,14 @@ namespace BlackJackGame
                     gameDeck.Add(item);
                 }
             }
+
+
+            return randomCards;
+        }
+
+        
+        public static int GetCard(List<string> cards)
+
             return gameDeck;
         }
         /// <summary>
@@ -57,8 +71,13 @@ namespace BlackJackGame
         /// <param name="deck">The deck.</param>
         /// <returns></returns>
         public static List<string> SuffleList(List<string> deck)
+
         {
             List<string> randomCards = new List<string>();
+
+
+            //var random = new Random();
+            //var randomList = Cards.OrderBy(i => random.Next(0, 208));
 
             var random = new Random();
             var randomList = deck.OrderBy(i => random.Next(0,208));
@@ -67,8 +86,19 @@ namespace BlackJackGame
                 randomCards.Add(item);
             }
 
+
             return randomCards;
         }
+
+            //var card = Cards.FirstOrDefault();
+            //Cards.Remove(card);
+
+            int score;
+            var card = cards[cards.Count - 1];
+
+
+
+            cards.Remove(card);
 
         /// <summary>
         /// Gets the card.
@@ -86,7 +116,8 @@ namespace BlackJackGame
             //var card1 = deck.FirstOrDefault();
             //deck.Remove(card1);
 
-            return card;
+
+            return score;
         }
         /// <summary>
         /// Resets the cards .

@@ -11,16 +11,19 @@
             var gameRunning = true;
             Output.ShowMenu();
             var activePlayers = Player.CreatePlayer(BlackJack.SeclectPlayers());
+            Output.TableMenu();
             var table = BlackJack.SelectTable();
             //Tables();
             BlackJack.ResetDeck();
+            
 
             while (gameRunning == true)
             {
                 FirstGive(activePlayers, 100, 1000);
                 PlayPlayers(activePlayers);
-                if (activePlayers.Count > 1)//House is always playing
-                    PlayHouse(activePlayers);
+                PlayHouse(activePlayers);
+                //if (activePlayers.Count > 1)//House is always playing
+                //    PlayHouse(activePlayers);
 
                 CheckWinners(activePlayers);
 
@@ -35,23 +38,25 @@
             {
                 if (player.Name != "house")
                 {
+                    player.Bet = 0;
                     player.Bet = PlaceBet(minBet, maxBet);
-                    player.Score += BlackJack.GiveCard("open");
-                    player.Score += BlackJack.GiveCard("open");
+                    player.Score += Deck.GetCard(Deck.newDeck);
+                    player.Score += Deck.GetCard(Deck.newDeck);
 
                     if (player.Score == 21)
                     {
                         BlackJackWin(player.Name, player.Score);
                     }
                 }
+                    
             }
 
             foreach (var player in listOfPlayers)
             {
                 if (player.Name == "house")
                 {
-                    player.Score = BlackJack.GiveCard("open");
-                    player.Score = BlackJack.GiveCard("close");
+                    player.Score += Deck.GetCard(Deck.newDeck);
+                    player.Score += Deck.GetCard(Deck.newDeck);
                 }
             }
         }
@@ -61,7 +66,7 @@
             foreach (var player in listOfPlayers) //PlayPlayers();
             {
                 if (player.Name != "house")
-                {
+                {                    
                     while (player.Score < 21 || player.Stay == false)
                     {
                         Console.WriteLine("[1]Hit or [2]stay?");
@@ -69,7 +74,7 @@
                         if (hitOrStay == 2)
                             player.Stay = true;
                         else
-                            player.Score = BlackJack.GiveCard("open");
+                            player.Score += Deck.GetCard(Deck.newDeck); ;
                     }
                 }
             }
@@ -85,7 +90,7 @@
 
                     while (player.Score < 17)
                     {
-                        player.Score += BlackJack.GiveCard("open");
+                        player.Score += Deck.GetCard(Deck.newDeck);
                     }
                 }
             }
@@ -115,7 +120,9 @@
         }
         private static int PlaceBet(int tableMin, int tableMax)
         {
-            return tableMin;
+            Console.WriteLine($"Make bet between {tableMin} and {tableMax}");
+            
+            return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), tableMin, tableMax).;
         }
         //public static int[] Tables(int table)
         //{
