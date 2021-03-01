@@ -46,19 +46,20 @@
             foreach (var player in listOfPlayers)
             {
                 player.Score = 0;
+                player.Stay = false;
                 if (player.Name != "house")
                 {
                     player.Score += rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
                     player.Score += rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
 
+                    //player.Score = 21;
+
                     if (player.Score == 21)
                     {
-                        BlackJackWin(player.Name, player.Score);
+                        BlackJackWin(player.Name, player.Bet);
                     }
                     Console.WriteLine($"{player.Name} has a total of {player.Score}");
                 }
-
-
             }
 
             foreach (var player in listOfPlayers)
@@ -93,6 +94,11 @@
                         else
                             player.Stay = true;
                     }
+
+                    if (player.Score > 21)
+                        Console.WriteLine($"{player.Name} gets {player.Score} (busted)");
+                    else
+                        Console.WriteLine($"{player.Name} gets {player.Score}");
                 }
             }
         }
@@ -117,13 +123,37 @@
         }
         private static void CheckWinners(List<Player> list)
         {
-            var house = list.Where(_ => _.Name.StartsWith("house"));
-            var players = list.Where(_ => _.Name.StartsWith("Player"));
+            //var house = list.Where(_ => _.Name.StartsWith("house"));
+            //var players = list.Where(_ => _.Name.StartsWith("Player"));
+            var houseScore = 0;
 
-            foreach (var player in players)
+            foreach (var player in list)
             {
-
+                if (player.Name == "house")
+                    if (player.Score > 21)
+                        Console.WriteLine("House got busted");
+                    else
+                        houseScore = player.Score;
             }
+            foreach (var player in list)
+            {
+                if (player.Name != "house")
+                {
+                    if (player.Score > 21)
+                        Console.WriteLine($"{player.Name} got {player.Score} and got busted.");
+                    else
+                    {
+
+                        if (player.Score == houseScore)
+                            Console.WriteLine($"{player.Name} got {player.Score} and are equal to the house.");
+                        else if (player.Score > houseScore)
+                            Console.WriteLine($"{player.Name} got {player.Score} and beat the house. You won ${player.Bet * 2}.");
+                        else
+                            Console.WriteLine($"{player.Name} got {player.Score} and lost to the house.");
+                    }
+                }
+            }
+
         }
         private static bool PlayAgain()
         {
@@ -134,9 +164,9 @@
             else
                 return false;
         }
-        private static void BlackJackWin(string playerName, int playerScore)
+        private static void BlackJackWin(string playerName, int playerBet)
         {
-            Console.WriteLine($"Conratulations {playerName}! You got Black Jack and won {playerScore} ");
+            Console.WriteLine($"Conratulations {playerName}! You got Black Jack and won {playerBet + (playerBet * 1.5)} ");
         }
 
         private static int PlaceBet(string playerName, int tableMin, int tableMax)
