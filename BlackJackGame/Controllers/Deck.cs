@@ -111,14 +111,11 @@ namespace BlackJackGame
         }
 
         /// <summary>
-        /// Resets the cards .
+        /// Resets the cards.
         /// </summary>
-        public static void ResetCards()
+        public static List<string> ResetCards()
         {
-
-            //throw new System.NotImplementedException();
-
-            Deck.SuffleList(BuildDeckForGame(GenerateDeck()));
+           return Deck.SuffleList(BuildDeckForGame(GenerateDeck()));            
 
         }
     }
