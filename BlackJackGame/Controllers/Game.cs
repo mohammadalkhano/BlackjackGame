@@ -122,7 +122,7 @@
         {
             Console.WriteLine($"Make bet between {tableMin} and {tableMax}");
             
-            return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), tableMin, tableMax).;
+            return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), tableMin, tableMax);
         }
         //public static int[] Tables(int table)
         //{

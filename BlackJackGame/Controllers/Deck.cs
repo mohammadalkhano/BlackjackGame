@@ -48,6 +48,7 @@ namespace BlackJackGame
         public static List<string> BuildDeckForGame(List<string> deck)
         {
             List<string> gameDeck = new List<string>();
+
             for (int i = 0; i < 4; i++)
             {
                 foreach (var item in deck)
@@ -57,14 +58,11 @@ namespace BlackJackGame
             }
 
 
-            return randomCards;
+            return gameDeck;
         }
 
         
-        public static int GetCard(List<string> cards)
-
-            return gameDeck;
-        }
+        
         /// <summary>
         /// Suffles the list.
         /// </summary>
@@ -90,6 +88,15 @@ namespace BlackJackGame
             return randomCards;
         }
 
+
+        /// <summary>
+        /// Gets the card.
+        /// </summary>
+        /// <param name="deck">The deck.</param>
+        /// <returns></returns>
+        public static int GetCard(List<string> cards)
+        {
+
             //var card = Cards.FirstOrDefault();
             //Cards.Remove(card);
 
@@ -100,25 +107,9 @@ namespace BlackJackGame
 
             cards.Remove(card);
 
-        /// <summary>
-        /// Gets the card.
-        /// </summary>
-        /// <param name="deck">The deck.</param>
-        /// <returns></returns>
-        public static string GetCard(List<string> deck)
-        {
-            var random = new Random();
-            var randomList = deck.OrderBy(i => random.Next(104, 156));
-
-            var card = deck[deck.Count - 1];
-            deck.RemoveAt(card.IndexOf(card));
-
-            //var card1 = deck.FirstOrDefault();
-            //deck.Remove(card1);
-
-
-            return score;
+            return score
         }
+
         /// <summary>
         /// Resets the cards .
         /// </summary>
