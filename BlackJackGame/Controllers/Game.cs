@@ -15,9 +15,11 @@
         public static void RunGame()
         {
             var gameRunning = true;
-            //Output.ShowMenu();
-            var activePlayers = Player.CreatePlayer(BlackJack.SeclectPlayers());
+            Output.Logo();
+            Output.LogoMeddelande("How many players?");
+            var activePlayers = Player.CreatePlayer(PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 7));
             //Output.TableMenu();
+            Output.ShowTable();
             var table = BlackJack.SelectTable();
             GameDeck = Deck.SuffleList(Deck.BuildDeckForGame(Deck.GenerateDeck()));
 
