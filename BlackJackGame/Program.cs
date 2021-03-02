@@ -16,7 +16,6 @@ namespace BlackJackGame
             //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
             //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
             Game.RunGame();
-            Console.Read();
 
 
         }

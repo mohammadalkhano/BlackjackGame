@@ -70,7 +70,7 @@ namespace BlackJackGame
         /// <returns>List containing min and max value</returns>
         public static List<int> SelectTable()
         {
-            Console.WriteLine("Select table:");
+            Console.WriteLine();
 
             var list = new List<int>();
 

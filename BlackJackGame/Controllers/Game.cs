@@ -9,22 +9,27 @@
         public static List<string> GameDeck { get; set; }
         public static void Temp()
         {
-            GameDeck = Deck.SuffleList(Deck.BuildDeckForGame(Deck.GenerateDeck()));
+            GameDeck = Deck.ResetCards();
 
         }
         public static void RunGame()
         {
             var gameRunning = true;
+            GameDeck = Deck.ResetCards();
             Output.Logo();
-            Output.LogoMeddelande("How many players?");
-            var activePlayers = Player.CreatePlayer(PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 7));
-            //Output.TableMenu();
-            Output.ShowTable();
-            var table = BlackJack.SelectTable();
-            GameDeck = Deck.SuffleList(Deck.BuildDeckForGame(Deck.GenerateDeck()));
+            Console.ReadKey();
 
             while (gameRunning == true)
             {
+                Console.Clear();
+                Output.ShowTable();
+                var table = BlackJack.SelectTable();
+
+                Console.Clear();
+
+                Output.LogoMeddelande($"Minimum bet : {table[0]} | Maximum bet: {table[1]}");
+                Output.LogoMeddelande("How many players? (1-7)");
+                var activePlayers = Player.CreatePlayer(PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 7));
                 PlaceBets(activePlayers, table[0], table[1]);
                 FirstGive(activePlayers);
                 PlayPlayers(activePlayers);

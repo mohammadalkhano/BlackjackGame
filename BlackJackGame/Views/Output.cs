@@ -14,7 +14,8 @@ namespace BlackJackGame
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
             Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
             Console.WriteLine("                             *  #                                                   #  *");
-            Console.WriteLine("                             *  #            Welcome to BlackJackGame...            #  *");
+            Console.WriteLine("                             *  #            Welcome to BlackJackGame!              #  *");
+            Console.WriteLine("                             *  #           Press any key to continiue...           #  *");
             Console.WriteLine("                             *  #                                                   #  *");
             Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
@@ -82,7 +83,7 @@ namespace BlackJackGame
         {
                 Console.Clear();
                 LogoMeddelande("Select Table");
-                Console.WriteLine("\n [Tabal (1) \t Min-Bet: 100 \t Max-Bet 1000 ]\n [Tabal (2) \t Min-Bet: 100 \t Max-Bet 2000 ]\n [Tabal (3) \t Min-Bet: 200 \t Max-Bet 5000 ]\n [Tabal (4) \t Min-Bet: 1000 \t Max-Bet 10000]");
+                Console.WriteLine("\n [Table (1) \t Min-Bet: 100 \t Max-Bet 1000 ]\n [Table (2) \t Min-Bet: 100 \t Max-Bet 2000 ]\n [Table (3) \t Min-Bet: 200 \t Max-Bet 5000 ]\n [Table (4) \t Min-Bet: 1000 \t Max-Bet 10000]");
             
         }
 
