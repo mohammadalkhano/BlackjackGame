@@ -9,7 +9,15 @@ namespace BlackJackGame
     {
         static void Main(string[] args)
         {
-            Game.RunGame();
+            Console.WriteLine(BlackJack.GetCard(Deck.BuildDeckForGame(Deck.GenerateDeck())));
+            Console.WriteLine(BlackJack.GetCard(Deck.BuildDeckForGame(Deck.GenerateDeck())));
+            Console.WriteLine(BlackJack.GetCard(Deck.BuildDeckForGame(Deck.GenerateDeck())));
+            Console.WriteLine(BlackJack.GetCard(Deck.BuildDeckForGame(Deck.GenerateDeck())));
+            Console.WriteLine(BlackJack.GetCard(Deck.BuildDeckForGame(Deck.GenerateDeck())));
+            Console.WriteLine(BlackJack.GetCard(Deck.BuildDeckForGame(Deck.GenerateDeck())));
+            Console.WriteLine(BlackJack.GetCard(Deck.BuildDeckForGame(Deck.GenerateDeck())));
+            
+            //Game.RunGame();
 
         }
     }
