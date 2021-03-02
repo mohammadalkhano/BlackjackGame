@@ -15,7 +15,10 @@ namespace BlackJackGame
             //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
             //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
             //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
-            Game.RunGame();
+
+            Output.ShowCards("2♦", "K♣");
+            
+            //Game.RunGame();
 
 
         }

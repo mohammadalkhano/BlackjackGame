@@ -32,6 +32,7 @@ namespace BlackJackGame
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
             Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
             Console.WriteLine("                             *  #                                                   #  *");
+            Console.WriteLine("                             *  #                                                   #  *");
             Console.Write("                             *  #");
             for (int i = 0; i < (51 - meddelande.Length) / 2; i++)
                 Console.Write(" ");
@@ -40,10 +41,41 @@ namespace BlackJackGame
                 Console.Write(" ");
             Console.WriteLine("#  *");
             Console.WriteLine("                             *  #                                                   #  *");
+            Console.WriteLine("                             *  #                                                   #  *");
+            Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
+            Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
+            Console.WriteLine($"{line}\n");
+        }        public static void LogoMeddelandeDouble(string line1, string line2)
+        {
+            var line = new string('=', 120);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"{line}\n");
+            Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
+            Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
+            Console.WriteLine("                             *  #                                                   #  *");
+            Console.WriteLine("                             *  #                                                   #  *");
+            Console.Write("                             *  #");
+            for (int i = 0; i < (51 - line1.Length) / 2; i++)
+                Console.Write(" ");
+            Console.Write(line1);
+            for (int i = 0; i < (52 - line1.Length) / 2; i++)
+                Console.Write(" ");
+            Console.WriteLine("#  *");
+            Console.Write("                             *  #");
+            for (int i = 0; i < (51 - line2.Length) / 2; i++)
+                Console.Write(" ");
+            Console.Write(line2);
+            for (int i = 0; i < (52 - line2.Length) / 2; i++)
+                Console.Write(" ");
+            Console.WriteLine("#  *");
+            Console.WriteLine("                             *  #                                                   #  *");
+            Console.WriteLine("                             *  #                                                   #  *");
             Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
             Console.WriteLine($"{line}\n");
         }
+
+
 
         public static void PlayerInfoOutput(List<Player> players)
         {
@@ -108,16 +140,35 @@ namespace BlackJackGame
         }
 
 
-        public static void ShowCards()
+
+
+        public static void ShowCards(string card1, string card2)
         {
-            //throw new System.NotImplementedException();
+            LogoMeddelandeDouble("Player 1 this is your first card", "Press any key to see you second card");
+            PrintCard(14, 3, card1[0], card1[1]);
+            Console.ReadLine();
+            PrintCard(15, 10, card2[0], card2[1]);
         }
 
-
-        public static void ShowActivePlayers()
+        private static void PrintAt(int y, int x, string text)
         {
-
-            //throw new System.NotImplementedException();
+            Console.CursorTop = y;
+            Console.CursorLeft = x;
+            Console.Write(text);
         }
+
+        private static void PrintCard(int y, int x, char value, char symbol)
+        {
+            PrintAt(y++, x, "┌─────────┐");
+            PrintAt(y++, x, $"│{value,-6}   │");
+            PrintAt(y++, x, "│         │");
+            PrintAt(y++, x, "│         │");
+            PrintAt(y++, x, $"│    {symbol}    │");
+            PrintAt(y++, x, "│         │");
+            PrintAt(y++, x, "│         │");
+            PrintAt(y++, x, $"│   {value,6}│");
+            PrintAt(y++, x, "└─────────┘");
+        }
+
     }
 }

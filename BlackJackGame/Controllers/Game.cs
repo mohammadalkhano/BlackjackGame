@@ -31,12 +31,10 @@
                 var activePlayers = Player.CreatePlayer(PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 7));
 
                 Console.Clear();
-                
+
                 PlaceBets(activePlayers, table[0], table[1]);
 
-                
                 Console.Clear();
-                Output.LogoMeddelande($"Minimum bet : {table[0]} | Maximum bet: {table[1]}");
 
                 FirstGive(activePlayers);
 
@@ -60,14 +58,15 @@
         {
             foreach (var player in players)
             {
+                Output.PlayerInfoOutput(players);
+
                 if (player.Name != "house")
                 {
                     player.Bet = 0;
                     player.Bet = PlaceBet(player.Name, minBet, maxBet);
                 }
                 Console.Clear();
- 
-                Output.PlayerInfoOutput(players);
+
             }
         }
         /// <summary>
@@ -77,14 +76,28 @@
         private static void FirstGive(List<Player> players)
         {
             var rand = new Random();
+
             foreach (var player in players)
             {
                 player.Score = 0;
                 player.Stay = false;
                 if (player.Name != "house")
                 {
-                    player.Score += rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
-                    player.Score += rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
+                    Output.PlayerInfoOutput(players);
+                    var card = rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
+                    player.Score += card;
+                    Output.LogoMeddelande($"{player.Name}, your first card is {card}");
+
+                    Console.ReadLine();
+                    Console.Clear();
+
+                    Output.PlayerInfoOutput(players);
+                    card = rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
+                    player.Score = 21;
+
+                    Output.LogoMeddelande($"{player.Name}, your second card is {card}");
+                    Console.ReadLine();
+                    Console.Clear();
 
                     //player.Score = 21;
 
@@ -92,7 +105,11 @@
                     {
                         BlackJackWin(player.Name, player.Bet);
                     }
-                    Console.WriteLine($"{player.Name} has a total of {player.Score}");
+
+                    //Output.PlayerInfoOutput(players);
+                    //Output.LogoMeddelande($"{player.Name} has a total of {player.Score}");
+                    //Console.ReadLine();
+                    //Console.Clear();
                 }
             }
 
@@ -219,7 +236,7 @@
         /// <param name="playerBet">Players bet</param>
         private static void BlackJackWin(string playerName, int playerBet)
         {
-            Console.WriteLine($"Conratulations {playerName}! You got Black Jack and won {playerBet + (playerBet * 1.5)} ");
+            Output.LogoMeddelande($"Conratulations {playerName}! You got Black Jack and won {playerBet + (playerBet * 1.5)} ");
         }
 
         private static int PlaceBet(string playerName, int tableMin, int tableMax)
