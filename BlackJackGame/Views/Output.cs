@@ -42,38 +42,38 @@ namespace BlackJackGame
             Console.WriteLine("=======================================================================================================================\n");
             }
 
-        public static void ShowMenu()
-            {
-            Logo();
-            while (true)
+        //public static void ShowMenu()
+        //    {
+        //    Logo();
+        //    while (true)
 
-                {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("                                       *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*");
-                Console.WriteLine("                                       *=        Age limit  18 years!     =*");
-                Console.WriteLine("                                       *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*");
+        //        {
+        //        Console.ForegroundColor = ConsoleColor.Red;
+        //        Console.WriteLine("                                       *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*");
+        //        Console.WriteLine("                                       *=        Age limit  18 years!     =*");
+        //        Console.WriteLine("                                       *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*");
 
-                Console.ForegroundColor = ConsoleColor.White;
+        //        Console.ForegroundColor = ConsoleColor.White;
 
-                Console.Write("\nTo move forwad to the game pleace enter your age: ");
-                int.TryParse(Console.ReadLine(),out var age);
+        //        Console.Write("\nTo move forwad to the game pleace enter your age: ");
+        //        //int.TryParse(Console.ReadLine(),out var age);
+        //        var age = PlayerInput.InvalidInputCheck();
+        //        Logo();
+        //        if (age >= 18)
 
-                Logo();
-                if (age >= 18)
-
-                    {
-                    Console.Clear();
-                    Game.RunGame();
-                    Console.ReadKey();
-                    }
-                else
-                    {
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    LogoMeddelande("Invalid input, try again");
-                    }
-                }
-            }
+        //            {
+        //            Console.Clear();
+                   
+        //            Console.ReadKey();
+        //            }
+        //        else
+        //            {
+        //            Console.Clear();
+        //            Console.ForegroundColor = ConsoleColor.Red;
+        //            LogoMeddelande("Invalid input, try again");
+        //            }
+        //        }
+        //    }
         
         public static void ShowCards()
             {
