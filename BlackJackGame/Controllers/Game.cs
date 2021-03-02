@@ -20,14 +20,11 @@
                 FirstGive(activePlayers);
                 PlayPlayers(activePlayers);
                 PlayHouse(activePlayers);
-                //if (activePlayers.Count > 1)//House is always playing
-                //    PlayHouse(activePlayers);
 
                 CheckWinners(activePlayers);
 
                 gameRunning = PlayAgain();
             }
-
         }
         /// <summary>
         /// Asks user to place their bet between min and max

@@ -19,7 +19,7 @@ namespace BlackJackGame
             Name = playerName;
             Score = 0;
             Stay = false;
-            HouseDarkCard = new List<string>();
+            HouseDarkCard = new List<string>(); //Second card to house is not visible
         }
         /// <summary>
         /// Creates the amount of players selected by user. Automatic creates a player named "house"

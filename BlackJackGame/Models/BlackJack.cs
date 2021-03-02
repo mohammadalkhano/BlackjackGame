@@ -8,6 +8,28 @@ namespace BlackJackGame
 
     public static class BlackJack
     {
+        public static int GetCard(List<string> cards)
+        {
+
+            //var card = Cards.FirstOrDefault();
+            //Cards.Remove(card);
+
+            int score = 0;
+            var card = cards[cards.Count - 1];
+
+            var cardValue = card[0];
+
+            if (cardValue == 'J' || cardValue == 'Q' || cardValue == 'K')
+                score = 10;
+            else if (cardValue == 'A')
+                score = 11;
+            else
+                score = card[0];
+
+            cards.Remove(card);
+
+            return score;
+        }
 
         public static void CreatePlayer()
         {
