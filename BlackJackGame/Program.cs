@@ -9,15 +9,13 @@ namespace BlackJackGame
     {
         static void Main(string[] args)
         {
-            Game.Temp();
-            Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
-            Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
-            Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
-            Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
-            Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
-            
-            //Output.ShowMenu();
-           // Game.RunGame();
+            //Game.Temp();
+            //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
+            //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
+            //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
+            //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
+            //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
+            Game.RunGame();
             Console.Read();
 
 
