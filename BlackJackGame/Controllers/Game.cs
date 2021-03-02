@@ -4,8 +4,14 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public static class Game
+    public class Game
     {
+        public static List<string> GameDeck { get; set; }
+        public static void Temp()
+        {
+            GameDeck = Deck.SuffleList(Deck.BuildDeckForGame(Deck.GenerateDeck()));
+
+        }
         public static void RunGame()
         {
             var gameRunning = true;
@@ -13,6 +19,7 @@
             var activePlayers = Player.CreatePlayer(BlackJack.SeclectPlayers());
             //Output.TableMenu();
             var table = BlackJack.SelectTable();
+            GameDeck = Deck.SuffleList(Deck.BuildDeckForGame(Deck.GenerateDeck()));
 
             while (gameRunning == true)
             {
