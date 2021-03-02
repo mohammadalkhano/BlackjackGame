@@ -1,9 +1,13 @@
 ﻿using System;
 
 namespace BlackJackGame
+
+
+
     {
     public class Output
         {
+
         public static void Logo()
             {
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -107,13 +111,16 @@ namespace BlackJackGame
                 }
             }
 
+
         public static void ShowCards()
             {
             //throw new System.NotImplementedException();
             }
 
+
         public static void ShowActivePlayers()
             {
+
             //throw new System.NotImplementedException();
             }
         }

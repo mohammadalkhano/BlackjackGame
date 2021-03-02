@@ -12,25 +12,6 @@ namespace BlackJackGame.Tests
     public class DeckTests
     {
         [TestMethod()]
-        public void GenerateCardTest()
-        {
-
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void GetCardTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void ResetCardsTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
         public void BuildDeckForGameTest()
         {
             var list = new List<string>() { "A", "C", "D" };
@@ -45,6 +26,34 @@ namespace BlackJackGame.Tests
             var expected = 208;
             var actual = Deck.BuildDeckForGame(list);
             Assert.AreEqual(expected, actual.Count());
+        }
+
+        [TestMethod()]
+        public void GetCardTest_Q_J_K()
+        {
+            //var list = Deck.SuffleList(Deck.BuildDeckForGame(Deck.GenerateDeck()))
+            var list = new List<string>() { "Q" };
+            int expected = 10;
+            var actual = Deck.GetCard(list);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        //public void GetCardTest_A()
+        //{
+        //    //var list = Deck.SuffleList(Deck.BuildDeckForGame(Deck.GenerateDeck()))
+        //    var list = new List<string>() { "A" };
+        //    int expected = 1;
+        //    var actual = Deck.GetCard(list);
+        //    Assert.AreEqual(expected, actual);
+        //}
+        public void GetCardTest_Num()
+        {
+            //var list = Deck.SuffleList(Deck.BuildDeckForGame(Deck.GenerateDeck()))
+            var list = new List<string>() { "3" };
+            int expected = 3;
+            var actual = Deck.GetCard(list);
+            Assert.AreEqual(expected, actual);
         }
         /*Testar metoden om den ska retunera random list :) EJ Klar!*/
         //[TestMethod()]
