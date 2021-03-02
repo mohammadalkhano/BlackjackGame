@@ -14,7 +14,8 @@ namespace BlackJackGame
         public static string[] cardType { get; set; } = new string[4] { "♥", "♣", "♠", "♦" };
 
 
-        public static List<string> newDeck = BuildDeckForGame(GenerateDeck());
+        public static List<string> deckForGame =  SuffleList(BuildDeckForGame(GenerateDeck()));
+        
 
 
         /*----Tänkte att skapa list of Card klassen för att underlätta åtgången på Card Number----*/
@@ -47,6 +48,7 @@ namespace BlackJackGame
         public static List<string> BuildDeckForGame(List<string> deck)
         {
             List<string> gameDeck = new List<string>();
+            // newDeck = new List<string>();
 
             for (int i = 0; i < 4; i++)
             {
@@ -55,76 +57,76 @@ namespace BlackJackGame
                     gameDeck.Add(item);
                 }
             }
-
-
             return gameDeck;
         }
 
-        
-        
+
+
         /// <summary>
         /// Suffles the list.
         /// </summary>
         /// <param name="deck">The deck.</param>
         /// <returns></returns>
         public static List<string> SuffleList(List<string> deck)
-
         {
             List<string> randomCards = new List<string>();
-
 
             //var random = new Random();
             //var randomList = Cards.OrderBy(i => random.Next(0, 208));
 
             var random = new Random();
-            var randomList = deck.OrderBy(i => random.Next(0,208));
+            var randomList = deck.OrderBy(i => random.Next(0, 208));
             foreach (var item in randomList)
             {
                 randomCards.Add(item);
             }
 
-
             return randomCards;
         }
-
+        /// <summary>
+        /// Returns the card with its symbol as a string.
+        /// </summary>
+        /// <param name="cardList"></param>
+        /// <returns></returns>
+        public static string GetCardString(List<string> cardList)
+        {
+            string card = cardList[^1];
+            //cardList.RemoveAt(cardList.Count - 1);
+            return card;
+        }
 
         /// <summary>
         /// Gets the card.
         /// </summary>
         /// <param name="deck">The deck.</param>
         /// <returns></returns>
-        public static int GetCard(List<string> cards)
+        public static int GetCard(string card)
         {
-            //var card = Cards.FirstOrDefault();
-            //Cards.Remove(card);
+            /* Kan vi gör om klassen "Player" till static??? */
+            Player player = new Player("");
+            
+            int cardValue;
+            //string card = cards[^1];
+            //var cardValue = card[0];
+            //cards.RemoveAt(cards.Count - 1);
 
-            int score = 0;
-            string card = cards[cards.Count - 1];
-            var cardValue = card[0];
-            cards.RemoveAt(cards.Count-1);
-
-            if (cardValue.Equals("Q")|| cardValue.Equals("K") || cardValue.Equals("J")|| cardValue.Equals("1"))
+            if (card.StartsWith("Q") || card.StartsWith("K") ||
+                card.StartsWith("J") || card.StartsWith("1"))
             {
-                score = 10;
+                cardValue = 10;
             }
-            else if(card.StartsWith("A"))
+            else if (card.StartsWith("A"))
             {
-                score = 11;
-                //if (Player.poients+score>=22)
-                //{
-
-                //}
-
-                // score = score.Equals(1) ? 1 : 11;
-
+                cardValue = player.Score + 11>21 ? 1 : 11;
             }
             else
             {
                 var temp = card[0].ToString();
-                Int32.TryParse(temp, out score);
-               
+                Int32.TryParse(temp, out cardValue);
+
             }
-            return score;
+            deckForGame. RemoveAt(deckForGame.Count-1);
+            return cardValue;
         }
 
         /// <summary>
@@ -132,7 +134,7 @@ namespace BlackJackGame
         /// </summary>
         public static List<string> ResetCards()
         {
-           return Deck.SuffleList(BuildDeckForGame(GenerateDeck()));
+            return Deck.SuffleList(BuildDeckForGame(GenerateDeck()));
         }
     }
 }
