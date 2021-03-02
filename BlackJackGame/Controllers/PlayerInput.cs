@@ -14,8 +14,11 @@ namespace BlackJackGame
             int parseOK;
             while (!Int32.TryParse(Console.ReadLine(), out parseOK))
             {
+                //Console.Clear();
+                //Output.LogoMeddelande("Invalid input, try again");
+                //Output.ShowTable();
                 Console.WriteLine("Invalid input, try again");
-            }
+                }
             return parseOK;
         }
         public static int CheckMinMaxInput(int input, int min, int max)
@@ -23,7 +26,9 @@ namespace BlackJackGame
 
             while (input < min || input > max)
             {
-                Console.WriteLine($"Please chose between {min} and  {max}");
+                Console.Clear();
+                Output.LogoMeddelande($"Please chose between {min} and  {max}");
+                //Console.WriteLine($"Please chose between {min} and  {max}");
                 input = InvalidInputCheck();
             }
 

@@ -9,7 +9,8 @@ namespace BlackJackGame
     {
         static void Main(string[] args)
         {
-            //Game.RunGame();
+            //Output.ShowMenu();
+            Game.RunGame();
             Console.Read();
 
         }
