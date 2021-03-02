@@ -36,7 +36,6 @@ namespace BlackJackGame
                 }
             }
 
-
             return listOfCards;
         }
 
@@ -100,28 +99,30 @@ namespace BlackJackGame
             //Cards.Remove(card);
 
             int score = 0;
-            //var card = cards[^1];
-            var card = cards[cards.Count - 1];
-            cards.Remove(card);
+            string card = cards[cards.Count - 1];
+            var cardValue = card[0];
+            cards.RemoveAt(cards.Count-1);
 
-            if (card.StartsWith("Q")|| card.StartsWith("K") || card.StartsWith("J"))
+            if (cardValue.Equals("Q")|| cardValue.Equals("K") || cardValue.Equals("J")|| cardValue.Equals("1"))
             {
                 score = 10;
             }
             else if(card.StartsWith("A"))
             {
-                score = Console.Read();
-                score = score.Equals(1) ? 1 : 11;
-            
+                score = 11;
+                //if (Player.poients+score>=22)
+                //{
+
+                //}
+
+                // score = score.Equals(1) ? 1 : 11;
+
             }
             else
             {
-                Int32.TryParse(card, out int intType);
-                //int intType=0;
-                //List<int> scoreList = card.ToCharArray ().Where
-                //        (x => int.TryParse(x.ToString(), out intType))
-                //    .Select(x => int.Parse(x.ToString())).ToList();
-                score = intType;
+                var temp = card[0].ToString();
+                Int32.TryParse(temp, out score);
+               
             }
             return score;
         }
