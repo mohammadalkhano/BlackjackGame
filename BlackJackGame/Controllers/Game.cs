@@ -27,11 +27,21 @@
 
                 Console.Clear();
 
-                Output.LogoMeddelande($"Minimum bet : {table[0]} | Maximum bet: {table[1]}");
                 Output.LogoMeddelande("How many players? (1-7)");
                 var activePlayers = Player.CreatePlayer(PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 7));
+
+                Console.Clear();
+                
                 PlaceBets(activePlayers, table[0], table[1]);
+
+                
+                Console.Clear();
+                Output.LogoMeddelande($"Minimum bet : {table[0]} | Maximum bet: {table[1]}");
+
                 FirstGive(activePlayers);
+
+                Console.ReadLine();
+
                 PlayPlayers(activePlayers);
                 PlayHouse(activePlayers);
 
@@ -55,6 +65,9 @@
                     player.Bet = 0;
                     player.Bet = PlaceBet(player.Name, minBet, maxBet);
                 }
+                Console.Clear();
+ 
+                Output.PlayerInfoOutput(players);
             }
         }
         /// <summary>
@@ -211,7 +224,9 @@
 
         private static int PlaceBet(string playerName, int tableMin, int tableMax)
         {
-            Console.WriteLine($"{playerName} place bet between {tableMin} and {tableMax}");
+            //Console.WriteLine($"{playerName} place bet between {tableMin} and {tableMax}");
+
+            Output.LogoMeddelande($"{playerName} place bet between {tableMin} and {tableMax}");
 
             return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), tableMin, tableMax);
         }

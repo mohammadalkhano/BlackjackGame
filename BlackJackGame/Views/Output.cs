@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BlackJackGame
 
@@ -9,8 +10,9 @@ namespace BlackJackGame
     {
         public static void Logo()
         {
+            var line = new string('=', 120);
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("========================================================================================================================\n");
+            Console.WriteLine($"{line}\n");
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
             Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
             Console.WriteLine("                             *  #                                                   #  *");
@@ -19,13 +21,14 @@ namespace BlackJackGame
             Console.WriteLine("                             *  #                                                   #  *");
             Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
-            Console.WriteLine("========================================================================================================================\n");
+            Console.WriteLine($"{line}\n");
         }
 
         public static void LogoMeddelande(string meddelande)
         {
+            var line = new string('=', 120);
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("=======================================================================================================================\n");
+            Console.WriteLine($"{line}\n");
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
             Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
             Console.WriteLine("                             *  #                                                   #  *");
@@ -39,7 +42,24 @@ namespace BlackJackGame
             Console.WriteLine("                             *  #                                                   #  *");
             Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
-            Console.WriteLine("=======================================================================================================================\n");
+            Console.WriteLine($"{line}\n");
+        }
+
+        public static void PlayerInfoOutput(List<Player> players)
+        {
+            var line = new string('=', 120);
+
+            Console.WriteLine($"Player Name\tBet\tScore\n");
+            foreach (var player in players)
+            {
+                if (player.Name != "house")
+
+                    Console.WriteLine($"{player.Name}\t{player.Bet}\t{player.Score}");
+            }
+            Console.WriteLine();
+            Console.WriteLine(line);
+
+
         }
 
         public static void ShowMenu()
@@ -81,10 +101,10 @@ namespace BlackJackGame
 
         public static void ShowTable()
         {
-                Console.Clear();
-                LogoMeddelande("Select Table");
-                Console.WriteLine("\n [Table (1) \t Min-Bet: 100 \t Max-Bet 1000 ]\n [Table (2) \t Min-Bet: 100 \t Max-Bet 2000 ]\n [Table (3) \t Min-Bet: 200 \t Max-Bet 5000 ]\n [Table (4) \t Min-Bet: 1000 \t Max-Bet 10000]");
-            
+            Console.Clear();
+            LogoMeddelande("Select Table");
+            Console.WriteLine("\n [Table (1) \t Min-Bet: 100 \t Max-Bet 1000 ]\n [Table (2) \t Min-Bet: 100 \t Max-Bet 2000 ]\n [Table (3) \t Min-Bet: 200 \t Max-Bet 5000 ]\n [Table (4) \t Min-Bet: 1000 \t Max-Bet 10000]");
+
         }
 
 
