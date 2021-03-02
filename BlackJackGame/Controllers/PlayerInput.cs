@@ -1,9 +1,9 @@
 ﻿using System;
 
 namespace BlackJackGame
-{
-    public class PlayerInput
     {
+    public class PlayerInput
+        {
         public int NumberOfPlayers { get; set; }
         public int ActiveTable { get; set; }
         public bool NewCard { get; set; }
@@ -13,17 +13,16 @@ namespace BlackJackGame
         /// </summary>
         /// <returns>Int value</returns>
         public static int InvalidInputCheck()
-        {
-            int parseOK;
-            while (!Int32.TryParse(Console.ReadLine(), out parseOK))
             {
-                //Console.Clear();
-                //Output.LogoMeddelande("Invalid input, try again");
-                //Output.ShowTable();
-                Console.WriteLine("Invalid input, try again");
+            int parseOK;
+            while (!Int32.TryParse(Console.ReadLine(),out parseOK))
+                {
+                Console.Clear();
+                Output.LogoMeddelande("Invalid input, try again");
                 }
             return parseOK;
-        }
+            }
+
         /// <summary>
         /// Forces user to enter an int between two given values
         /// </summary>
@@ -31,8 +30,8 @@ namespace BlackJackGame
         /// <param name="min">Min value</param>
         /// <param name="max">Max value</param>
         /// <returns></returns>
-        public static int CheckMinMaxInput(int input, int min, int max)
-        {
+        public static int CheckMinMaxInput(int input,int min,int max)
+            {
             //if (min > max)
             //{
             //    int temp = min;
@@ -40,16 +39,17 @@ namespace BlackJackGame
             //    max = temp;
             //}
             while (input < min || input > max)
-            {
+                {
                 Console.Clear();
                 Output.LogoMeddelande($"Please chose between {min} and  {max}");
+
                 //Console.WriteLine($"Please chose between {min} and  {max}");
                 input = InvalidInputCheck();
-            }
+                }
 
             return input;
+            }
+
         }
 
     }
-
-}

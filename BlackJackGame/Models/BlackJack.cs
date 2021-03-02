@@ -59,10 +59,10 @@ namespace BlackJackGame
         /// <returns>Int value</returns>
         public static int SeclectPlayers()
         {
-            Console.WriteLine("How many players?");
+            Console.Clear();
+            Output.LogoMeddelande("How many players?");
 
             return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 7);
-
         }
         /// <summary>
         /// Asks user to select a table. Each tables has own rules for min and max bet
@@ -70,7 +70,10 @@ namespace BlackJackGame
         /// <returns>List containing min and max value</returns>
         public static List<int> SelectTable()
         {
-            Console.WriteLine("Select table:");
+            
+            Console.Clear();
+            Output.LogoMeddelande("Select table:");
+            Console.WriteLine("\n [Tabal (1) \t Min-Bet: 100 \t Max-Bet 1000 ]\n [Tabal (2) \t Min-Bet: 100 \t Max-Bet 2000 ]\n [Tabal (3) \t Min-Bet: 200 \t Max-Bet 5000 ]\n [Tabal (4) \t Min-Bet: 1000 \t Max-Bet 10000]");
 
             var list = new List<int>();
 
