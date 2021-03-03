@@ -160,7 +160,7 @@ namespace BlackJackGame
             Console.Write(text);
         }
 
-        private static void PrintCard(int y, int x, char value, char symbol)
+        public static void PrintCard(int y, int x, int value, int symbol)
         {
             PrintAt(y++, x, "┌─────────┐");
             PrintAt(y++, x, $"│{value,-6}   │");
