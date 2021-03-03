@@ -153,7 +153,10 @@
                 {
                 if (player.Name == "house")
                     if (player.Score > 21)
-                        Console.WriteLine("House got busted");
+                        {
+                        Console.Clear();
+                        Output.LogoMeddelande("House got busted");
+                        }
                     else
                         houseScore = player.Score;
                 }
@@ -171,7 +174,7 @@
                         if (player.Score == houseScore)
                             {
                             Console.Clear();
-                            Console.WriteLine($"{player.Name} got {player.Score} and are equal to the house.");
+                            Output.LogoMeddelande($"{player.Name} got {player.Score} and are equal to the house.");
                             }
                         else if (player.Score > houseScore)
                             {
@@ -194,7 +197,7 @@
         /// <returns> Bool value </returns>
         private static bool PlayAgain()
             {
-            Console.WriteLine("Do you want to play another round?\n\n[1] Yes \n[2]  No");
+            Console.WriteLine("Do you want to play another round?\n\n[1] Yes \n[2] No");
             Int32.TryParse(Console.ReadLine(),out int playAgain);
             if (playAgain == 1)
                 return true;

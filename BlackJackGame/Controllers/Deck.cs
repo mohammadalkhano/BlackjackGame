@@ -35,8 +35,6 @@ namespace BlackJackGame
                     listOfCards.Add(cards[j] + cardType[i]);
                 }
             }
-
-
             return listOfCards;
         }
 
@@ -56,12 +54,8 @@ namespace BlackJackGame
                     gameDeck.Add(item);
                 }
             }
-
-
             return gameDeck;
         }
-
-        
         
         /// <summary>
         /// Suffles the list.
@@ -73,7 +67,6 @@ namespace BlackJackGame
         {
             List<string> randomCards = new List<string>();
 
-
             //var random = new Random();
             //var randomList = Cards.OrderBy(i => random.Next(0, 208));
 
@@ -83,11 +76,8 @@ namespace BlackJackGame
             {
                 randomCards.Add(item);
             }
-
-
             return randomCards;
         }
-
 
         /// <summary>
         /// Gets the card.

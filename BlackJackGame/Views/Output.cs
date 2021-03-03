@@ -15,7 +15,11 @@ namespace BlackJackGame
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
             Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
             Console.WriteLine("                             *  #                                                   #  *");
-            Console.WriteLine("                             *  #            Welcome to BlackJackGame...            #  *");
+            Console.Write("                             *  #             ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(                                                  "Welcome to BlackJackGame...           ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("#  *");
             Console.WriteLine("                             *  #                                                   #  *");
             Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
@@ -24,22 +28,28 @@ namespace BlackJackGame
 
         public static void LogoMeddelande(string meddelande)
             {
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.DarkGray
+                ;
             Console.WriteLine("=======================================================================================================================\n");
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
             Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
             Console.WriteLine("                             *  #                                                   #  *");
             Console.Write("                             *  #");
+            Console.ForegroundColor = ConsoleColor.Blue;
+
             for (int i = 0; i < (51 - meddelande.Length) / 2; i++)
                 Console.Write(" ");
             Console.Write(meddelande);
             for (int i = 0; i < (52 - meddelande.Length) / 2; i++)
                 Console.Write(" ");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("#  *");
             Console.WriteLine("                             *  #                                                   #  *");
             Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
             Console.WriteLine("=======================================================================================================================\n");
+            Console.ForegroundColor = ConsoleColor.White;
+
             }
 
 
@@ -55,7 +65,7 @@ namespace BlackJackGame
             var agelimit = false;
             while (!agelimit )
                 {
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("                                       *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*");
                 Console.WriteLine("                                       *=        Age limit  18 years!     =*");
                 Console.WriteLine("                                       *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*");

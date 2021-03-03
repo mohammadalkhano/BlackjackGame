@@ -95,6 +95,7 @@ namespace BlackJackGame
             {
             Console.Clear();
             Output.LogoMeddelande("How many players?");
+            Console.WriteLine("Chose betwwn [1] and [7]\n");
 
             return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(),1,7);
             }
@@ -107,7 +108,8 @@ namespace BlackJackGame
             {
             Console.Clear();
             Output.LogoMeddelande("Select table:");
-            Console.WriteLine("\n [Tabal (1) \t Min-Bet: 100 \t Max-Bet 1000 ]\n [Tabal (2) \t Min-Bet: 100 \t Max-Bet 2000 ]\n [Tabal (3) \t Min-Bet: 200 \t Max-Bet 5000 ]\n [Tabal (4) \t Min-Bet: 1000 \t Max-Bet 10000]");
+            Console.WriteLine("\n [Tabal (1) \t Min-Bet: 100 \t Max-Bet 1000 ]\n [Tabal (2) \t Min-Bet: 100 \t Max-Bet 2000 ]\n " +
+                                "[Tabal (3) \t Min-Bet: 200 \t Max-Bet 5000 ]\n [Tabal (4) \t Min-Bet: 1000 \t Max-Bet 10000]");
 
             var list = new List<int>();
 
