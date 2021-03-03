@@ -10,11 +10,12 @@ namespace BlackJackGame
     {
         //Card GetCards = new Card();
 
-        public static string[] cards { get; set; } = new string[13] { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Q", "J", "K" };
-        public static string[] cardType { get; set; } = new string[4] { "♥", "♣", "♠", "♦" };
+        private static string[] cards { get; set; } = new string[13] { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Q", "J", "K" };
+        private static string[] cardType { get; set; } = new string[4] { "♥", "♣", "♠", "♦" };
 
 
-        public static List<string> newDeck = BuildDeckForGame(GenerateDeck());
+        public static List<string> DeckForGame =  SuffleList(BuildDeckForGame(GenerateDeck()));
+        
 
 
         /*----Tänkte att skapa list of Card klassen för att underlätta åtgången på Card Number----*/
@@ -25,7 +26,7 @@ namespace BlackJackGame
         /// Generates the deck(52 Cards).
         /// </summary>
         /// <returns></returns>
-        public static List<string> GenerateDeck()
+        private static List<string> GenerateDeck()
         {
             List<string> listOfCards = new List<string>();
             for (int i = 0; i < cardType.Length; i++)
@@ -36,7 +37,6 @@ namespace BlackJackGame
                 }
             }
 
-
             return listOfCards;
         }
 
@@ -45,9 +45,10 @@ namespace BlackJackGame
         /// </summary>
         /// <param name="deck">The deck.</param>
         /// <returns></returns>
-        public static List<string> BuildDeckForGame(List<string> deck)
+        private static List<string> BuildDeckForGame(List<string> deck)
         {
             List<string> gameDeck = new List<string>();
+            // newDeck = new List<string>();
 
             for (int i = 0; i < 4; i++)
             {
@@ -56,74 +57,76 @@ namespace BlackJackGame
                     gameDeck.Add(item);
                 }
             }
-
-
             return gameDeck;
         }
 
-        
-        
+
+
         /// <summary>
         /// Suffles the list.
         /// </summary>
         /// <param name="deck">The deck.</param>
         /// <returns></returns>
-        public static List<string> SuffleList(List<string> deck)
-
+        private static List<string> SuffleList(List<string> deck)
         {
             List<string> randomCards = new List<string>();
-
 
             //var random = new Random();
             //var randomList = Cards.OrderBy(i => random.Next(0, 208));
 
             var random = new Random();
-            var randomList = deck.OrderBy(i => random.Next(0,208));
+            var randomList = deck.OrderBy(i => random.Next(0, 208));
             foreach (var item in randomList)
             {
                 randomCards.Add(item);
             }
 
-
             return randomCards;
         }
-
+        /// <summary>
+        /// Returns the card with its symbol as a string.
+        /// </summary>
+        /// <param name="cardList"></param>
+        /// <returns></returns>
+        public static string GetCardString(List<string> cardList)
+        {
+            string card = cardList[^1];
+            //cardList.RemoveAt(cardList.Count - 1);
+            return card;
+        }
 
         /// <summary>
         /// Gets the card.
         /// </summary>
         /// <param name="deck">The deck.</param>
         /// <returns></returns>
-        public static int GetCard(List<string> cards)
+        public static int GetCard(string card)
         {
-            //var card = Cards.FirstOrDefault();
-            //Cards.Remove(card);
-
-            int score = 0;
-            //var card = cards[^1];
-            var card = cards[cards.Count - 1];
-            cards.Remove(card);
-
-            if (card.StartsWith("Q")|| card.StartsWith("K") || card.StartsWith("J"))
-            {
-                score = 10;
-            }
-            else if(card.StartsWith("A"))
-            {
-                score = Console.Read();
-                score = score.Equals(1) ? 1 : 11;
+            /* Kan vi gör om klassen "Player" till static??? */
+            Player player = new Player("");
             
+            int cardValue;
+            //string card = cards[^1];
+            //var cardValue = card[0];
+            //cards.RemoveAt(cards.Count - 1);
+
+            if (card.StartsWith("Q") || card.StartsWith("K") ||
+                card.StartsWith("J") || card.StartsWith("1"))
+            {
+                cardValue = 10;
+            }
+            else if (card.StartsWith("A"))
+            {
+                cardValue = player.Score + 11>21 ? 1 : 11;
             }
             else
             {
-                Int32.TryParse(card, out int intType);
-                //int intType=0;
-                //List<int> scoreList = card.ToCharArray ().Where
-                //        (x => int.TryParse(x.ToString(), out intType))
-                //    .Select(x => int.Parse(x.ToString())).ToList();
-                score = intType;
+                var temp = card[0].ToString();
+                Int32.TryParse(temp, out cardValue);
+
             }
-            return score;
+            DeckForGame. RemoveAt(DeckForGame.Count-1);
+            return cardValue;
         }
 
         /// <summary>
@@ -131,7 +134,7 @@ namespace BlackJackGame
         /// </summary>
         public static List<string> ResetCards()
         {
-           return Deck.SuffleList(BuildDeckForGame(GenerateDeck()));
+            return DeckForGame;
         }
     }
 }
