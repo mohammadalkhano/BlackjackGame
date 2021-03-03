@@ -88,14 +88,20 @@
                     player.Score += card;
                     Output.LogoMeddelande($"{player.Name}, your first card is {card}");
 
+//                    LogoMeddelandeDouble("Player 1, your first card is", card1);
+                    Output.PrintCard(18, 3, card, card);
                     Console.ReadLine();
                     Console.Clear();
 
+
                     Output.PlayerInfoOutput(players);
                     card = rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
-                    player.Score = 21;
+                    player.Score = card;
 
                     Output.LogoMeddelande($"{player.Name}, your second card is {card}");
+                    Output.PrintCard(18, 3, card, card); 
+                    Output.PrintCard(19, 10, card, card);
+
                     Console.ReadLine();
                     Console.Clear();
 
@@ -236,7 +242,9 @@
         /// <param name="playerBet">Players bet</param>
         private static void BlackJackWin(string playerName, int playerBet)
         {
-            Output.LogoMeddelande($"Conratulations {playerName}! You got Black Jack and won {playerBet + (playerBet * 1.5)} ");
+            Output.LogoMeddelandeDouble($"Conratulations {playerName}!", $"You got Black Jack and won {playerBet + (playerBet * 1.5)} ");
+            Console.ReadKey();
+            Console.Clear();
         }
 
         private static int PlaceBet(string playerName, int tableMin, int tableMax)
