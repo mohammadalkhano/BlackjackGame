@@ -144,9 +144,12 @@ namespace BlackJackGame
 
         public static void ShowCards(string card1, string card2)
         {
-            LogoMeddelandeDouble("Player 1 this is your first card", "Press any key to see you second card");
+            LogoMeddelandeDouble("Player 1, your first card is", card1);
             PrintCard(14, 3, card1[0], card1[1]);
             Console.ReadLine();
+            Console.Clear();
+            LogoMeddelandeDouble("Player 1, your second card is", card2);
+            PrintCard(14, 3, card1[0], card1[1]);
             PrintCard(15, 10, card2[0], card2[1]);
         }
 
