@@ -2,14 +2,14 @@
     {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     public static class Game
         {
         public static void RunGame()
             {
+            Output.ShowMenu();
             var gameRunning = true;
-            
+
             var activePlayers = Player.CreatePlayer(BlackJack.SeclectPlayers());
             var table = BlackJack.SelectTable();
 
@@ -26,12 +26,13 @@
                 gameRunning = PlayAgain();
                 }
             }
+
         /// <summary>
         /// Asks user to place their bet between min and max
         /// </summary>
-        /// <param name="players">List of active players</param>
-        /// <param name="minBet">Min amount of bet according to table rules</param>
-        /// <param name="maxBet">Max amount of bet according to table rules</param>
+        /// <param name="players"> List of active players </param>
+        /// <param name="minBet"> Min amount of bet according to table rules </param>
+        /// <param name="maxBet"> Max amount of bet according to table rules </param>
         private static void PlaceBets(List<Player> players,int minBet,int maxBet)
             {
             foreach (var player in players)
@@ -43,10 +44,11 @@
                     }
                 }
             }
+
         /// <summary>
         /// Hands two cards to each players, not "house"
         /// </summary>
-        /// <param name="players">List of active players</param>
+        /// <param name="players"> List of active players </param>
         private static void FirstGive(List<Player> players)
             {
             var rand = new Random();
@@ -76,14 +78,14 @@
                     player.Score += rand.Next(1,10); // Deck.GetCard(Deck.newDeck);
                     player.Score += rand.Next(1,10); // Deck.GetCard(Deck.newDeck);
                     Console.WriteLine($"{player.Name} has a total of {player.Score}");
-
                     }
                 }
             }
+
         /// <summary>
         /// Plays each players turn, asking "Hit" or "Stay" until they stop or exceed 21
         /// </summary>
-        /// <param name="players">List of active players</param>
+        /// <param name="players"> List of active players </param>
         private static void PlayPlayers(List<Player> players)
             {
             var rand = new Random();
@@ -114,10 +116,11 @@
                     }
                 }
             }
+
         /// <summary>
         /// Plays "house" automatic until score exceeds 16
         /// </summary>
-        /// <param name="players">List of active players</param>
+        /// <param name="players"> List of active players </param>
         private static void PlayHouse(List<Player> players)
             {
             var rand = new Random();
@@ -137,10 +140,11 @@
                     }
                 }
             }
+
         /// <summary>
         /// Matches players scor with house to check winners
         /// </summary>
-        /// <param name="list">List of active players</param>
+        /// <param name="list"> List of active players </param>
         private static void CheckWinners(List<Player> list)
             {
             var houseScore = 0;
@@ -158,26 +162,36 @@
                 if (player.Name != "house")
                     {
                     if (player.Score > 21)
+                        {
+                        Console.Clear();
                         Output.LogoMeddelande($"{player.Name} got {player.Score} and got busted.");
+                        }
                     else
                         {
-
                         if (player.Score == houseScore)
-                            Console.WriteLine($"{player.Name} got {player.Score} and are equal to the house.");
-                        else if (player.Score > houseScore)
-                            Output.LogoMeddelande($"{player.Name} got {player.Score} and beat the house. You won ${player.Bet * 2}.");
-                        else
+                            {
                             Console.Clear();
-                        Output.LogoMeddelande($"{player.Name} got {player.Score} and lost to the house.");
+                            Console.WriteLine($"{player.Name} got {player.Score} and are equal to the house.");
+                            }
+                        else if (player.Score > houseScore)
+                            {
+                            Console.Clear();
+                            Output.LogoMeddelande($"{player.Name} got {player.Score} and beat the house. You won ${player.Bet * 2}.");
+                            }
+                        else
+                            {
+                            Console.Clear();
+                            Output.LogoMeddelande($"{player.Name} got {player.Score} and lost to the house.");
+                            }
                         }
                     }
                 }
-
             }
+
         /// <summary>
         /// Asks user to play again
         /// </summary>
-        /// <returns>Bool value</returns>
+        /// <returns> Bool value </returns>
         private static bool PlayAgain()
             {
             Console.WriteLine("Do you want to play another round?\n\n[1] Yes \n[2]  No");
@@ -187,11 +201,12 @@
             else
                 return false;
             }
+
         /// <summary>
         /// Prints message if user gets 21 first round
         /// </summary>
-        /// <param name="playerName">Name of player</param>
-        /// <param name="playerBet">Players bet</param>
+        /// <param name="playerName"> Name of player </param>
+        /// <param name="playerBet"> Players bet </param>
         private static void BlackJackWin(string playerName,int playerBet)
             {
             Output.LogoMeddelande($"Conratulations {playerName}! You got Black Jack and won {playerBet + (playerBet * 1.5)} ");
