@@ -7,25 +7,66 @@ namespace BlackJackGame
         {
         public static int GetCard(List<string> cards)
             {
-            //var card = Cards.FirstOrDefault();
-            //Cards.Remove(card);
 
-            int score = 0;
-            var card = cards[cards.Count - 1];
+            int score = 0;          // allting till null
+            int amountOfA = 0;
+            foreach (var card in cards)     // för varanda kort 
+                {
 
-            var cardValue = card[0];
+                if (card == "J" || card == "Q" || card == "K")  // kollar om kort är = 10
+                    {
+                    score += 10;
+                    }
 
-            if (cardValue == 'J' || cardValue == 'Q' || cardValue == 'K')
-                score = 10;
-            else if (cardValue == 'A')
-                score = 11;
-            else
-                score = card[0];
-
-            cards.Remove(card);
-
+                else if (card == "A")  // kollar att om vi får ett A 
+                    {
+                    amountOfA++;
+                    }
+                else if (int.Parse(card) > 0 && int.Parse(card) < 11)  // kollar om man skicker ett tal som är kortleken 
+                    {
+                    score += int.Parse(card);
+                    }
+                else        // om det något fel input så skicker den ett 0.
+                    {
+                    return 0;
+                    }
+                }
+            if (amountOfA != 0)  // kollar om vi fick nått A
+                {
+                if (score + 10 + amountOfA <= 21)  // kollar om något A blir 11 om den blir över 21 så A är inte = 11
+                    {
+                    score += 10 + amountOfA;
+                    }
+                else
+                    {
+                    score += amountOfA;
+                    }
+                }
             return score;
             }
+
+        //public static int GetCard(List<string> cards)
+        //{
+        ////var card = Cards.FirstOrDefault();
+        ////Cards.Remove(card);
+
+        //int score = 0;
+
+        //var card = cards[cards.Count - 1];
+
+        //var cardValue = card[0];
+
+        //if (cardValue == 'J' || cardValue == 'Q' || cardValue == 'K')
+        //    score = 10;
+        //else if (cardValue == 'A')
+        //    score = 11;
+        //else
+        //    score = card[0];
+
+        //cards.Remove(card);
+
+        //return score;
+        //}
 
         public static void CreatePlayer()
             {

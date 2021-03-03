@@ -14,7 +14,8 @@ namespace BlackJackGame.Tests
         [TestMethod()]
         public void CreatePlayerTest()
         {
-            Assert.Fail();
+           var actul = Player.CreatePlayer(7).Count;
+            Assert.AreEqual(8,actul); // + huset  
         }
     }
 }

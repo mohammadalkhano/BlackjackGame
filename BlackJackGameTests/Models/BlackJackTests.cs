@@ -8,12 +8,33 @@ using System.Threading.Tasks;
 
 namespace BlackJackGame.Tests
     {
-    //[TestClass()]
-    //public class BlackJackTests
-    //    //{
-        //[TestMethod()]
-        //public void SeclectPlayersReturnInput()
-        //    {
+    [TestClass()]
+    public class BlackJackTests
+        {
+
+        [TestMethod()]
+        public void GetCardInvalletCharcter()
+            {
+            List<string> MyCard = new List<string> { "27","N" };
+            int actual = BlackJack.GetCard(MyCard);
+            Assert.AreEqual(0,actual);
+            }
+
+        [TestMethod()]
+        public void GetCardSuccess()
+            {
+            List<string> MyCard = new List<string> { "5","A","A"};
+            int actual = BlackJack.GetCard(MyCard);
+            Assert.AreEqual(17,actual);
+            }
+        }
+    }
+
+
+
+    //[TestMethod()]
+    //public void SeclectPlayersReturnInput()
+    //    {
 
     //    var actual = BlackJack.SeclectPlayers(2);
     //    var expected = 2;
@@ -58,8 +79,6 @@ namespace BlackJackGame.Tests
     //    Assert.AreEqual(2,actual);
     //    }
 
-
-    }
-
     
-    
+
+
