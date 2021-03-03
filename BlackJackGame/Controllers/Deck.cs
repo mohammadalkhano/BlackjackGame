@@ -10,11 +10,11 @@ namespace BlackJackGame
     {
         //Card GetCards = new Card();
 
-        public static string[] cards { get; set; } = new string[13] { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Q", "J", "K" };
-        public static string[] cardType { get; set; } = new string[4] { "♥", "♣", "♠", "♦" };
+        private static string[] cards { get; set; } = new string[13] { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Q", "J", "K" };
+        private static string[] cardType { get; set; } = new string[4] { "♥", "♣", "♠", "♦" };
 
 
-        public static List<string> deckForGame =  SuffleList(BuildDeckForGame(GenerateDeck()));
+        public static List<string> DeckForGame =  SuffleList(BuildDeckForGame(GenerateDeck()));
         
 
 
@@ -26,7 +26,7 @@ namespace BlackJackGame
         /// Generates the deck(52 Cards).
         /// </summary>
         /// <returns></returns>
-        public static List<string> GenerateDeck()
+        private static List<string> GenerateDeck()
         {
             List<string> listOfCards = new List<string>();
             for (int i = 0; i < cardType.Length; i++)
@@ -45,7 +45,7 @@ namespace BlackJackGame
         /// </summary>
         /// <param name="deck">The deck.</param>
         /// <returns></returns>
-        public static List<string> BuildDeckForGame(List<string> deck)
+        private static List<string> BuildDeckForGame(List<string> deck)
         {
             List<string> gameDeck = new List<string>();
             // newDeck = new List<string>();
@@ -67,7 +67,7 @@ namespace BlackJackGame
         /// </summary>
         /// <param name="deck">The deck.</param>
         /// <returns></returns>
-        public static List<string> SuffleList(List<string> deck)
+        private static List<string> SuffleList(List<string> deck)
         {
             List<string> randomCards = new List<string>();
 
@@ -125,7 +125,7 @@ namespace BlackJackGame
                 Int32.TryParse(temp, out cardValue);
 
             }
-            deckForGame. RemoveAt(deckForGame.Count-1);
+            DeckForGame. RemoveAt(DeckForGame.Count-1);
             return cardValue;
         }
 
@@ -134,7 +134,7 @@ namespace BlackJackGame
         /// </summary>
         public static List<string> ResetCards()
         {
-            return Deck.SuffleList(BuildDeckForGame(GenerateDeck()));
+            return DeckForGame;
         }
     }
 }

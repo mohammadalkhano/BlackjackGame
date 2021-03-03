@@ -9,15 +9,8 @@ namespace BlackJackGame
     {
         static void Main(string[] args)
         {
-            //Game.RunGame();
-            for (int i = 0; i < 10; i++)
-            {
-               
-                Console.Write("Card value: "+Deck.GetCard(Deck.GetCardString(Deck.deckForGame))+", Card symbol: "+ Deck.GetCardString(Deck.deckForGame));
-                Console.OutputEncoding = Encoding.UTF8;
-                Console.WriteLine();
-            }
-
+            Game.RunGame();
+            
             Console.Read();
 
         }
