@@ -19,6 +19,8 @@ namespace BlackJackGame
             //Output.ShowCards("2♦", "K♣");
             
             Game.RunGame();
+            
+            Console.Read();
 
 
         }
