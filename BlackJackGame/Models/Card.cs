@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BlackJackGame.Models
-{
-    public class Card
+{    public class Card
     {
         public enum ECardSymbol
         {
