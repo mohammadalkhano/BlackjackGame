@@ -4,30 +4,49 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public static class Game
+    public class Game
     {
+        public static List<string> GameDeck { get; set; }
+        public static void Temp()
+        {
+            GameDeck = Deck.ResetCards();
+
+        }
         public static void RunGame()
         {
             var gameRunning = true;
-            //Output.ShowMenu();
-            var activePlayers = Player.CreatePlayer(BlackJack.SeclectPlayers());
-            //Output.TableMenu();
-            var table = BlackJack.SelectTable();
+            GameDeck = Deck.ResetCards();
+            Output.Logo();
+            Console.ReadKey();
 
             while (gameRunning == true)
             {
+                Console.Clear();
+                Output.ShowTable();
+                var table = BlackJack.SelectTable();
+
+                Console.Clear();
+
+                Output.LogoMeddelande("How many players? (1-7)");
+                var activePlayers = Player.CreatePlayer(PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 7));
+
+                Console.Clear();
+
                 PlaceBets(activePlayers, table[0], table[1]);
+
+                Console.Clear();
+
                 FirstGive(activePlayers);
+
+                Console.ReadLine();
+
                 PlayPlayers(activePlayers);
                 PlayHouse(activePlayers);
-                //if (activePlayers.Count > 1)//House is always playing
-                //    PlayHouse(activePlayers);
 
                 CheckWinners(activePlayers);
 
                 gameRunning = PlayAgain();
             }
-
         }
         /// <summary>
         /// Asks user to place their bet between min and max
@@ -39,11 +58,15 @@
         {
             foreach (var player in players)
             {
+                Output.PlayerInfoOutput(players);
+
                 if (player.Name != "house")
                 {
                     player.Bet = 0;
                     player.Bet = PlaceBet(player.Name, minBet, maxBet);
                 }
+                Console.Clear();
+
             }
         }
         /// <summary>
@@ -53,14 +76,34 @@
         private static void FirstGive(List<Player> players)
         {
             var rand = new Random();
+
             foreach (var player in players)
             {
                 player.Score = 0;
                 player.Stay = false;
                 if (player.Name != "house")
                 {
-                    player.Score += rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
-                    player.Score += rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
+                    Output.PlayerInfoOutput(players);
+                    var card = rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
+                    player.Score += card;
+                    Output.LogoMeddelande($"{player.Name}, your first card is {card}");
+
+//                    LogoMeddelandeDouble("Player 1, your first card is", card1);
+                    Output.PrintCard(18, 3, card, card);
+                    Console.ReadLine();
+                    Console.Clear();
+
+
+                    Output.PlayerInfoOutput(players);
+                    card = rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
+                    player.Score = card;
+
+                    Output.LogoMeddelande($"{player.Name}, your second card is {card}");
+                    Output.PrintCard(18, 3, card, card); 
+                    Output.PrintCard(19, 10, card, card);
+
+                    Console.ReadLine();
+                    Console.Clear();
 
                     //player.Score = 21;
 
@@ -68,7 +111,11 @@
                     {
                         BlackJackWin(player.Name, player.Bet);
                     }
-                    Console.WriteLine($"{player.Name} has a total of {player.Score}");
+
+                    //Output.PlayerInfoOutput(players);
+                    //Output.LogoMeddelande($"{player.Name} has a total of {player.Score}");
+                    //Console.ReadLine();
+                    //Console.Clear();
                 }
             }
 
@@ -195,12 +242,16 @@
         /// <param name="playerBet">Players bet</param>
         private static void BlackJackWin(string playerName, int playerBet)
         {
-            Console.WriteLine($"Conratulations {playerName}! You got Black Jack and won {playerBet + (playerBet * 1.5)} ");
+            Output.LogoMeddelandeDouble($"Conratulations {playerName}!", $"You got Black Jack and won {playerBet + (playerBet * 1.5)} ");
+            Console.ReadKey();
+            Console.Clear();
         }
 
         private static int PlaceBet(string playerName, int tableMin, int tableMax)
         {
-            Console.WriteLine($"{playerName} place bet between {tableMin} and {tableMax}");
+            //Console.WriteLine($"{playerName} place bet between {tableMin} and {tableMax}");
+
+            Output.LogoMeddelande($"{playerName} place bet between {tableMin} and {tableMax}");
 
             return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), tableMin, tableMax);
         }
