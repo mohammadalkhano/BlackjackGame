@@ -54,8 +54,8 @@
         {
             foreach (var player in players)
             {
-                Output.PlayerInfoOutput(players);
 
+                Output.PlayerInfoOutput(players);
                 if (player.Name != "house")
                 {
                     player.Bet = 0;
@@ -81,22 +81,25 @@
                 {
                     Output.PlayerInfoOutput(players);
                     var card1 = GameDeck[rand.Next(0, GameDeck.Count)];
+                    GameDeck.Remove(card1);
+                    player.Cards.Add(card1);
                     player.Score += card1.CardNumber;
                     Output.LogoMeddelande($"{player.Name}, your first card is {card1.CardNumber}{card1.CardSymbol}");
 
-//                    LogoMeddelandeDouble("Player 1, your first card is", card1);
-                    Output.PrintCard(18, 3, card1.CardNumber, card1.CardSymbol);
+                    Output.PrintCard(22, 3, card1.CardNumber, card1.CardSymbol);
                     Console.ReadLine();
                     Console.Clear();
 
 
                     Output.PlayerInfoOutput(players);
                     var card2 = GameDeck[rand.Next(0, GameDeck.Count)];
-                    player.Score = card2.CardNumber;
+                    GameDeck.Remove(card2);
+                    player.Cards.Add(card2);
+                    player.Score += card2.CardNumber;
 
-                    Output.LogoMeddelande($"{player.Name}, your second card is {card2}");
-                    Output.PrintCard(18, 3, card1.CardNumber, card1.CardSymbol); 
-                    Output.PrintCard(19, 10, card2.CardNumber, card2.CardSymbol);
+                    Output.LogoMeddelande($"{player.Name}, your second card is {card2.CardNumber}{card2.CardSymbol}");
+                    Output.PrintCard(22, 3, card1.CardNumber, card1.CardSymbol);
+                    Output.PrintCard(23, 9, card2.CardNumber, card2.CardSymbol);
 
                     Console.ReadLine();
                     Console.Clear();
@@ -119,9 +122,30 @@
             {
                 if (player.Name == "house")
                 {
-                    player.Score += rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
-                    player.Score += rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
-                    Console.WriteLine($"{player.Name} has a total of {player.Score}");
+                    Output.PlayerInfoOutput(players);
+                    var card1 = GameDeck[rand.Next(0, GameDeck.Count)];
+                    GameDeck.Remove(card1);
+                    player.Cards.Add(card1);
+                    player.Score += card1.CardNumber;
+                    Output.LogoMeddelande($"{player.Name}, your first card is {card1.CardNumber}{card1.CardSymbol}");
+
+                    Output.PrintCard(4, 90, card1.CardNumber, card1.CardSymbol);
+                    Console.ReadLine();
+                    Console.Clear();
+
+
+                    Output.PlayerInfoOutput(players);
+                    var card2 = GameDeck[rand.Next(0, GameDeck.Count)];
+                    GameDeck.Remove(card2);
+                    player.Cards.Add(card2);
+                    player.Score = card2.CardNumber;
+                    Output.LogoMeddelande($"{player.Name}, your second card is {card2.CardNumber}{card2.CardSymbol}");
+
+                    Output.PrintCard(4, 90, card1.CardNumber, card1.CardSymbol);
+                    Output.PrintCard(5, 96, card2.CardNumber, card2.CardSymbol);
+
+                    Console.ReadLine();
+                    Console.Clear();
                 }
             }
         }
