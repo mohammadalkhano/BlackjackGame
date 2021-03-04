@@ -31,6 +31,7 @@ namespace BlackJackGame
             //        Console.WriteLine(item.CardNumber + item.CardSymbol);
             //}
 
+            Console.SetWindowSize(120, 50);
 
             Game.RunGame();
 
