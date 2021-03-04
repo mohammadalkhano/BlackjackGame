@@ -8,8 +8,6 @@ namespace BlackJackGame
 {
     public static class Deck
     {
-        //Card GetCards = new Card();
-
         private static string[] cards { get; set; } = new string[13] { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Q", "J", "K" };
         private static string[] cardType { get; set; } = new string[4] { "♥", "♣", "♠", "♦" };
 
@@ -19,8 +17,6 @@ namespace BlackJackGame
 
 
         /*----Tänkte att skapa list of Card klassen för att underlätta åtgången på Card Number----*/
-        /*public List<Card> MyCards { get; set; } = new List<Card>
-        {new Card { Number ="2", Type= "H" } };*/
 
         /// <summary>
         /// Generates the deck(52 Cards).
