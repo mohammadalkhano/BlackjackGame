@@ -45,48 +45,7 @@ namespace BlackJackGame.Models
 
 
     }
-    public static class TestDecK
-    {
-        private static int[] Cards { get; set; } = new int[13] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
-        private static string[] CardType { get; set; } = new string[4] { "♥", "♣", "♠", "♦" };
-        public static List<Card> GetDeck()
-        {
-            List<Card> gameDeck = new List<Card>();
-
-            for (int i = 0; i < CardType.Length; i++)
-            {
-                for (int j = 0; j < Cards.Length; j++)
-                {
-
-                    gameDeck.Add(new Card(Cards[j], CardType[i]));
-
-                }
-            }
-
-            return gameDeck;
-        }
-        public static List<Card> CreateMultipleDecks(List<Card> deck, int numberOfDecks)
-        {
-            var newDeck = new List<Card>();
-            var rnd = new Random();
-
-            for (int j = 0; j < numberOfDecks; j++)
-            {
-                foreach (var card in deck)
-                {
-                    newDeck.Add(card);
-                }
-            }
-
-            var shuffledDeck = newDeck.Select(item => new { item, order = rnd.Next() })
-        .OrderBy(x => x.order)
-        .Select(x => x.item)
-        .ToList();
-
-
-            return shuffledDeck;
-        }
-    }
+    
 
 
 
