@@ -8,30 +8,6 @@ namespace BlackJackGame.Models
 {
     public class Card
     {
-        public enum ECardSymbol
-        {
-            Club = '♥',
-            Diamond = '♣',
-            Heart = '♠',
-            Spades = '♦',
-        }
-        public enum ECardNumber
-        {
-            Ace = 1,
-            Two = 2,
-            Three = 3,
-            Four = 4,
-            Five = 5,
-            Six = 6,
-            Seven = 7,
-            Eight = 8,
-            Nine = 9,
-            Ten = 10,
-            Jack = 11,
-            Queen = 12,
-            King = 13,
-        }
-
         public string CardSymbol { get; set; }
         public int CardNumber { get; set; }
 
@@ -40,9 +16,6 @@ namespace BlackJackGame.Models
             this.CardNumber = CardNumber;
             this.CardSymbol = CardSymbol;
         }
-
-
-
 
     }
     
