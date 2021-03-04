@@ -6,7 +6,7 @@ namespace BlackJackGame
     public class Player
     {
         public int Bet { get; set; }
-        public List<string> Cards { get; set; }
+        public List<Models.Card> Cards { get; set; }
         public List<string> HouseDarkCard { get; set; }
         public string Name { get; set; }
         public int Score { get; set; }
@@ -15,7 +15,7 @@ namespace BlackJackGame
         public Player(string playerName)
         {
             Bet = 0;
-            Cards = new List<string>();
+            Cards = new List<Models.Card>();
             Name = playerName;
             Score = 0;
             Stay = false;

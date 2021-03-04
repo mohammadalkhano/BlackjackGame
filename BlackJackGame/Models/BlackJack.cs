@@ -26,7 +26,7 @@ namespace BlackJackGame
                 Int32.TryParse(temp, out score);
             }
 
-            //Game.GameDeck.Remove(card);
+           // Game.GameDeck.Remove(card);
 
             return score;
         }

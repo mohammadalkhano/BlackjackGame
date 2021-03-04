@@ -9,8 +9,8 @@ namespace BlackJackGame
     {
         static void Main(string[] args)
         {
-            Console.OutputEncoding= Encoding.UTF8;
-            //var list = Deck.CreateMultipleDecks(Deck.GetDeck(), 4);
+
+            //var list = Models.TestDecK.CreateMultipleDecks(Models.TestDecK.GetDeck(), 4);
             //var listLength = list.Count;
             //Console.WriteLine(listLength);
             //foreach (var item in list)
@@ -30,20 +30,10 @@ namespace BlackJackGame
             //    else
             //        Console.WriteLine(item.CardNumber + item.CardSymbol);
             //}
-            
-            //var list = Deck.CardsForGame;
-            //for (int i = 0; i < list.Count; i++)
-            //{
-            //    var card = Deck.GetCard(list);
-              
-            //}
 
-            //var card2 = Deck.GetCard(list);
-            //Console.Write(card.CardNumber+ " ");
-            //Console.WriteLine(card.CardSymbol);
+            Console.SetWindowSize(120, 50);
 
-
-            //Game.RunGame();
+            Game.RunGame();
 
             Console.Read();
 
