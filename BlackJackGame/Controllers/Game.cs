@@ -22,7 +22,7 @@
             while (gameRunning == true)
             {
                 Console.Clear();
-                Output.ShowTable();
+                Output.ShowMenu();
                 var table = BlackJack.SelectTable();
 
                 Console.Clear();

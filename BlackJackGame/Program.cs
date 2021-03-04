@@ -16,11 +16,10 @@ namespace BlackJackGame
             //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
             //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
 
-            var list = Models.TestDecK.CreateMultipleDecks(Models.TestDecK.GetDeck(), 4);
-            var listLength = list.Count;
-            Console.WriteLine(listLength);
-            //Game.RunGame();
-            
+            //var list = Models.TestDecK.CreateMultipleDecks(Models.TestDecK.GetDeck(), 4);
+            //var listLength = list.Count;
+            //Console.WriteLine(listLength);
+            Game.RunGame();
             Console.Read();
 
 
