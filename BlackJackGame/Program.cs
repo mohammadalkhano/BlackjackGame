@@ -9,17 +9,42 @@ namespace BlackJackGame
     {
         static void Main(string[] args)
         {
-            //Game.Temp();
-            //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
-            //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
-            //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
-            //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
-            //Console.WriteLine(BlackJack.GetCard(Game.GameDeck));
+            Console.OutputEncoding= Encoding.UTF8;
+            //var list = Deck.CreateMultipleDecks(Deck.GetDeck(), 4);
+            //var listLength = list.Count;
+            //Console.WriteLine(listLength);
+            //foreach (var item in list)
+            //{
+            //    if (item.CardNumber == 1)
+            //        Console.WriteLine("A" + item.CardSymbol);
 
-            //Output.ShowCards("2♦", "K♣");
+            //    else if (item.CardNumber == 11)
+            //        Console.WriteLine("J" + item.CardSymbol);
+
+            //    else if (item.CardNumber == 12)
+            //        Console.WriteLine("Q" + item.CardSymbol);
+
+            //    else if (item.CardNumber == 13)
+            //        Console.WriteLine("K" + item.CardSymbol);
+
+            //    else
+            //        Console.WriteLine(item.CardNumber + item.CardSymbol);
+            //}
             
-            Game.RunGame();
-            
+            //var list = Deck.CardsForGame;
+            //for (int i = 0; i < list.Count; i++)
+            //{
+            //    var card = Deck.GetCard(list);
+              
+            //}
+
+            //var card2 = Deck.GetCard(list);
+            //Console.Write(card.CardNumber+ " ");
+            //Console.WriteLine(card.CardSymbol);
+
+
+            //Game.RunGame();
+
             Console.Read();
 
 
