@@ -10,29 +10,29 @@ namespace BlackJackGame
         static void Main(string[] args)
         {
 
-            var list = Models.TestDecK.CreateMultipleDecks(Models.TestDecK.GetDeck(), 4);
-            var listLength = list.Count;
-            Console.WriteLine(listLength);
-            foreach (var item in list)
-            {
-                if (item.CardNumber == 1)
-                    Console.WriteLine("A" + item.CardSymbol);
+            //var list = Models.TestDecK.CreateMultipleDecks(Models.TestDecK.GetDeck(), 4);
+            //var listLength = list.Count;
+            //Console.WriteLine(listLength);
+            //foreach (var item in list)
+            //{
+            //    if (item.CardNumber == 1)
+            //        Console.WriteLine("A" + item.CardSymbol);
 
-                else if (item.CardNumber == 11)
-                    Console.WriteLine("J" + item.CardSymbol);
+            //    else if (item.CardNumber == 11)
+            //        Console.WriteLine("J" + item.CardSymbol);
 
-                else if (item.CardNumber == 12)
-                    Console.WriteLine("Q" + item.CardSymbol);
+            //    else if (item.CardNumber == 12)
+            //        Console.WriteLine("Q" + item.CardSymbol);
 
-                else if (item.CardNumber == 13)
-                    Console.WriteLine("K" + item.CardSymbol);
+            //    else if (item.CardNumber == 13)
+            //        Console.WriteLine("K" + item.CardSymbol);
 
-                else
-                    Console.WriteLine(item.CardNumber + item.CardSymbol);
-            }
+            //    else
+            //        Console.WriteLine(item.CardNumber + item.CardSymbol);
+            //}
 
 
-            //Game.RunGame();
+            Game.RunGame();
 
             Console.Read();
 

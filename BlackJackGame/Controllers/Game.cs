@@ -6,16 +6,12 @@
 
     public class Game
     {
-        public static List<string> GameDeck { get; set; }
-        public static void Temp()
-        {
-            GameDeck = Deck.ResetCards();
+        public static List<Models.Card> GameDeck { get; set; }
 
-        }
         public static void RunGame()
         {
             var gameRunning = true;
-            GameDeck = Deck.ResetCards();
+            GameDeck = Models.TestDecK.CreateMultipleDecks(Models.TestDecK.GetDeck(), 4);
             Output.Logo();
             Console.ReadKey();
 
@@ -84,23 +80,23 @@
                 if (player.Name != "house")
                 {
                     Output.PlayerInfoOutput(players);
-                    var card = rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
-                    player.Score += card;
-                    Output.LogoMeddelande($"{player.Name}, your first card is {card}");
+                    var card1 = GameDeck[rand.Next(0, GameDeck.Count)];
+                    player.Score += card1.CardNumber;
+                    Output.LogoMeddelande($"{player.Name}, your first card is {card1.CardNumber}{card1.CardSymbol}");
 
 //                    LogoMeddelandeDouble("Player 1, your first card is", card1);
-                    Output.PrintCard(18, 3, card, card);
+                    Output.PrintCard(18, 3, card1.CardNumber, card1.CardSymbol);
                     Console.ReadLine();
                     Console.Clear();
 
 
                     Output.PlayerInfoOutput(players);
-                    card = rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
-                    player.Score = card;
+                    var card2 = GameDeck[rand.Next(0, GameDeck.Count)];
+                    player.Score = card2.CardNumber;
 
-                    Output.LogoMeddelande($"{player.Name}, your second card is {card}");
-                    Output.PrintCard(18, 3, card, card); 
-                    Output.PrintCard(19, 10, card, card);
+                    Output.LogoMeddelande($"{player.Name}, your second card is {card2}");
+                    Output.PrintCard(18, 3, card1.CardNumber, card1.CardSymbol); 
+                    Output.PrintCard(19, 10, card2.CardNumber, card2.CardSymbol);
 
                     Console.ReadLine();
                     Console.Clear();
