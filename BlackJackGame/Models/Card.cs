@@ -30,7 +30,7 @@ namespace BlackJackGame.Models
             Queen = 12,
             King = 13,
         }
-        
+
         public string CardSymbol { get; set; }
         public int CardNumber { get; set; }
 
@@ -54,15 +54,15 @@ namespace BlackJackGame.Models
             {
                 for (int j = 0; j < cards.Length; j++)
                 {
+
                     gameDeck.Add(new Card( cards[j], cardType[i]));
+
                 }
             }
 
             return gameDeck;
         }
     }
-    
-
-
-
+  
 }
+
