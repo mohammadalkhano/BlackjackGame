@@ -68,15 +68,23 @@ namespace BlackJackGame.Models
         public static List<Card> CreateMultipleDecks(List<Card> deck, int numberOfDecks)
         {
             var newDeck = new List<Card>();
-          
-                for (int j = 0; j < numberOfDecks; j++)
+            var rnd = new Random();
+
+            for (int j = 0; j < numberOfDecks; j++)
+            {
+                foreach (var card in deck)
                 {
-                    foreach (var card in deck)
-                    {
-                        newDeck.Add(card);
-                    }
-                }            
-            return newDeck;
+                    newDeck.Add(card);
+                }
+            }
+
+            var shuffledDeck = newDeck.Select(item => new { item, order = rnd.Next() })
+        .OrderBy(x => x.order)
+        .Select(x => x.item)
+        .ToList();
+
+
+            return shuffledDeck;
         }
     }
 
