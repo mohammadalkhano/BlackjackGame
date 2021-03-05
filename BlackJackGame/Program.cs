@@ -31,14 +31,14 @@ namespace BlackJackGame
             //    else
             //        Console.WriteLine(item.CardNumber + item.CardSymbol);
             //}
-            var list = Deck.CardsForGame;
-            for (int i = 0; i < 208; i++)
-            {
-                var card= Deck.GetCard(list);
-                //Output.ShowCards(card,card);
-                Console.WriteLine(card.CardNumber+card.CardSymbol);
+            //var list = Deck.CardsForGame;
+            //for (int i = 0; i < 208; i++)
+            //{
+            //    var card= Deck.GetCard(list);
+            //    //Output.ShowCards(card,card);
+            //    Console.WriteLine(card.CardNumber+card.CardSymbol);
 
-            }
+            //}
 
             Console.SetWindowSize(120, 40);
 
