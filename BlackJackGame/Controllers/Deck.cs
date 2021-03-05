@@ -8,129 +8,92 @@ namespace BlackJackGame
 {
     public static class Deck
     {
-        private static string[] cards { get; set; } = new string[13] { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Q", "J", "K" };
-        private static string[] cardType { get; set; } = new string[4] { "♥", "♣", "♠", "♦" };
+        //private static string[] cards { get; set; } = new string[13] { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Q", "J", "K" };
+        //private static string[] cardType { get; set; } = new string[4] { "♥", "♣", "♠", "♦" };
+        private static int[] Cards { get; set; } = new int[13] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+        private static string[] CardType { get; set; } = new string[4] { "♥", "♣", "♠", "♦" };
+        public static List<Card> CardsForGame { get; set; } = Deck.CreateMultipleDecks(Deck.GetDeck(), 4);
 
 
-        public static List<string> DeckForGame =  SuffleList(BuildDeckForGame(GenerateDeck()));
-        
-
-
-        /*----Tänkte att skapa list of Card klassen för att underlätta åtgången på Card Number----*/
 
         /// <summary>
         /// Generates the deck(52 Cards).
         /// </summary>
         /// <returns></returns>
-        private static List<string> GenerateDeck()
+        public static List<Card> GetDeck()
         {
-            List<string> listOfCards = new List<string>();
-            for (int i = 0; i < cardType.Length; i++)
+            List<Card> gameDeck = new List<Card>();
+
+            for (int i = 0; i < CardType.Length; i++)
             {
-                for (int j = 0; j < cards.Length; j++)
+                for (int j = 0; j < Cards.Length; j++)
                 {
-                    listOfCards.Add(cards[j] + cardType[i]);
+
+                    gameDeck.Add(new Card(Cards[j], CardType[i]));
+
                 }
             }
 
-            return listOfCards;
-        }
-
-        /// <summary>
-        /// Builds the deck for game.
-        /// </summary>
-        /// <param name="deck">The deck.</param>
-        /// <returns></returns>
-        private static List<string> BuildDeckForGame(List<string> deck)
-        {
-            List<string> gameDeck = new List<string>();
-            // newDeck = new List<string>();
-
-            for (int i = 0; i < 4; i++)
-            {
-                foreach (var item in deck)
-                {
-                    gameDeck.Add(item);
-                }
-            }
             return gameDeck;
         }
-
-
-
         /// <summary>
-        /// Suffles the list.
+        /// Creates the multiple decks and return random list of the cards.
         /// </summary>
         /// <param name="deck">The deck.</param>
+        /// <param name="numberOfDecks">The number of decks.</param>
         /// <returns></returns>
-        private static List<string> SuffleList(List<string> deck)
+        public static List<Card> CreateMultipleDecks(List<Card> deck, int numberOfDecks)
         {
-            List<string> randomCards = new List<string>();
+            var newDeck = new List<Card>();
+            var rnd = new Random();
 
-            //var random = new Random();
-            //var randomList = Cards.OrderBy(i => random.Next(0, 208));
-
-            var random = new Random();
-            var randomList = deck.OrderBy(i => random.Next(0, 208));
-            foreach (var item in randomList)
+            for (int j = 0; j < numberOfDecks; j++)
             {
-                randomCards.Add(item);
+                foreach (var card in deck)
+                {
+                    newDeck.Add(card);
+                }
             }
 
-            return randomCards;
+            var shuffledDeck = newDeck.Select(item => new { item, order = rnd.Next() })
+                .OrderBy(x => x.order)
+                .Select(x => x.item)
+                .ToList();
+
+            return shuffledDeck;
         }
-        /// <summary>
-        /// Returns the card with its symbol as a string.
-        /// </summary>
-        /// <param name="cardList"></param>
-        /// <returns></returns>
-        public static string GetCardString(List<string> cardList)
-        {
-            string card = cardList[^1];
-            //cardList.RemoveAt(cardList.Count - 1);
-            return card;
-        }
+
+
 
         /// <summary>
         /// Gets the card.
         /// </summary>
-        /// <param name="deck">The deck.</param>
+        /// <param name="cards">The cards.</param>
         /// <returns></returns>
-        public static int GetCard(string card)
+
+        public static Card GetCard(List<Card> cards)
+        {
+            Card card = cards[^1];
+            cards.RemoveAt(cards.Count - 1);
+            return card;
+        }
+
+     
+        /// <summary>
+        /// Gets the card.
+        /// </summary>
+        /// <param name="cards">The cards.</param>
+        /// <returns></returns>
+        public static Card GetCard(List<Card> cards)
         {
             /* Kan vi gör om klassen "Player" till static??? */
             Player player = new Player("");
             
-            int cardValue;
-            //string card = cards[^1];
-            //var cardValue = card[0];
-            //cards.RemoveAt(cards.Count - 1);
-
-            if (card.StartsWith("Q") || card.StartsWith("K") ||
-                card.StartsWith("J") || card.StartsWith("1"))
-            {
-                cardValue = 10;
-            }
-            else if (card.StartsWith("A"))
-            {
-                cardValue = player.Score + 11>21 ? 1 : 11;
-            }
-            else
-            {
-                var temp = card[0].ToString();
-                Int32.TryParse(temp, out cardValue);
-
-            }
-            DeckForGame. RemoveAt(DeckForGame.Count-1);
-            return cardValue;
+            Card card = cards[^1];
+            cards.RemoveAt(cards.Count - 1);
+            return card;
         }
 
-        /// <summary>
-        /// Resets the cards.
-        /// </summary>
-        public static List<string> ResetCards()
-        {
-            return DeckForGame;
-        }
+
     }
 }
