@@ -40,7 +40,7 @@ namespace BlackJackGame
 
             }
 
-            Console.SetWindowSize(120, 50);
+            Console.SetWindowSize(120, 40);
 
 
             Game.RunGame();
