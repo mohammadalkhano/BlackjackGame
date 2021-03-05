@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BlackJackGame.Models;
 
 namespace BlackJackGame
 
@@ -45,10 +46,10 @@ namespace BlackJackGame
             Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
             Console.WriteLine($"{line}\n");
-            }
-        public static void LogoMeddelandeDouble(string line1,string line2)
-            {
-            var line = new string('=',120);
+        }       
+        public static void LogoMeddelandeDouble(string line1, string line2)
+        {
+            var line = new string('=', 120);
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"{line}\n");
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
@@ -63,10 +64,10 @@ namespace BlackJackGame
                 Console.Write(" ");
             Console.WriteLine("#  *");
             Console.Write("                             *  #");
-            for (int i = 0; i < (51 - line2.Length) / 2; i++)
+            for (int i = 0; i < (51 - line2.ToString().Length) / 2; i++)
                 Console.Write(" ");
             Console.Write(line2);
-            for (int i = 0; i < (52 - line2.Length) / 2; i++)
+            for (int i = 0; i < (52 - line2.ToString().Length) / 2; i++)
                 Console.Write(" ");
             Console.WriteLine("#  *");
             Console.WriteLine("                             *  #                                                   #  *");
@@ -75,8 +76,6 @@ namespace BlackJackGame
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
             Console.WriteLine($"{line}\n");
             }
-
-
 
         public static void PlayerInfoOutput(List<Player> players)
             {
@@ -144,36 +143,36 @@ namespace BlackJackGame
 
 
 
-        public static void ShowCards(string card1,string card2)
-            {
-            LogoMeddelandeDouble("Player 1, your first card is",card1);
-            PrintCard(14,3,card1[0],card1[1]);
+        public static void ShowCards(string card1, string card2)
+        {
+            LogoMeddelandeDouble("Player 1, your first card is", card1);
+            PrintCard(14, 3, card1[0], card1[1]);
             Console.ReadLine();
             Console.Clear();
-            LogoMeddelandeDouble("Player 1, your second card is",card2);
-            PrintCard(14,3,card1[0],card1[1]);
-            PrintCard(15,10,card2[0],card2[1]);
-            }
+            LogoMeddelandeDouble("Player 1, your second card is", card2);
+            PrintCard(14, 3, card1[0], card1[1]);
+            PrintCard(15, 10, card2[0], card2[1]);
+        }
 
-        private static void PrintAt(int y,int x,string text)
-            {
+        private static void PrintAt(int y, int x, string text)
+        {
             Console.CursorTop = y;
             Console.CursorLeft = x;
             Console.Write(text);
             }
 
-        public static void PrintCard(int y,int x,int value,int symbol)
-            {
-            PrintAt(y++,x,"┌─────────┐");
-            PrintAt(y++,x,$"│{value,-6}   │");
-            PrintAt(y++,x,"│         │");
-            PrintAt(y++,x,"│         │");
-            PrintAt(y++,x,$"│    {symbol}    │");
-            PrintAt(y++,x,"│         │");
-            PrintAt(y++,x,"│         │");
-            PrintAt(y++,x,$"│   {value,6}│");
-            PrintAt(y++,x,"└─────────┘");
-            }
+        public static void PrintCard(int y, int x, int value, int symbol)
+        {
+            PrintAt(y++, x, "┌─────────┐");
+            PrintAt(y++, x, $"│{value,-6}   │");
+            PrintAt(y++, x, "│         │");
+            PrintAt(y++, x, "│         │");
+            PrintAt(y++, x, $"│    {symbol}    │");
+            PrintAt(y++, x, "│         │");
+            PrintAt(y++, x, "│         │");
+            PrintAt(y++, x, $"│   {value,6}│");
+            PrintAt(y++, x, "└─────────┘");
+        }
 
         }
     }
