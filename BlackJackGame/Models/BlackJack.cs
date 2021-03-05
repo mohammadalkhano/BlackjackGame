@@ -57,13 +57,13 @@ namespace BlackJackGame
         /// Asks user to select how many players will be playing
         /// </summary>
         /// <returns>Int value</returns>
-        public static int SeclectPlayers()
-        {
-            Console.WriteLine("How many players?");
+        //public static int SeclectPlayers()
+        //{
+        //    Console.WriteLine("How many players?");
 
-            return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 7);
+        //    return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 7);
 
-        }
+        //}
         /// <summary>
         /// Asks user to select a table. Each tables has own rules for min and max bet
         /// </summary>

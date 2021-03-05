@@ -10,12 +10,6 @@ namespace BlackJackGame.Tests
     {
     [TestClass()]
     public class GameTests
-        {
-        [TestMethod()]
-        public void PlaceBetTestMoreThanMin()
-            {
-
-            Assert.Fail();
-            }
-        }
+    {
+    }
     }
