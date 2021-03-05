@@ -11,7 +11,7 @@
         public static void RunGame()
         {
             var gameRunning = true;
-            GameDeck = Models.TestDecK.CreateMultipleDecks(Models.TestDecK.GetDeck(), 4);
+            GameDeck = Deck.CreateMultipleDecks(Deck.GetDeck(), 4);
             Output.Logo();
             Console.ReadKey();
 
