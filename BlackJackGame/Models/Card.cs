@@ -8,6 +8,7 @@ namespace BlackJackGame.Models
 {
     public class Card
     {
+
         public string CardSymbol { get; set; }
         public int CardNumber { get; set; }
 

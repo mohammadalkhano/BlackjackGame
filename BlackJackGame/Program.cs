@@ -10,7 +10,7 @@ namespace BlackJackGame
         static void Main(string[] args)
         {
             Console.OutputEncoding= Encoding.UTF8;
-            //var list = Deck.CreateMultipleDecks(Deck.GetDeck(), 4);
+    
             //var listLength = list.Count;
             //Console.WriteLine(listLength);
             //foreach (var item in list)
@@ -23,6 +23,7 @@ namespace BlackJackGame
 
             //    else if (item.CardNumber == 12)
             //        Console.WriteLine("Q" + item.CardSymbol);
+
 
             //    else if (item.CardNumber == 13)
             //        Console.WriteLine("K" + item.CardSymbol);
@@ -38,13 +39,11 @@ namespace BlackJackGame
                 Console.WriteLine(card.CardNumber+card.CardSymbol);
 
             }
-          
-          //var card2 = Deck.GetCard(list);
-            //Console.Write(card.CardNumber+ " ");
-            //Console.WriteLine(card.CardSymbol);
-            
 
-            //Game.RunGame();
+            Console.SetWindowSize(120, 50);
+
+
+            Game.RunGame();
 
             Console.Read();
 
