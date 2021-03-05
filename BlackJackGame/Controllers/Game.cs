@@ -11,14 +11,14 @@
         public static void RunGame()
         {
             var gameRunning = true;
-            GameDeck = Models.TestDecK.CreateMultipleDecks(Models.TestDecK.GetDeck(), 4);
+            GameDeck = Deck.CreateMultipleDecks(Deck.GetDeck(), 4);
             Output.Logo();
             Console.ReadKey();
 
             while (gameRunning == true)
             {
                 Console.Clear();
-                Output.ShowTable();
+                Output.ShowMenu();
                 var table = BlackJack.SelectTable();
 
                 Console.Clear();
