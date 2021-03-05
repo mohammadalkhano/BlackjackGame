@@ -60,45 +60,25 @@ namespace BlackJackGame
                 .Select(x => x.item)
                 .ToList();
 
-
             return shuffledDeck;
         }
+
 
 
         /// <summary>
         /// Gets the card.
         /// </summary>
-        /// <param name="deck">The deck.</param>
+        /// <param name="cards">The cards.</param>
         /// <returns></returns>
-        public static int GetCard1(string card)
+
+        public static Card GetCard(List<Card> cards)
         {
-            /* Kan vi gör om klassen "Player" till static??? */
-            Player player = new Player("");
-            
-            int cardValue;
-            //string card = cards[^1];
-            //var cardValue = card[0];
-            //cards.RemoveAt(cards.Count - 1);
-
-            if (card.StartsWith("Q") || card.StartsWith("K") ||
-                card.StartsWith("J") || card.StartsWith("1"))
-            {
-                cardValue = 10;
-            }
-            else if (card.StartsWith("A"))
-            {
-                cardValue = player.Score + 11>21 ? 1 : 11;
-            }
-            else
-            {
-                var card = Deck.GetCard(list);
-                //Output.ShowCards(card,card);
-                Console.WriteLine(card.CardNumber + card.CardSymbol);
-
-            }
-            //DeckForGame. RemoveAt(DeckForGame.Count-1);
-            return cardValue;
+            Card card = cards[^1];
+            cards.RemoveAt(cards.Count - 1);
+            return card;
         }
+
+     
         /// <summary>
         /// Gets the card.
         /// </summary>
@@ -113,6 +93,7 @@ namespace BlackJackGame
             cards.RemoveAt(cards.Count - 1);
             return card;
         }
+
 
     }
 }

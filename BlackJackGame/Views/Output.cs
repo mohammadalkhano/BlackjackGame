@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BlackJackGame.Models;
 
 namespace BlackJackGame
 
@@ -45,7 +46,8 @@ namespace BlackJackGame
             Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
             Console.WriteLine($"{line}\n");
-        }        public static void LogoMeddelandeDouble(string line1, string line2)
+        }       
+        public static void LogoMeddelandeDouble(string line1, string line2)
         {
             var line = new string('=', 120);
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -62,10 +64,10 @@ namespace BlackJackGame
                 Console.Write(" ");
             Console.WriteLine("#  *");
             Console.Write("                             *  #");
-            for (int i = 0; i < (51 - line2.Length) / 2; i++)
+            for (int i = 0; i < (51 - line2.ToString().Length) / 2; i++)
                 Console.Write(" ");
             Console.Write(line2);
-            for (int i = 0; i < (52 - line2.Length) / 2; i++)
+            for (int i = 0; i < (52 - line2.ToString().Length) / 2; i++)
                 Console.Write(" ");
             Console.WriteLine("#  *");
             Console.WriteLine("                             *  #                                                   #  *");
@@ -74,8 +76,6 @@ namespace BlackJackGame
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
             Console.WriteLine($"{line}\n");
         }
-
-
 
         public static void PlayerInfoOutput(List<Player> players)
         {
@@ -142,6 +142,19 @@ namespace BlackJackGame
 
 
 
+
+        public static void ShowCards(Card card1, Card card2)
+        {
+
+            LogoMeddelandeDouble("Player 1, your first card is",card1.CardNumber+card1.CardSymbol);
+            PrintCard(14, 3, card1.CardNumber, card1.CardSymbol);
+            Console.ReadLine();
+            Console.Clear();
+            LogoMeddelandeDouble("Player 1, your second card is", card2.CardNumber + card2.CardSymbol);
+            PrintCard(14, 3, card1.CardNumber, card1.CardSymbol);
+            PrintCard(15, 10, card2.CardNumber, card2.CardSymbol);
+        }
+
         //public static void ShowCards(string card1, string card2)
         //{
         //    LogoMeddelandeDouble("Player 1, your first card is", card1);
@@ -152,6 +165,7 @@ namespace BlackJackGame
         //    PrintCard(14, 3, card1[0], card1[1]);
         //    PrintCard(15, 10, card2[0], card2[1]);
         //}
+
 
         private static void PrintAt(int y, int x, string text)
         {
