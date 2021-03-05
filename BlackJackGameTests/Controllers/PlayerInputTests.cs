@@ -8,9 +8,4 @@ using System.Threading.Tasks;
 
 namespace BlackJackGame.Tests
     {
-    [TestClass()]
-    public class DeckTests
-        {
-       
-        }
     }

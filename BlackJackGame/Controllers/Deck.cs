@@ -77,23 +77,5 @@ namespace BlackJackGame
             cards.RemoveAt(cards.Count - 1);
             return card;
         }
-
-     
-        /// <summary>
-        /// Gets the card.
-        /// </summary>
-        /// <param name="cards">The cards.</param>
-        /// <returns></returns>
-        //public static Card GetCard(List<Card> cards)
-        //{
-        //    /* Kan vi gör om klassen "Player" till static??? */
-        //    Player player = new Player("");
-            
-        //    Card card = cards[^1];
-        //    cards.RemoveAt(cards.Count - 1);
-        //    return card;
-        //}
-
-
     }
 }
