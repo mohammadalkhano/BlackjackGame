@@ -37,7 +37,7 @@ namespace BlackJackGame
                 playersList.Add(new Player("Player " + (i+1)));
             }
 
-            playersList.Add(new Player("house")); //Adds player House
+            playersList.Add(new Player("House")); //Adds player House
 
             return playersList;
         }
