@@ -72,10 +72,13 @@ namespace BlackJackGame
         /// <returns></returns>
 
         public static Card GetCard(List<Card> cards)
-        {
-            Card card = cards[^1];
-            cards.RemoveAt(cards.Count - 1);
+        {            
+            Card card = cards[cards.Count - 1];            
             return card;
+        }
+        public static void RemoveUsedCard (Card usedCard)
+        {
+            Game.GameDeck.Remove(usedCard);
         }
     }
 }
