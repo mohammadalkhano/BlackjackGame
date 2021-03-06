@@ -85,8 +85,8 @@
 
                     while (player.Cards.Count < 2)
                     {
-                        var printX = 22;
-                        var printY = 3;
+                        var printX = 16 + players.Count;
+                        var printY = 2;
 
                         Output.PlayerInfoOutput(players);
                         var newCard = Deck.GetCard(GameDeck);
@@ -96,7 +96,7 @@
                         //foreach (var card in player.Cards)
                         for (int i = 0; i < player.Cards.Count; i++)
                         {
-                            Output.PrintCard(printX, printY, player.Cards[0].CardNumber, player.Cards[0].CardSymbol);
+                            Output.PrintCard(printX, printY, player.Cards[i].CardNumber, player.Cards[i].CardSymbol);
                             printX += 1;
                             printY += 6;
                         }
@@ -106,8 +106,8 @@
                     }
 
 
-                    Console.ReadLine();
-                    Console.Clear();
+                    //Console.ReadLine();
+                    //Console.Clear();
 
 
 
