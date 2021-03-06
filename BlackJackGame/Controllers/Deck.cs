@@ -74,7 +74,8 @@ namespace BlackJackGame
         public static Card GetCard(List<Card> cards)
         {
             var rand = new Random();
-            Card card = cards[rand.Next(0, cards.Count - 1)];            
+            Card card = cards[rand.Next(0, cards.Count - 1)];   
+            
             return card;
         }
 
@@ -82,5 +83,6 @@ namespace BlackJackGame
         {
             Game.GameDeck.Remove(usedCard);
         }
+        
     }
 }
