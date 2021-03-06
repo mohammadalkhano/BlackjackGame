@@ -77,6 +77,7 @@ namespace BlackJackGame
             Card card = cards[rand.Next(0, cards.Count - 1)];            
             return card;
         }
+
         public static void RemoveUsedCard (Card usedCard)
         {
             Game.GameDeck.Remove(usedCard);

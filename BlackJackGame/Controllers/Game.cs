@@ -93,6 +93,37 @@
                         player.Cards.Add(newCard);
                         player.Score += newCard.CardNumber;
                         Output.LogoMeddelande($"{player.Name}, your total is {player.Score}");
+                        for (int i = 0; i < player.Cards.Count; i++)
+                        {
+                            Output.PrintCard(printX, printY, player.Cards[i].CardNumber, player.Cards[i].CardSymbol);
+                            printX += 1;
+                            printY += 6;
+                        }
+                        Console.ReadLine();
+                        Console.Clear();
+                        GameDeck.Remove(newCard);
+                    }
+                    if (player.Score == 21)
+                    {
+                        BlackJackWin(player.Name, player.Bet);
+                    }
+                }
+            }
+            foreach (var player in players)
+            {
+                if (player.Name == "House")
+                {
+
+                    while (player.Cards.Count < 2)
+                    {
+                        var printX = 1 + players.Count;
+                        var printY = 90;
+
+                        Output.PlayerInfoOutput(players);
+                        var newCard = Deck.GetCard(GameDeck);
+                        player.Cards.Add(newCard);
+                        player.Score += newCard.CardNumber;
+                        Output.LogoMeddelande($"{player.Name} total is {player.Score}");
                         //foreach (var card in player.Cards)
                         for (int i = 0; i < player.Cards.Count; i++)
                         {
@@ -104,68 +135,6 @@
                         Console.Clear();
                         GameDeck.Remove(newCard);
                     }
-
-
-                    //Console.ReadLine();
-                    //Console.Clear();
-
-
-
-                    //Output.PlayerInfoOutput(players);
-                    //var card2 = GameDeck[rand.Next(0, GameDeck.Count)];
-                    //GameDeck.Remove(card2);
-                    //player.Cards.Add(card2);
-                    //player.Score += card2.CardNumber;
-
-                    //Output.LogoMeddelande($"{player.Name}, your second card is {card2.CardNumber}{card2.CardSymbol}");
-                    //Output.PrintCard(22, 3, newCard.CardNumber, newCard.CardSymbol);
-                    //Output.PrintCard(23, 9, card2.CardNumber, card2.CardSymbol);
-
-                    //Console.ReadLine();
-                    //Console.Clear();
-
-                    //player.Score = 21;
-
-                    if (player.Score == 21)
-                    {
-                        BlackJackWin(player.Name, player.Bet);
-                    }
-
-                    //Output.PlayerInfoOutput(players);
-                    //Output.LogoMeddelande($"{player.Name} has a total of {player.Score}");
-                    //Console.ReadLine();
-                    //Console.Clear();
-                }
-            }
-
-            foreach (var player in players)
-            {
-                if (player.Name == "House")
-                {
-                    Output.PlayerInfoOutput(players);
-                    var newCard = GameDeck[rand.Next(0, GameDeck.Count)];
-                    GameDeck.Remove(newCard);
-                    player.Cards.Add(newCard);
-                    player.Score += newCard.CardNumber;
-                    Output.LogoMeddelande($"{player.Name}, your first card is {newCard.CardNumber}{newCard.CardSymbol}");
-
-                    Output.PrintCard(4, 90, newCard.CardNumber, newCard.CardSymbol);
-                    Console.ReadLine();
-                    Console.Clear();
-
-
-                    Output.PlayerInfoOutput(players);
-                    var card2 = GameDeck[rand.Next(0, GameDeck.Count)];
-                    GameDeck.Remove(card2);
-                    player.Cards.Add(card2);
-                    player.Score = card2.CardNumber;
-                    Output.LogoMeddelande($"{player.Name}, your second card is {card2.CardNumber}{card2.CardSymbol}");
-
-                    Output.PrintCard(4, 90, newCard.CardNumber, newCard.CardSymbol);
-                    Output.PrintCard(5, 96, card2.CardNumber, card2.CardSymbol);
-
-                    Console.ReadLine();
-                    Console.Clear();
                 }
             }
         }
@@ -177,7 +146,7 @@
         {
             var rand = new Random();
 
-            foreach (var player in players) //PlayPlayers();
+            foreach (var player in players) 
             {
                 if (player.Name != "House")
                 {
@@ -185,12 +154,30 @@
                     {
                         if (player.Score < 21)
                         {
-                            Console.WriteLine($"{player.Name}, you have {player.Score}. [1]Hit or [2]stay?");
-                            Int32.TryParse(Console.ReadLine(), out int hitOrStay);
+                            var printX = 17 + players.Count;
+                            var printY = 2;
+
+                            Output.PlayerInfoOutput(players);
+                            Output.LogoMeddelandeDouble($"{player.Name}, your total is {player.Score}.", "[1]Hit or [2]stay?");
+
+                            for (int i = 0; i < player.Cards.Count; i++)
+                            {
+                                Output.PrintCard(printX, printY, player.Cards[i].CardNumber, player.Cards[i].CardSymbol);
+                                printX += 1;
+                                printY += 6;
+                            }
+
+                            var hitOrStay = PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 2);
                             if (hitOrStay == 2)
                                 player.Stay = true;
                             else
-                                player.Score += rand.Next(1, 10); // Deck.GetCard(Deck.newDeck); ;
+                            {
+                                var newCard = Deck.GetCard(GameDeck);
+                                player.Cards.Add(newCard);
+                                player.Score += newCard.CardNumber;
+                                GameDeck.Remove(newCard);
+                                Console.Clear();
+                            }
                         }
                         else
                             player.Stay = true;

@@ -34,20 +34,10 @@ namespace BlackJackGame.Tests
         }
 
         [TestMethod()]
-        public void GetCardTest_ReturnsLastCard()
+        public void GetCardTest_ReturnsOneCard()
         {
             var list = Deck.GetDeck();
-          
-
-            Assert.AreEqual(list[list.Count -1], Deck.GetCard(list)); 
-        }
-        [TestMethod()]
-        public void GetCardTest_ReturnsFirstCard()
-        {
-            var list = Deck.GetDeck();
-          
-
-            Assert.AreEqual(false, Deck.GetCard(list) == list[0]); 
+            Assert.AreEqual(typeof(Models.Card), Deck.GetCard(list).GetType()); 
         }
     }
 }
