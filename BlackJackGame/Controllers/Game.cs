@@ -33,14 +33,13 @@
 
                 PlaceBets(activePlayers, table[0], table[1]);
 
-                Console.Clear();
 
                 FirstGive(activePlayers);
-
-                Console.ReadLine();
-
+                Console.Clear();
                 PlayPlayers(activePlayers);
+                Console.Clear();
                 PlayHouse(activePlayers);
+                Console.Clear();
 
                 CheckWinners(activePlayers);
 
@@ -146,7 +145,7 @@
         {
             var rand = new Random();
 
-            foreach (var player in players) 
+            foreach (var player in players)
             {
                 if (player.Name != "House")
                 {
@@ -154,7 +153,7 @@
                     {
                         if (player.Score < 21)
                         {
-                            var printX = 17 + players.Count;
+                            var printX = 18 + players.Count;
                             var printY = 2;
 
                             Output.PlayerInfoOutput(players);
@@ -169,7 +168,10 @@
 
                             var hitOrStay = PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 2);
                             if (hitOrStay == 2)
+                            {
                                 player.Stay = true;
+                                Console.Clear();
+                            }
                             else
                             {
                                 var newCard = Deck.GetCard(GameDeck);
@@ -196,91 +198,139 @@
         /// <param name="players">List of active players</param>
         private static void PlayHouse(List<Player> players)
         {
-            var rand = new Random();
 
-            foreach (var player in players) //PlayHouse();
+            foreach (var player in players)
             {
                 if (player.Name == "House")
                 {
-                    player.Score += rand.Next(1, 10); //ShowDarkCard();
-
                     while (player.Score < 17)
                     {
-                        player.Score += rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
-                    }
-                    Console.WriteLine($"{player.Name} gets {player.Score}");
-                    Console.ReadLine();
-                }
-            }
-        }
-        /// <summary>
-        /// Matches players scor with House to check winners
-        /// </summary>
-        /// <param name="list">List of active players</param>
-        private static void CheckWinners(List<Player> list)
-        {
-            var houseScore = 0;
 
-            foreach (var player in list)
-            {
-                if (player.Name == "House")
-                    if (player.Score > 21)
-                        Console.WriteLine("House got busted");
-                    else
-                        houseScore = player.Score;
-            }
-            foreach (var player in list)
-            {
-                if (player.Name != "House")
-                {
-                    if (player.Score > 21)
-                        Console.WriteLine($"{player.Name} got {player.Score} and got busted.");
-                    else
+                        var printX = 1 + players.Count;
+                        var printY = 90;
+
+                        Output.PlayerInfoOutput(players);
+                        Output.LogoMeddelande($"{player.Name} total is {player.Score}.");
+
+                        for (int i = 0; i < player.Cards.Count; i++)
+                        {
+                            Output.PrintCard(printX, printY, player.Cards[i].CardNumber, player.Cards[i].CardSymbol);
+                            printX += 1;
+                            printY += 6;
+                        }
+
+                        var newCard = Deck.GetCard(GameDeck);
+                        player.Cards.Add(newCard);
+                        player.Score += newCard.CardNumber;
+                        GameDeck.Remove(newCard);
+                        Console.ReadKey();
+                        Console.Clear();
+                    }
+                    var printXfinal = 1 + players.Count;
+                    var printYfinal = 90;
+
+                    Output.PlayerInfoOutput(players);
+                    Output.LogoMeddelande($"{player.Name} total is {player.Score}.");
+
+                    for (int i = 0; i < player.Cards.Count; i++)
                     {
-
-                        if (player.Score == houseScore)
-                            Console.WriteLine($"{player.Name} got {player.Score} and are equal to the House.");
-                        else if (player.Score > houseScore)
-                            Console.WriteLine($"{player.Name} got {player.Score} and beat the House. You won ${player.Bet * 2}.");
-                        else
-                            Console.WriteLine($"{player.Name} got {player.Score} and lost to the House.");
+                        Output.PrintCard(printXfinal, printYfinal, player.Cards[i].CardNumber, player.Cards[i].CardSymbol);
+                        printXfinal += 1;
+                        printYfinal += 6;
                     }
+                    Console.ReadKey();
+                    Console.Clear();
+
+                }
+
+            
+        }
+
+        //var rand = new Random();
+
+        //foreach (var player in players) //PlayHouse();
+        //{
+        //    if (player.Name == "House")
+        //    {
+        //        player.Score += rand.Next(1, 10); //ShowDarkCard();
+
+        //        while (player.Score < 17)
+        //        {
+        //            player.Score += rand.Next(1, 10); // Deck.GetCard(Deck.newDeck);
+        //        }
+        //        Console.WriteLine($"{player.Name} gets {player.Score}");
+        //        Console.ReadLine();
+        //    }
+        //}
+    }
+    /// <summary>
+    /// Matches players scor with House to check winners
+    /// </summary>
+    /// <param name="list">List of active players</param>
+    private static void CheckWinners(List<Player> list)
+    {
+        var houseScore = 0;
+
+        foreach (var player in list)
+        {
+            if (player.Name == "House")
+                if (player.Score > 21)
+                    Console.WriteLine("House got busted");
+                else
+                    houseScore = player.Score;
+        }
+        foreach (var player in list)
+        {
+            if (player.Name != "House")
+            {
+                if (player.Score > 21)
+                    Console.WriteLine($"{player.Name} got {player.Score} and got busted.");
+                else
+                {
+
+                    if (player.Score == houseScore)
+                        Console.WriteLine($"{player.Name} got {player.Score} and are equal to the House.");
+                    else if (player.Score > houseScore)
+                        Console.WriteLine($"{player.Name} got {player.Score} and beat the House. You won ${player.Bet * 2}.");
+                    else
+                        Console.WriteLine($"{player.Name} got {player.Score} and lost to the House.");
                 }
             }
-
-        }
-        /// <summary>
-        /// Asks user to play again
-        /// </summary>
-        /// <returns>Bool value</returns>
-        private static bool PlayAgain()
-        {
-            Console.WriteLine("Do you want to play another round?\n\n[1] Yes \n[2]  No");
-            Int32.TryParse(Console.ReadLine(), out int playAgain);
-            if (playAgain == 1)
-                return true;
-            else
-                return false;
-        }
-        /// <summary>
-        /// Prints message if user gets 21 first round
-        /// </summary>
-        /// <param name="playerName">Name of player</param>
-        /// <param name="playerBet">Players bet</param>
-        private static void BlackJackWin(string playerName, int playerBet)
-        {
-            Output.LogoMeddelandeDouble($"Conratulations {playerName}!", $"You got Black Jack and won {playerBet + (playerBet * 1.5)} ");
-            Console.ReadKey();
-            Console.Clear();
         }
 
-        private static int PlaceBet(string playerName, int tableMin, int tableMax)
-        {
-            //Console.WriteLine($"{playerName} place bet between {tableMin} and {tableMax}");
-
-            Output.LogoMeddelande($"{playerName} place bet between {tableMin} and {tableMax}");
-
-            return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), tableMin, tableMax);
-        }
     }
+    /// <summary>
+    /// Asks user to play again
+    /// </summary>
+    /// <returns>Bool value</returns>
+    private static bool PlayAgain()
+    {
+        Console.WriteLine("Do you want to play another round?\n\n[1] Yes \n[2]  No");
+        Int32.TryParse(Console.ReadLine(), out int playAgain);
+        if (playAgain == 1)
+            return true;
+        else
+            return false;
+    }
+    /// <summary>
+    /// Prints message if user gets 21 first round
+    /// </summary>
+    /// <param name="playerName">Name of player</param>
+    /// <param name="playerBet">Players bet</param>
+    private static void BlackJackWin(string playerName, int playerBet)
+    {
+        Output.LogoMeddelandeDouble($"Conratulations {playerName}!", $"You got Black Jack and won {playerBet + (playerBet * 1.5)} ");
+        Console.ReadKey();
+        Console.Clear();
+    }
+
+    private static int PlaceBet(string playerName, int tableMin, int tableMax)
+    {
+        //Console.WriteLine($"{playerName} place bet between {tableMin} and {tableMax}");
+
+        Output.LogoMeddelande($"{playerName} place bet between {tableMin} and {tableMax}");
+
+        return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), tableMin, tableMax);
+    }
+}
 }
