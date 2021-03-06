@@ -19,6 +19,7 @@
                 GameDeck = Deck.CreateMultipleDecks(Deck.GetDeck(), 4);
                 Console.Clear();
                 Output.ShowMenu();
+
                 var table = BlackJack.SelectTable();
 
                 Deck.GetCard(GameDeck);
@@ -58,7 +59,7 @@
             {
 
                 Output.PlayerInfoOutput(players);
-                if (player.Name != "house")
+                if (player.Name != "House")
                 {
                     player.Bet = 0;
                     player.Bet = PlaceBet(player.Name, minBet, maxBet);
@@ -68,7 +69,7 @@
             }
         }
         /// <summary>
-        /// Hands two cards to each players, not "house"
+        /// Hands two cards to each players, not "House"
         /// </summary>
         /// <param name="players">List of active players</param>
         private static void FirstGive(List<Player> players)
@@ -79,32 +80,49 @@
             {
                 player.Score = 0;
                 player.Stay = false;
-                if (player.Name != "house")
+                if (player.Name != "House")
                 {
-                    Output.PlayerInfoOutput(players);
-                    var card1 = GameDeck[rand.Next(0, GameDeck.Count)];
-                    GameDeck.Remove(card1);
-                    player.Cards.Add(card1);
-                    player.Score += card1.CardNumber;
-                    Output.LogoMeddelande($"{player.Name}, your first card is {card1.CardNumber}{card1.CardSymbol}");
 
-                    Output.PrintCard(22, 3, card1.CardNumber, card1.CardSymbol);
+                    while (player.Cards.Count < 2)
+                    {
+                        var printX = 22;
+                        var printY = 3;
+
+                        Output.PlayerInfoOutput(players);
+                        var newCard = Deck.GetCard(GameDeck);
+                        player.Cards.Add(newCard);
+                        player.Score += newCard.CardNumber;
+                        Output.LogoMeddelande($"{player.Name}, your total is {player.Score}");
+                        //foreach (var card in player.Cards)
+                        for (int i = 0; i < player.Cards.Count; i++)
+                        {
+                            Output.PrintCard(printX, printY, player.Cards[0].CardNumber, player.Cards[0].CardSymbol);
+                            printX += 1;
+                            printY += 6;
+                        }
+                        Console.ReadLine();
+                        Console.Clear();
+                        GameDeck.Remove(newCard);
+                    }
+
+
                     Console.ReadLine();
                     Console.Clear();
 
 
-                    Output.PlayerInfoOutput(players);
-                    var card2 = GameDeck[rand.Next(0, GameDeck.Count)];
-                    GameDeck.Remove(card2);
-                    player.Cards.Add(card2);
-                    player.Score += card2.CardNumber;
 
-                    Output.LogoMeddelande($"{player.Name}, your second card is {card2.CardNumber}{card2.CardSymbol}");
-                    Output.PrintCard(22, 3, card1.CardNumber, card1.CardSymbol);
-                    Output.PrintCard(23, 9, card2.CardNumber, card2.CardSymbol);
+                    //Output.PlayerInfoOutput(players);
+                    //var card2 = GameDeck[rand.Next(0, GameDeck.Count)];
+                    //GameDeck.Remove(card2);
+                    //player.Cards.Add(card2);
+                    //player.Score += card2.CardNumber;
 
-                    Console.ReadLine();
-                    Console.Clear();
+                    //Output.LogoMeddelande($"{player.Name}, your second card is {card2.CardNumber}{card2.CardSymbol}");
+                    //Output.PrintCard(22, 3, newCard.CardNumber, newCard.CardSymbol);
+                    //Output.PrintCard(23, 9, card2.CardNumber, card2.CardSymbol);
+
+                    //Console.ReadLine();
+                    //Console.Clear();
 
                     //player.Score = 21;
 
@@ -122,16 +140,16 @@
 
             foreach (var player in players)
             {
-                if (player.Name == "house")
+                if (player.Name == "House")
                 {
                     Output.PlayerInfoOutput(players);
-                    var card1 = GameDeck[rand.Next(0, GameDeck.Count)];
-                    GameDeck.Remove(card1);
-                    player.Cards.Add(card1);
-                    player.Score += card1.CardNumber;
-                    Output.LogoMeddelande($"{player.Name}, your first card is {card1.CardNumber}{card1.CardSymbol}");
+                    var newCard = GameDeck[rand.Next(0, GameDeck.Count)];
+                    GameDeck.Remove(newCard);
+                    player.Cards.Add(newCard);
+                    player.Score += newCard.CardNumber;
+                    Output.LogoMeddelande($"{player.Name}, your first card is {newCard.CardNumber}{newCard.CardSymbol}");
 
-                    Output.PrintCard(4, 90, card1.CardNumber, card1.CardSymbol);
+                    Output.PrintCard(4, 90, newCard.CardNumber, newCard.CardSymbol);
                     Console.ReadLine();
                     Console.Clear();
 
@@ -143,7 +161,7 @@
                     player.Score = card2.CardNumber;
                     Output.LogoMeddelande($"{player.Name}, your second card is {card2.CardNumber}{card2.CardSymbol}");
 
-                    Output.PrintCard(4, 90, card1.CardNumber, card1.CardSymbol);
+                    Output.PrintCard(4, 90, newCard.CardNumber, newCard.CardSymbol);
                     Output.PrintCard(5, 96, card2.CardNumber, card2.CardSymbol);
 
                     Console.ReadLine();
@@ -161,7 +179,7 @@
 
             foreach (var player in players) //PlayPlayers();
             {
-                if (player.Name != "house")
+                if (player.Name != "House")
                 {
                     while (player.Stay == false)
                     {
@@ -186,7 +204,7 @@
             }
         }
         /// <summary>
-        /// Plays "house" automatic until score exceeds 16
+        /// Plays "House" automatic until score exceeds 16
         /// </summary>
         /// <param name="players">List of active players</param>
         private static void PlayHouse(List<Player> players)
@@ -195,7 +213,7 @@
 
             foreach (var player in players) //PlayHouse();
             {
-                if (player.Name == "house")
+                if (player.Name == "House")
                 {
                     player.Score += rand.Next(1, 10); //ShowDarkCard();
 
@@ -209,7 +227,7 @@
             }
         }
         /// <summary>
-        /// Matches players scor with house to check winners
+        /// Matches players scor with House to check winners
         /// </summary>
         /// <param name="list">List of active players</param>
         private static void CheckWinners(List<Player> list)
@@ -218,7 +236,7 @@
 
             foreach (var player in list)
             {
-                if (player.Name == "house")
+                if (player.Name == "House")
                     if (player.Score > 21)
                         Console.WriteLine("House got busted");
                     else
@@ -226,7 +244,7 @@
             }
             foreach (var player in list)
             {
-                if (player.Name != "house")
+                if (player.Name != "House")
                 {
                     if (player.Score > 21)
                         Console.WriteLine($"{player.Name} got {player.Score} and got busted.");
@@ -234,11 +252,11 @@
                     {
 
                         if (player.Score == houseScore)
-                            Console.WriteLine($"{player.Name} got {player.Score} and are equal to the house.");
+                            Console.WriteLine($"{player.Name} got {player.Score} and are equal to the House.");
                         else if (player.Score > houseScore)
-                            Console.WriteLine($"{player.Name} got {player.Score} and beat the house. You won ${player.Bet * 2}.");
+                            Console.WriteLine($"{player.Name} got {player.Score} and beat the House. You won ${player.Bet * 2}.");
                         else
-                            Console.WriteLine($"{player.Name} got {player.Score} and lost to the house.");
+                            Console.WriteLine($"{player.Name} got {player.Score} and lost to the House.");
                     }
                 }
             }

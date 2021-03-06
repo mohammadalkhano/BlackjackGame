@@ -84,7 +84,7 @@ namespace BlackJackGame
             Console.WriteLine($"Player Name\tBet\tScore\n");
             foreach (var player in players)
                 {
-                if (player.Name != "house")
+                if (player.Name != "House")
 
                     Console.WriteLine($"{player.Name}\t{player.Bet}\t{player.Score}");
                 }
