@@ -129,9 +129,7 @@ namespace BlackJackGame
             Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
             Console.WriteLine($"{line}\n");
-
         }
-
         /// <summary>
         /// Prints a score board in console with players
         /// name, bets and total score  /Philip
@@ -150,17 +148,13 @@ namespace BlackJackGame
             }
             Console.WriteLine();
             Console.WriteLine(line);
-
-
         }
-
         public static void ShowMenu()
         {
             Logo();
             Agelimit();
             ShowTable();
         }
-
         /// <summary>
         /// Agelimit => Asking for Age, Agelimit is 18 to play the game.
         /// Zia

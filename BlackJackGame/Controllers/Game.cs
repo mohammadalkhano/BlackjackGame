@@ -45,7 +45,7 @@
                 Output.ShowMenu();
 
                 //Sets minBet/maxBet based on user choise of table
-                Table = BlackJack.SelectTable();
+                Table = SelectTable();
                 Console.Clear();
 
                 Output.LogoMeddelande("How many players? (1-7)");
@@ -129,6 +129,8 @@
                     {
                         //If player gets 21 in first give, its automatic Black Jack (wins x 2.5)
                         BlackJackWin(player.Name, player.Bet);
+                        Console.ReadKey();
+                        Console.Clear();
                     }
                 }
             }
@@ -374,8 +376,6 @@
         private static void BlackJackWin(string playerName, int playerBet)
         {
             Output.LogoMeddelandeDouble($"Conratulations {playerName}!", $"You got Black Jack and won {playerBet + (playerBet * 1.5)} ");
-            Console.ReadKey();
-            Console.Clear();
         }
         /// <summary>
         /// Places the bet
@@ -391,6 +391,35 @@
             Output.LogoMeddelande($"{playerName} place bet between {tableMin} and {tableMax}");
 
             return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), tableMin, tableMax);
+        }
+        /// <summary>
+        /// Asks user to select a table. Each tables has own rules for min and max bet
+        /// </summary>
+        /// <returns>List containing min and max value</returns>
+        public static List<int> SelectTable()
+        {
+            Console.WriteLine();
+            var list = new List<int>();
+            switch (PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 4))
+            {
+                case 1:
+                    list.Add(100);
+                    list.Add(1000);
+                    break;
+                case 2:
+                    list.Add(100);
+                    list.Add(2000);
+                    break;
+                case 3:
+                    list.Add(200);
+                    list.Add(5000);
+                    break;
+                case 4:
+                    list.Add(1000);
+                    list.Add(10000);
+                    break;
+            }
+            return list;
         }
     }
 }
