@@ -20,7 +20,7 @@
         /// <summary>
         /// Contains the game loop
         /// Philip
-        /// <summary>        
+        /// </summary>        
         public static void RunGame()
         {
             var gameRunning = true;
@@ -61,6 +61,7 @@
         }
         /// <summary>
         /// Asks all players to place their bet between min and max
+        /// Philip
         /// </summary>
         /// <param name="players">List of active players</param>
         /// <param name="minBet">Min amount of bet according to table rules</param>
@@ -76,7 +77,6 @@
                     player.Bet = PlaceBet(player.Name, minBet, maxBet);
                 }
                 Console.Clear();
-
             }
         }
         /// <summary>
@@ -164,12 +164,13 @@
                             if (player.Score < 10)
                                 proTip = "You should really take one more card!";
                             else if(player.Score < 14)
-                                proTip = "Hmm... I think you should take one more card";
+                                proTip = "I think you should take one more card";
                             else if(player.Score < 17)
                                 proTip = "I'm thinking; stay!";
                             else if(player.Score < 20)
                                 proTip = "For the love of God, STAY!";
                             Output.PlayerInfoOutput(players);
+
                             Output.LogoMeddelandeTripple($"{player.Name}, your total is {player.Score}.", "[1]Hit or [2]stay?", $"ProTp: {proTip}");
 
                             PrintPlayersCards(player, printX, printY);

@@ -163,11 +163,8 @@ namespace BlackJackGame
                     Console.ForegroundColor = ConsoleColor.Red;
                     LogoMeddelande("Invalid input, try again");
                 }
-
             }
-
         }
-
         public static void ShowTable()
         {
             Console.Clear();
