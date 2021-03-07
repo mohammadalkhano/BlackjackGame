@@ -17,7 +17,7 @@
         //Variable for each new card pulled from the deck
         public static Models.Card NewCard { get; set; }
         //Default ProTip (if user gets 21)
-        public static string ProTip { get; set; } = "You got Black Jack, baby. Just sit tight.";
+        public static string ProTip { get; set; }
 
         //Sets starting point for printing cards on screen
         public static int PlayerPrintX { get; set; } = 17;
@@ -171,42 +171,48 @@
         {
             foreach (var player in players)
             {
+
                 var printX = PlayerPrintX + players.Count;
                 var printY = PlayerPrintY;
-                var proTip = ProTip;
 
                 if (player.Name != "House")
                 {
-                    
                     while (player.Stay == false)
                     {
                         if (player.Score < 21)
                         {
-                            proTip = SetProTip(player);
+                            SetProTip(player);
 
                             Output.PlayerInfoOutput(players);
 
-                            Output.LogoMeddelandeTripple($"{player.Name}, your total is {player.Score}.", "[1]Hit or [2]stay?", $"ProTp: {proTip}");
+                            Output.LogoMeddelandeTripple($"{player.Name}, your total is {player.Score}.", "[1]Hit or [2]stay?", $"ProTp: {ProTip}");
 
                             PrintPlayersCards(player, printX, printY);
 
-                            var hitOrStay = PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 2);
-                            if (hitOrStay == 2)
+                            //Player gets to choose between 1 or 2
+                            if (PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 2) == 2)
                             {
                                 player.Stay = true;
                                 Console.Clear();
                             }
                             else
                             {
-                                var NewCard = Deck.GetCard(GameDeck);
+                                //If player wants one more card
+                                //Returns a random card from list
+                                NewCard = Deck.GetCard(GameDeck);
+                                //Adds card to players hand
                                 player.Cards.Add(NewCard);
+                                //Adds score to players total
                                 player.Score += NewCard.CardNumber;
+                                //Removes card from deck
                                 GameDeck.Remove(NewCard);
                                 Console.Clear();
+
                             }
                         }
                         else
                         {
+                            //Player total score is 21 or more
                             player.Stay = true;
 
                             Output.PlayerInfoOutput(players);
@@ -218,57 +224,6 @@
                     }
 
                 }
-            }
-        }
-        /// <summary>
-        /// Decides what ProTip to give depending on players total score
-        /// </summary>
-        /// <param name="player">Active player</param>
-        /// <returns>String value</returns>
-        private static string SetProTip(Player player)
-        {
-            string proTip;
-            if (player.Score < 10)
-                proTip = "You should really take one more card!";
-            else if (player.Score < 14)
-                proTip = "I think you should take one more card";
-            else if (player.Score < 17)
-                proTip = "Maybe ONE more card..?";
-            else if (player.Score < 19)
-                proTip = "I'm thinking; stay!";
-            else
-                proTip = "For the love of God, STAY!";
-            return proTip;
-        }
-
-        /// <summary>
-        /// Displays players cards
-        /// </summary>
-        /// <param name="player">Active player</param>
-        /// <param name="printX">Where on the x-axis the card will be printed</param>
-        /// <param name="printY">Where on the y-axis the card will be printed</param>
-        private static void PrintPlayersCards(Player player, int printX, int printY)
-        {
-            for (int i = 0; i < player.Cards.Count; i++)
-            {
-                Output.PrintCard(printX, printY, player.Cards[i].CardNumber, player.Cards[i].CardSymbol);
-                printX += 1;
-                printY += 6;
-            }
-        }
-        /// <summary>
-        /// Displays one card with no value ("dark" or upside down)
-        /// </summary>
-        /// <param name="player">Active player(House)</param>
-        /// <param name="printX">Where on the x-axis the card will be printed</param>
-        /// <param name="printY">Where on the y-axis the card will be printed</param>
-        private static void PrintDarkCard(Player player, int printX, int printY)
-        {
-            for (int i = 0; i < player.Cards.Count; i++)
-            {
-                printX += 1;
-                printY += 6;
-                Output.DarkCard(printX, printY);
             }
         }
         /// <summary>
@@ -309,13 +264,65 @@
             }
         }
         /// <summary>
-        /// Matches players scor with House to check winners
+        /// Decides what ProTip to give depending on players total score
+        /// Philip
+        /// </summary>
+        /// <param name="player">Active player</param>
+        public static void SetProTip(Player player)
+        {           
+            if (player.Score < 10)
+                ProTip = "You should really take one more card!";
+            else if (player.Score < 14)
+                ProTip = "I think you should take one more card";
+            else if (player.Score < 17)
+                ProTip = "Maybe ONE more card..?";
+            else if (player.Score < 19)
+                ProTip = "I'm thinking; stay!";
+            else
+                ProTip = "For the love of God, STAY!";
+        }
+
+        /// <summary>
+        /// Displays players cards
+        /// Philip
+        /// </summary>
+        /// <param name="player">Active player</param>
+        /// <param name="printX">Where on the x-axis the card will be printed</param>
+        /// <param name="printY">Where on the y-axis the card will be printed</param>
+        private static void PrintPlayersCards(Player player, int printX, int printY)
+        {
+            for (int i = 0; i < player.Cards.Count; i++)
+            {
+                Output.PrintCard(printX, printY, player.Cards[i].CardNumber, player.Cards[i].CardSymbol);
+                printX += 1;
+                printY += 6;
+            }
+        }
+        /// <summary>
+        /// Displays one card with no value ("dark" or upside down)
+        /// Philip
+        /// </summary>
+        /// <param name="player">Active player(House)</param>
+        /// <param name="printX">Where on the x-axis the card will be printed</param>
+        /// <param name="printY">Where on the y-axis the card will be printed</param>
+        private static void PrintDarkCard(Player player, int printX, int printY)
+        {
+            for (int i = 0; i < player.Cards.Count; i++)
+            {
+                printX += 1;
+                printY += 6;
+                Output.DarkCard(printX, printY);
+            }
+        }
+        /// <summary>
+        /// Matches players score with House to check winners
+        /// Philip
         /// </summary>
         /// <param name="list">List of active players</param>
         private static void CheckWinners(List<Player> list)
         {
             var houseScore = 0;
-
+            //First check House score
             foreach (var player in list)
             {
                 if (player.Name == "House")
@@ -324,6 +331,7 @@
                     else
                         houseScore = player.Score;
             }
+            //Matches players score with house to check for winners
             foreach (var player in list)
             {
                 if (player.Name != "House")
@@ -332,7 +340,6 @@
                         Console.WriteLine($"{player.Name} got {player.Score} and lost ${player.Bet}.");
                     else
                     {
-
                         if (player.Score == houseScore)
                             Console.WriteLine($"{player.Name} got {player.Score} and are equal to the House and won back ${player.Bet}.");
                         else if (player.Score > houseScore)
@@ -345,19 +352,21 @@
         }
         /// <summary>
         /// Asks user to play again
+        /// Philip
         /// </summary>
         /// <returns>Bool value</returns>
         private static bool PlayAgain()
         {
             Console.WriteLine("Do you want to play another round?\n\n[1] Yes \n[2]  No");
-            Int32.TryParse(Console.ReadLine(), out int playAgain);
-            if (playAgain == 1)
+            //If user input is 1, a new games starts. Otherwise program quits
+            if (PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 2) == 1)
                 return true;
             else
                 return false;
         }
         /// <summary>
         /// Prints message if user gets 21 first round
+        /// Philip
         /// </summary>
         /// <param name="playerName">Name of player</param>
         /// <param name="playerBet">Players bet</param>
@@ -368,12 +377,13 @@
             Console.Clear();
         }
         /// <summary>
-        /// Places the bet.
+        /// Places the bet
+        /// Philip
         /// </summary>
         /// <param name="playerName">Name of the player.</param>
         /// <param name="tableMin">The table minimum.</param>
         /// <param name="tableMax">The table maximum.</param>
-        /// <returns></returns>
+        /// <returns>Int value</returns>
         private static int PlaceBet(string playerName, int tableMin, int tableMax)
         {
 

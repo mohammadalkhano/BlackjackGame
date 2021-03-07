@@ -10,6 +10,7 @@ namespace BlackJackGame.Models
     {
 
         public string CardSymbol { get; set; }
+        public string CardSymbolB { get; set; }
         public int CardNumber { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Card"/> class.
