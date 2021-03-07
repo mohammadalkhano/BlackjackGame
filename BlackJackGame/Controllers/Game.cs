@@ -4,11 +4,19 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class Game
+    public class Game // Philip
     {
+        //Basic game loop
+        public static bool GameRunning { get; set; } = true;
+        //Deck for playing Black Jack
         public static List<Models.Card> GameDeck { get; set; }
+        //Sets minBet and maxBet depending on what table user chooses
         public static List<int> Table { get; set; }
+        //List of active players + house/dealer
         public static List<Player> ActivePlayers { get; set; }
+        //Variable for each new card pulled from the deck
+        public static Models.Card NewCard { get; set; }
+        //Default ProTip (if user gets 21)
         public static string ProTip { get; set; } = "You got Black Jack, baby. Just sit tight.";
 
         //Sets starting point for printing cards on screen
@@ -23,21 +31,22 @@
         /// </summary>        
         public static void RunGame()
         {
-            var gameRunning = true;
+            //Prints game logo
             Output.Logo();
             Console.ReadKey();
 
-            while (gameRunning == true)
+            //Game loop starts
+            while (GameRunning == true)
             {
                 //Creates a random list containing 4 full decks (52*4 cards)
                 GameDeck = Deck.CreateMultipleDecks(Deck.GetDeck(), 4);
                 Console.Clear();
+                //Prints table menu
                 Output.ShowMenu();
 
                 //Sets minBet/maxBet based on user choise of table
                 Table = BlackJack.SelectTable();
                 Console.Clear();
-
 
                 Output.LogoMeddelande("How many players? (1-7)");
                 //Sets numbers of players according to user input
@@ -56,7 +65,7 @@
 
                 CheckWinners(ActivePlayers);
 
-                gameRunning = PlayAgain();
+                GameRunning = PlayAgain();
             }
         }
         /// <summary>
@@ -93,21 +102,21 @@
 
                 if (player.Name != "House")
                 {
-                    //Only runs loop until player has two cards
+                    //Runs loop until player has two cards
                     while (player.Cards.Count < 2)
                     {
 
                         Output.PlayerInfoOutput(players);
-                        var newCard = Deck.GetCard(GameDeck);
-                        player.Cards.Add(newCard);
-                        player.Score += newCard.CardNumber;
+                        NewCard = Deck.GetCard(GameDeck);
+                        player.Cards.Add(NewCard);
+                        player.Score += NewCard.CardNumber;
                         Output.LogoMeddelandeDouble($"{player.Name}, your total is {player.Score}", "Press any key to continiue...");
 
                         PrintPlayersCards(player, printX, printY);
 
                         Console.ReadLine();
                         Console.Clear();
-                        GameDeck.Remove(newCard);
+                        GameDeck.Remove(NewCard);
                     }
                     if (player.Score == 21)
                     {
@@ -125,9 +134,9 @@
                     while (player.Cards.Count < 1)
                     {
                         Output.PlayerInfoOutput(players);
-                        var newCard = Deck.GetCard(GameDeck);
-                        player.Cards.Add(newCard);
-                        player.Score += newCard.CardNumber;
+                        var NewCard = Deck.GetCard(GameDeck);
+                        player.Cards.Add(NewCard);
+                        player.Score += NewCard.CardNumber;
                         Output.LogoMeddelandeDouble($"{player.Name} total is {player.Score}", "Press any key to continiue...");
 
                         PrintPlayersCards(player, printX, printY);
@@ -135,7 +144,7 @@
                         PrintDarkCard(player, printX, printY);
                         Console.ReadLine();
                         Console.Clear();
-                        GameDeck.Remove(newCard);
+                        GameDeck.Remove(NewCard);
                     }
                 }
             }
@@ -161,14 +170,8 @@
                     {
                         if (player.Score < 21)
                         {
-                            if (player.Score < 10)
-                                proTip = "You should really take one more card!";
-                            else if(player.Score < 14)
-                                proTip = "I think you should take one more card";
-                            else if(player.Score < 17)
-                                proTip = "I'm thinking; stay!";
-                            else if(player.Score < 20)
-                                proTip = "For the love of God, STAY!";
+                            proTip = SetProTip(player);
+
                             Output.PlayerInfoOutput(players);
 
                             Output.LogoMeddelandeTripple($"{player.Name}, your total is {player.Score}.", "[1]Hit or [2]stay?", $"ProTp: {proTip}");
@@ -183,18 +186,16 @@
                             }
                             else
                             {
-                                var newCard = Deck.GetCard(GameDeck);
-                                player.Cards.Add(newCard);
-                                player.Score += newCard.CardNumber;
-                                GameDeck.Remove(newCard);
+                                var NewCard = Deck.GetCard(GameDeck);
+                                player.Cards.Add(NewCard);
+                                player.Score += NewCard.CardNumber;
+                                GameDeck.Remove(NewCard);
                                 Console.Clear();
                             }
                         }
                         else
                         {
-
                             player.Stay = true;
-
 
                             Output.PlayerInfoOutput(players);
                             Output.LogoMeddelandeDouble($"{player.Name}, your total is {player.Score}.", "Press any key to continiue...");
@@ -207,6 +208,27 @@
                 }
             }
         }
+        /// <summary>
+        /// Decides what ProTip to give depending on players total score
+        /// </summary>
+        /// <param name="player">Active player</param>
+        /// <returns>String value</returns>
+        private static string SetProTip(Player player)
+        {
+            string proTip;
+            if (player.Score < 10)
+                proTip = "You should really take one more card!";
+            else if (player.Score < 14)
+                proTip = "I think you should take one more card";
+            else if (player.Score < 17)
+                proTip = "Maybe ONE more card..?";
+            else if (player.Score < 19)
+                proTip = "I'm thinking; stay!";
+            else
+                proTip = "For the love of God, STAY!";
+            return proTip;
+        }
+
         /// <summary>
         /// Displays players cards
         /// </summary>
@@ -256,10 +278,10 @@
 
                         PrintPlayersCards(player, printX, printY);
 
-                        var newCard = Deck.GetCard(GameDeck);
-                        player.Cards.Add(newCard);
-                        player.Score += newCard.CardNumber;
-                        GameDeck.Remove(newCard);
+                        var NewCard = Deck.GetCard(GameDeck);
+                        player.Cards.Add(NewCard);
+                        player.Score += NewCard.CardNumber;
+                        GameDeck.Remove(NewCard);
                         Console.ReadKey();
                         Console.Clear();
                     }
@@ -295,16 +317,16 @@
                 if (player.Name != "House")
                 {
                     if (player.Score > 21)
-                        Console.WriteLine($"{player.Name} got {player.Score} and got busted.");
+                        Console.WriteLine($"{player.Name} got {player.Score} and lost ${player.Bet}.");
                     else
                     {
 
                         if (player.Score == houseScore)
-                            Console.WriteLine($"{player.Name} got {player.Score} and are equal to the House.");
+                            Console.WriteLine($"{player.Name} got {player.Score} and are equal to the House and won back ${player.Bet}.");
                         else if (player.Score > houseScore)
                             Console.WriteLine($"{player.Name} got {player.Score} and beat the House. You won ${player.Bet * 2}.");
                         else
-                            Console.WriteLine($"{player.Name} got {player.Score} and lost to the House.");
+                            Console.WriteLine($"{player.Name} got {player.Score} and lost ${player.Bet}.");
                     }
                 }
             }
