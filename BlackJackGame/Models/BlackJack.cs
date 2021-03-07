@@ -8,62 +8,6 @@ namespace BlackJackGame
 
     public static class BlackJack
     {
-        public static int GetCard(List<string> cards)
-        {
-
-            int score = 0;
-            var card = cards[cards.Count - 1];
-
-            var cardValue = card[0];
-
-            if (cardValue == 'J' || cardValue == 'Q' || cardValue == 'K' || cardValue == '1')
-                score = 10;
-            else if (cardValue == 'A')
-                score = 11;
-            else
-            {
-                var temp = card[0].ToString(); ;
-                Int32.TryParse(temp, out score);
-            }
-
-           // Game.GameDeck.Remove(card);
-
-            return score;
-        }
-
-        public static void CreatePlayer()
-        {
-            //throw new NotImplementedException();
-        }
-
-
-        public static int GiveCard(string openOrClose)
-        {
-            return 100;
-        }
-
-        public static void ResetDeck()
-        {
-
-            //throw new NotImplementedException();
-        }
-
-        public static void RunGame()
-        {
-
-        }
-
-        /// <summary>
-        /// Asks user to select how many players will be playing
-        /// </summary>
-        /// <returns>Int value</returns>
-        //public static int SeclectPlayers()
-        //{
-        //    Console.WriteLine("How many players?");
-
-        //    return PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 7);
-
-        //}
         /// <summary>
         /// Asks user to select a table. Each tables has own rules for min and max bet
         /// </summary>

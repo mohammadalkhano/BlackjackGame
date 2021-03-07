@@ -16,10 +16,10 @@
         public static int HousePrintX { get; set; } = 1;
         public static int HousePrintY { get; set; } = 90;
 
-
         /// <summary>
         /// Contains the game loop
-        /// </summary>
+        /// <summary>
+        
         public static void RunGame()
         {
             var gameRunning = true;
@@ -227,7 +227,6 @@
                 Output.DarkCard(printX, printY);
             }
         }
-
         /// <summary>
         /// Plays "House" automatic until score exceeds 16
         /// </summary>
@@ -324,7 +323,13 @@
             Console.ReadKey();
             Console.Clear();
         }
-
+        /// <summary>
+        /// Places the bet.
+        /// </summary>
+        /// <param name="playerName">Name of the player.</param>
+        /// <param name="tableMin">The table minimum.</param>
+        /// <param name="tableMax">The table maximum.</param>
+        /// <returns></returns>
         private static int PlaceBet(string playerName, int tableMin, int tableMax)
         {
 
