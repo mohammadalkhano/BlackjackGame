@@ -146,8 +146,6 @@ namespace BlackJackGame
                 else
                     Console.WriteLine($"{player.Name}\t\t{player.Bet}\t{player.Score}");
             }
-            Console.WriteLine();
-            Console.WriteLine(line);
         }
         public static void ShowMenu()
         {
