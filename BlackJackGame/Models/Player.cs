@@ -12,7 +12,10 @@ namespace BlackJackGame
         public string Name { get; set; }
         public int Score { get; set; }
         public bool Stay { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Player"/> class.
+        /// </summary>
+        /// <param name="playerName">Name of the player.</param>
         public Player(string playerName)
         {
             Bet = 0;
