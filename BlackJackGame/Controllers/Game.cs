@@ -185,11 +185,11 @@
                         if (player.Score < 21)
                         {
                             //Sets ProTip based on total score
-                            SetProTip(player);
+                            var proTip = SetProTip(player);
                             //Prints score board
                             Output.PlayerInfoOutput(players);
 
-                            Output.LogoMeddelandeTripple($"{player.Name}, your total is {player.Score}.", "[1]Hit or [2]stay?", $"ProTp: {ProTip}");
+                            Output.LogoMeddelandeTripple($"{player.Name}, your total is {player.Score}.", "[1]Hit or [2]stay?", $"ProTp: {proTip}");
 
                             PrintPlayersCards(player, printX, printY);
 
@@ -271,20 +271,21 @@
         /// Philip
         /// </summary>
         /// <param name="player">Active player</param>
-        public static void SetProTip(Player player)
-        {           
+        public static string SetProTip(Player player)
+        {
+            string proTip;
             if (player.Score < 10)
-                ProTip = "You should really take one more card!";
+                proTip = "You should really take one more card!";
             else if (player.Score < 14)
-                ProTip = "I think you should take one more card";
+                proTip = "I think you should take one more card";
             else if (player.Score < 17)
-                ProTip = "Maybe ONE more card..?";
+                proTip = "Maybe ONE more card..?";
             else if (player.Score < 19)
-                ProTip = "I'm thinking; stay!";
+                proTip = "I'm thinking; stay!";
             else
-                ProTip = "For the love of God, STAY!";
+                proTip = "For the love of God, STAY!";
+            return proTip;
         }
-
         /// <summary>
         /// Displays players cards
         /// Philip
