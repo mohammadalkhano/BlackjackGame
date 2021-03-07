@@ -1,11 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using BlackJackGame.Models;
 
 namespace BlackJackGame
-
-
-
 {
     public class Output
     {
@@ -87,6 +84,8 @@ namespace BlackJackGame
                 if (player.Name != "House")
 
                     Console.WriteLine($"{player.Name}\t{player.Bet}\t{player.Score}");
+                else
+                    Console.WriteLine($"{player.Name}\t\t{player.Bet}\t{player.Score}");
             }
             Console.WriteLine();
             Console.WriteLine(line);
@@ -150,7 +149,6 @@ namespace BlackJackGame
 
         public static void PrintCard(int y, int x, int value, string symbol)
         {
-
             PrintAt(y++, x, "┌─────────┐");
             PrintAt(y++, x, $"│{value,-6}   │");
             PrintAt(y++, x, "│         │");
@@ -161,6 +159,17 @@ namespace BlackJackGame
             PrintAt(y++, x, $"│   {value,6}│");
             PrintAt(y++, x, "└─────────┘");
         }
-
+        public static void DarkCard(int y, int x)
+        {
+            PrintAt(y++, x, "┌─────────┐");
+            PrintAt(y++, x, "│LLLLLLLLL│");
+            PrintAt(y++, x, "│LLLLLLLLL│");
+            PrintAt(y++, x, "│LLLLLLLLL│");
+            PrintAt(y++, x, "│LLLLLLLLL│");
+            PrintAt(y++, x, "│LLLLLLLLL│");
+            PrintAt(y++, x, "│LLLLLLLLL│");
+            PrintAt(y++, x, "│LLLLLLLLL│");
+            PrintAt(y++, x, "└─────────┘");
+        }
     }
 }
