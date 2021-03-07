@@ -10,7 +10,7 @@ namespace BlackJackGame
         static void Main(string[] args)
         {
             Console.OutputEncoding= Encoding.UTF8;
-            Console.SetWindowSize(120, 40);
+            Console.SetWindowSize(120,40);
             Game.RunGame();
         }
     }
