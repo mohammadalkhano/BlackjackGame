@@ -107,43 +107,57 @@
                     {
 
                         Output.PlayerInfoOutput(players);
+                        //Returns a random card from list
                         NewCard = Deck.GetCard(GameDeck);
+                        //Adds card to players hand
                         player.Cards.Add(NewCard);
+                        //Adds score to players total
                         player.Score += NewCard.CardNumber;
                         Output.LogoMeddelandeDouble($"{player.Name}, your total is {player.Score}", "Press any key to continiue...");
 
+                        //Prints players cards to console
                         PrintPlayersCards(player, printX, printY);
 
                         Console.ReadLine();
                         Console.Clear();
+                        //Removes card from deck
                         GameDeck.Remove(NewCard);
                     }
                     if (player.Score == 21)
                     {
+                        //If player gets 21 in first give, its automatic Black Jack (wins x 2.5)
                         BlackJackWin(player.Name, player.Bet);
                     }
                 }
             }
             foreach (var player in players)
             {
+                //Sets starting position for dealers cards
                 var printX = HousePrintX + players.Count;
                 var printY = HousePrintY;
 
+                //Plays house/dealer
                 if (player.Name == "House")
                 {
                     while (player.Cards.Count < 1)
                     {
                         Output.PlayerInfoOutput(players);
-                        var NewCard = Deck.GetCard(GameDeck);
+                        //Returns a random card from list
+                        NewCard = Deck.GetCard(GameDeck);
+                        //Adds card to dealers hand
                         player.Cards.Add(NewCard);
+                        //Adds score to dealers total
                         player.Score += NewCard.CardNumber;
                         Output.LogoMeddelandeDouble($"{player.Name} total is {player.Score}", "Press any key to continiue...");
 
+                        //Prints dealers card to console
                         PrintPlayersCards(player, printX, printY);
                         Console.ReadLine();
+                        //Prints one card upside down
                         PrintDarkCard(player, printX, printY);
                         Console.ReadLine();
                         Console.Clear();
+                        //Removes card from deck
                         GameDeck.Remove(NewCard);
                     }
                 }
@@ -155,8 +169,6 @@
         /// <param name="players">List of active players</param>
         private static void PlayPlayers(List<Player> players)
         {
-            //var rand = new Random();
-
             foreach (var player in players)
             {
                 var printX = PlayerPrintX + players.Count;
