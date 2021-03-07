@@ -297,7 +297,10 @@
         {
             for (int i = 0; i < player.Cards.Count; i++)
             {
-                Output.PrintCard(printX, printY, player.Cards[i].CardNumber, player.Cards[i].CardSymbol);
+                if (player.Cards[i].CardSymbolB == null)
+                    Output.PrintCard(printX, printY, player.Cards[i].CardNumber.ToString(), player.Cards[i].CardSymbol);
+                else
+                    Output.PrintCard(printX, printY, player.Cards[i].CardSymbolB.ToString(), player.Cards[i].CardSymbol);
                 printX += 1;
                 printY += 6;
             }
@@ -395,6 +398,7 @@
         }
         /// <summary>
         /// Asks user to select a table. Each tables has own rules for min and max bet
+        /// Philip
         /// </summary>
         /// <returns>List containing min and max value</returns>
         public static List<int> SelectTable()

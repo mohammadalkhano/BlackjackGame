@@ -85,10 +85,10 @@ namespace BlackJackGame
         {
             var rand = new Random();
             Card card = cards[rand.Next(0, cards.Count - 1)];
-            //if (card.CardNumber > 10)
-            //{
-            //    card.CardNumber = 10;
-            //}
+            if (card.CardNumber > 10)
+            {
+                card.CardNumber = 10;
+            }
 
             return card;
         }

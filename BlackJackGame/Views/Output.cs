@@ -223,7 +223,7 @@ namespace BlackJackGame
         /// <param name="x">x value</param>
         /// <param name="value">Cards value</param>
         /// <param name="symbol">Card symbol</param>
-        public static void PrintCard(int y, int x, int value, string symbol)
+        public static void PrintCard(int y, int x, string value, string symbol)
         {
             PrintAt(y++, x, "┌─────────┐");
             PrintAt(y++, x, $"│{value,-6}   │");
