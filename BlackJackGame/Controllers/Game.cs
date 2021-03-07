@@ -53,18 +53,20 @@
                 ActivePlayers = Player.CreatePlayer(PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 7));
 
                 Console.Clear();
-
+                //Each player make their bets
                 PlaceBets(ActivePlayers, Table[0], Table[1]);
-
+                //Each player gets to cards, dealer/house gets one
                 FirstGive(ActivePlayers);
                 Console.Clear();
+                //Each players play their turn
                 PlayPlayers(ActivePlayers);
                 Console.Clear();
+                //Dealer play it's turn
                 PlayHouse(ActivePlayers);
                 Console.Clear();
-
+                //Automatic check for winners
                 CheckWinners(ActivePlayers);
-
+                //Asks if user wants to play again
                 GameRunning = PlayAgain();
             }
         }
@@ -105,7 +107,7 @@
                     //Runs loop until player has two cards
                     while (player.Cards.Count < 2)
                     {
-
+                        //Prints score board
                         Output.PlayerInfoOutput(players);
                         //Returns a random card from list
                         NewCard = Deck.GetCard(GameDeck);
@@ -141,6 +143,7 @@
                 {
                     while (player.Cards.Count < 1)
                     {
+                        //Prints score board
                         Output.PlayerInfoOutput(players);
                         //Returns a random card from list
                         NewCard = Deck.GetCard(GameDeck);
@@ -171,18 +174,17 @@
         {
             foreach (var player in players)
             {
-
                 var printX = PlayerPrintX + players.Count;
                 var printY = PlayerPrintY;
-
                 if (player.Name != "House")
                 {
                     while (player.Stay == false)
                     {
                         if (player.Score < 21)
                         {
+                            //Sets ProTip based on total score
                             SetProTip(player);
-
+                            //Prints score board
                             Output.PlayerInfoOutput(players);
 
                             Output.LogoMeddelandeTripple($"{player.Name}, your total is {player.Score}.", "[1]Hit or [2]stay?", $"ProTp: {ProTip}");
@@ -214,7 +216,6 @@
                         {
                             //Player total score is 21 or more
                             player.Stay = true;
-
                             Output.PlayerInfoOutput(players);
                             Output.LogoMeddelandeDouble($"{player.Name}, your total is {player.Score}.", "Press any key to continiue...");
                             PrintPlayersCards(player, printX, printY);
@@ -228,6 +229,7 @@
         }
         /// <summary>
         /// Plays "House" automatic until score exceeds 16
+        /// Philip
         /// </summary>
         /// <param name="players">List of active players</param>
         private static void PlayHouse(List<Player> players)
@@ -245,14 +247,13 @@
 
                         PrintPlayersCards(player, printX, printY);
 
-                        var NewCard = Deck.GetCard(GameDeck);
+                        NewCard = Deck.GetCard(GameDeck);
                         player.Cards.Add(NewCard);
                         player.Score += NewCard.CardNumber;
                         GameDeck.Remove(NewCard);
                         Console.ReadKey();
                         Console.Clear();
                     }
-
                     Output.PlayerInfoOutput(players);
                     Output.LogoMeddelandeDouble($"{player.Name} total is {player.Score}.", "Press any key to continiue");
 
