@@ -9,6 +9,10 @@ namespace BlackJackGame
 {
     public class Output
     {
+        /// <summary>
+        /// Log => Is printing  the Log 
+        /// Zia
+        /// </summary>
         public static void Logo()
         {
             var line = new string('=', 120);
@@ -24,7 +28,11 @@ namespace BlackJackGame
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
             Console.WriteLine($"{line}\n");
         }
-
+        /// <summary>
+        /// LogoMeddelande => To print the one line masseges insaid av logo 
+        /// Zia
+        /// </summary>
+        /// <param name="meddelande">Sending en string</param>
         public static void LogoMeddelande(string meddelande)
         {
             var line = new string('=', 120);
@@ -47,6 +55,12 @@ namespace BlackJackGame
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
             Console.WriteLine($"{line}\n");
         }
+
+        /// <summary>
+        /// LogoMeddelandeDouble => To print the two line masseges insaid av logo 
+        /// </summary>
+        /// <param name="line1">Sending the string massege in line one</param>
+        /// <param name="line2">Sending the string massege in line one</param>
         public static void LogoMeddelandeDouble(string line1, string line2)
         {
             var line = new string('=', 120);
@@ -77,6 +91,12 @@ namespace BlackJackGame
             Console.WriteLine($"{line}\n");
         }
 
+        /// <summary>
+        /// LogoMeddelandeTripple => To print the three lines masseges insaid av logo 
+        /// </summary>
+        /// <param name="line1">Sending the string massege in line one</param>
+        /// <param name="line2">Sending the string massege in line two</param>
+        /// <param name="line3">Sending the string massege in line three</param>
         public static void LogoMeddelandeTripple(string line1, string line2, string line3)
         {
             var line = new string('=', 120);
@@ -137,6 +157,10 @@ namespace BlackJackGame
             ShowTable();
         }
 
+        /// <summary>
+        /// Agelimit => Asking for Age, Agelimit is 18 to play the game.
+        /// Zia
+        /// </summary>
         private static void Agelimit()
         {
             var agelimit = false;
@@ -165,6 +189,11 @@ namespace BlackJackGame
                 }
             }
         }
+
+        /// <summary>
+        /// ShowTable => printig Tables informations
+        /// Zia
+        /// </summary>
         public static void ShowTable()
         {
             Console.Clear();
