@@ -20,7 +20,7 @@
         public static string ProTip { get; set; }
 
         //Sets starting point for printing cards on screen
-        public static int PlayerPrintX { get; set; } = 17;
+        public static int PlayerPrintX { get; set; } = 16;
         public static int PlayerPrintY { get; set; } = 2;
         public static int HousePrintX { get; set; } = 1;
         public static int HousePrintY { get; set; } = 90;
