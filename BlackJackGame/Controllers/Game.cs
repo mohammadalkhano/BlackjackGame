@@ -11,7 +11,7 @@
         public static List<Player> ActivePlayers { get; set; }
 
         //Sets starting point for printing cards on screen
-        public static int PlayerPrintX { get; set; } = 18; 
+        public static int PlayerPrintX { get; set; } = 18;
         public static int PlayerPrintY { get; set; } = 2;
         public static int HousePrintX { get; set; } = 1;
         public static int HousePrintY { get; set; } = 90;
@@ -39,6 +39,7 @@
 
 
                 Output.LogoMeddelande("How many players? (1-7)");
+                //Sets numbers of players according to user input
                 ActivePlayers = Player.CreatePlayer(PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 7));
 
                 Console.Clear();
@@ -58,7 +59,7 @@
             }
         }
         /// <summary>
-        /// Asks user to place their bet between min and max
+        /// Asks all players to place their bet between min and max
         /// </summary>
         /// <param name="players">List of active players</param>
         /// <param name="minBet">Min amount of bet according to table rules</param>
@@ -67,11 +68,10 @@
         {
             foreach (var player in players)
             {
-
                 Output.PlayerInfoOutput(players);
+                //Only asks players to place their bets, not House
                 if (player.Name != "House")
                 {
-                    player.Bet = 0;
                     player.Bet = PlaceBet(player.Name, minBet, maxBet);
                 }
                 Console.Clear();
@@ -84,25 +84,23 @@
         /// <param name="players">List of active players</param>
         private static void FirstGive(List<Player> players)
         {
-            var rand = new Random();
-
             foreach (var player in players)
             {
-                player.Score = 0;
-                player.Stay = false;
+                //Sets printing points for cards 
+                var printX = PlayerPrintX + players.Count;
+                var printY = PlayerPrintY;
+
                 if (player.Name != "House")
                 {
-
+                    //Only runs loop until player has two cards
                     while (player.Cards.Count < 2)
                     {
-                        var printX = PlayerPrintX + players.Count;
-                        var printY = PlayerPrintY;
 
                         Output.PlayerInfoOutput(players);
                         var newCard = Deck.GetCard(GameDeck);
                         player.Cards.Add(newCard);
                         player.Score += newCard.CardNumber;
-                        Output.LogoMeddelandeDouble($"{player.Name}, your total is {player.Score}", "Press any key to continiue");
+                        Output.LogoMeddelandeDouble($"{player.Name}, your total is {player.Score}", "Press any key to continiue...");
 
                         PrintPlayersCards(player, printX, printY);
 
@@ -123,21 +121,17 @@
 
                 if (player.Name == "House")
                 {
-
                     while (player.Cards.Count < 1)
-                    {
-                        printX = 1 + players.Count;
-                        printY = 90;
-
+                    {                       
                         Output.PlayerInfoOutput(players);
                         var newCard = Deck.GetCard(GameDeck);
                         player.Cards.Add(newCard);
                         player.Score += newCard.CardNumber;
-                        Output.LogoMeddelandeDouble($"{player.Name} total is {player.Score}", "Press any key to continiue");
-                        //foreach (var card in player.Cards)
+                        Output.LogoMeddelandeDouble($"{player.Name} total is {player.Score}", "Press any key to continiue...");
 
                         PrintPlayersCards(player, printX, printY);
-
+                        Console.ReadLine();
+                        PrintDarkCard(player, printX, printY);
                         Console.ReadLine();
                         Console.Clear();
                         GameDeck.Remove(newCard);
@@ -203,7 +197,12 @@
                 }
             }
         }
-
+        /// <summary>
+        /// Displays players cards
+        /// </summary>
+        /// <param name="player">Active player</param>
+        /// <param name="printX">Where on the x-axis the card will be printed</param>
+        /// <param name="printY">Where on the y-axis the card will be printed</param>
         private static void PrintPlayersCards(Player player, int printX, int printY)
         {
             for (int i = 0; i < player.Cards.Count; i++)
@@ -213,6 +212,21 @@
                 printY += 6;
             }
         }
+        /// <summary>
+        /// Displays one card with no value ("dark" or upside down)
+        /// </summary>
+        /// <param name="player">Active player(House)</param>
+        /// <param name="printX">Where on the x-axis the card will be printed</param>
+        /// <param name="printY">Where on the y-axis the card will be printed</param>
+        private static void PrintDarkCard(Player player, int printX, int printY)
+        {
+            for (int i = 0; i < player.Cards.Count; i++)
+            {
+                printX += 1;
+                printY += 6;
+                Output.DarkCard(printX, printY);
+            }
+        }
 
         /// <summary>
         /// Plays "House" automatic until score exceeds 16
@@ -220,7 +234,6 @@
         /// <param name="players">List of active players</param>
         private static void PlayHouse(List<Player> players)
         {
-
             foreach (var player in players)
             {
                 var printX = HousePrintX + players.Count;
@@ -229,13 +242,10 @@
                 {
                     while (player.Score < 17)
                     {
-
-
                         Output.PlayerInfoOutput(players);
                         Output.LogoMeddelande($"{player.Name} total is {player.Score}.");
 
                         PrintPlayersCards(player, printX, printY);
-
 
                         var newCard = Deck.GetCard(GameDeck);
                         player.Cards.Add(newCard);
@@ -252,7 +262,6 @@
 
                     Console.ReadKey();
                     Console.Clear();
-
                 }
             }
         }
@@ -290,7 +299,6 @@
                     }
                 }
             }
-
         }
         /// <summary>
         /// Asks user to play again
