@@ -7,11 +7,19 @@
     public class Game
     {
         public static List<Models.Card> GameDeck { get; set; }
-        public static int PlayerPrintX { get; set; } = 17;
+        public static List<int> Table { get; set; }
+        public static List<Player> ActivePlayers { get; set; }
+
+        //Sets starting point for printing cards on screen
+        public static int PlayerPrintX { get; set; } = 18; 
         public static int PlayerPrintY { get; set; } = 2;
         public static int HousePrintX { get; set; } = 1;
         public static int HousePrintY { get; set; } = 90;
 
+
+        /// <summary>
+        /// Contains the game loop
+        /// </summary>
         public static void RunGame()
         {
             var gameRunning = true;
@@ -20,31 +28,31 @@
 
             while (gameRunning == true)
             {
+                //Creates a random list containing 4 full decks (52*4 cards)
                 GameDeck = Deck.CreateMultipleDecks(Deck.GetDeck(), 4);
                 Console.Clear();
                 Output.ShowMenu();
 
-                var table = BlackJack.SelectTable();
-
-                Deck.GetCard(GameDeck);
-
+                //Sets minBet/maxBet based on user choise of table
+                Table = BlackJack.SelectTable();
                 Console.Clear();
+
 
                 Output.LogoMeddelande("How many players? (1-7)");
-                var activePlayers = Player.CreatePlayer(PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 7));
+                ActivePlayers = Player.CreatePlayer(PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 7));
 
                 Console.Clear();
 
-                PlaceBets(activePlayers, table[0], table[1]);
+                PlaceBets(ActivePlayers, Table[0], Table[1]);
 
-                FirstGive(activePlayers);
+                FirstGive(ActivePlayers);
                 Console.Clear();
-                PlayPlayers(activePlayers);
+                PlayPlayers(ActivePlayers);
                 Console.Clear();
-                PlayHouse(activePlayers);
+                PlayHouse(ActivePlayers);
                 Console.Clear();
 
-                CheckWinners(activePlayers);
+                CheckWinners(ActivePlayers);
 
                 gameRunning = PlayAgain();
             }
@@ -116,7 +124,7 @@
                 if (player.Name == "House")
                 {
 
-                    while (player.Cards.Count < 2)
+                    while (player.Cards.Count < 1)
                     {
                         printX = 1 + players.Count;
                         printY = 90;
