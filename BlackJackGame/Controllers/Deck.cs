@@ -73,9 +73,16 @@ namespace BlackJackGame
 
         public static Card GetCard(List<Card> cards)
         {
-            Card card = cards[^1];
-            cards.RemoveAt(cards.Count - 1);
+            var rand = new Random();
+            Card card = cards[rand.Next(0, cards.Count - 1)];   
+            
             return card;
         }
+
+        public static void RemoveUsedCard (Card usedCard)
+        {
+            Game.GameDeck.Remove(usedCard);
+        }
+        
     }
 }
