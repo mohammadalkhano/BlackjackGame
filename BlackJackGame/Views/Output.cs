@@ -165,13 +165,13 @@ namespace BlackJackGame
         public static void DarkCard(int y, int x)
         {
             PrintAt(y++, x, "┌─────────┐");
-            PrintAt(y++, x, "│/////////│");
-            PrintAt(y++, x, "│\\\\\\\\\\\\\\\\\\│");
-            PrintAt(y++, x, "│/////////│");
-            PrintAt(y++, x, "│         │");
-            PrintAt(y++, x, "│         │");
-            PrintAt(y++, x, "│         │");
-            PrintAt(y++, x, "│         │");
+            PrintAt(y++, x, "│LLLLLLLLL│");
+            PrintAt(y++, x, "│LLLLLLLLL│");
+            PrintAt(y++, x, "│LLLLLLLLL│");
+            PrintAt(y++, x, "│LLLLLLLLL│");
+            PrintAt(y++, x, "│LLLLLLLLL│");
+            PrintAt(y++, x, "│LLLLLLLLL│");
+            PrintAt(y++, x, "│LLLLLLLLL│");
             PrintAt(y++, x, "└─────────┘");
         }
     }
