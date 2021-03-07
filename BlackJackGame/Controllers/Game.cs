@@ -9,17 +9,18 @@
         public static List<Models.Card> GameDeck { get; set; }
         public static List<int> Table { get; set; }
         public static List<Player> ActivePlayers { get; set; }
+        public static string ProTip { get; set; } = "You got Black Jack, baby. Just sit tight.";
 
         //Sets starting point for printing cards on screen
-        public static int PlayerPrintX { get; set; } = 18;
+        public static int PlayerPrintX { get; set; } = 17;
         public static int PlayerPrintY { get; set; } = 2;
         public static int HousePrintX { get; set; } = 1;
         public static int HousePrintY { get; set; } = 90;
 
         /// <summary>
         /// Contains the game loop
-        /// <summary>
-        
+        /// Philip
+        /// <summary>        
         public static void RunGame()
         {
             var gameRunning = true;
@@ -122,7 +123,7 @@
                 if (player.Name == "House")
                 {
                     while (player.Cards.Count < 1)
-                    {                       
+                    {
                         Output.PlayerInfoOutput(players);
                         var newCard = Deck.GetCard(GameDeck);
                         player.Cards.Add(newCard);
@@ -145,23 +146,31 @@
         /// <param name="players">List of active players</param>
         private static void PlayPlayers(List<Player> players)
         {
-            var rand = new Random();
+            //var rand = new Random();
 
             foreach (var player in players)
             {
                 var printX = PlayerPrintX + players.Count;
                 var printY = PlayerPrintY;
+                var proTip = ProTip;
 
                 if (player.Name != "House")
                 {
+                    
                     while (player.Stay == false)
                     {
-
                         if (player.Score < 21)
                         {
-
+                            if (player.Score < 10)
+                                proTip = "You should really take one more card!";
+                            else if(player.Score < 14)
+                                proTip = "Hmm... I think you should take one more card";
+                            else if(player.Score < 17)
+                                proTip = "I'm thinking; stay!";
+                            else if(player.Score < 20)
+                                proTip = "For the love of God, STAY!";
                             Output.PlayerInfoOutput(players);
-                            Output.LogoMeddelandeDouble($"{player.Name}, your total is {player.Score}.", "[1]Hit or [2]stay?");
+                            Output.LogoMeddelandeTripple($"{player.Name}, your total is {player.Score}.", "[1]Hit or [2]stay?", $"ProTp: {proTip}");
 
                             PrintPlayersCards(player, printX, printY);
 

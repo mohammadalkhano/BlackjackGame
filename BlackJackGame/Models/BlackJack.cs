@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 namespace BlackJackGame
 {
-
-
-
     public static class BlackJack
     {
         /// <summary>
@@ -15,9 +12,7 @@ namespace BlackJackGame
         public static List<int> SelectTable()
         {
             Console.WriteLine();
-
             var list = new List<int>();
-
             switch (PlayerInput.CheckMinMaxInput(PlayerInput.InvalidInputCheck(), 1, 4))
             {
                 case 1:
@@ -37,9 +32,7 @@ namespace BlackJackGame
                     list.Add(10000);
                     break;
             }
-
             return list;
         }
-
     }
 }
