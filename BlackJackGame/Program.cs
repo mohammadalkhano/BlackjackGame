@@ -45,8 +45,6 @@ namespace BlackJackGame
 
             Game.RunGame();
 
-            Console.Read();
-
 
         }
     }
