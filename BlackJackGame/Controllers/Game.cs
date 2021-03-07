@@ -208,6 +208,8 @@
                                 player.Cards.Add(NewCard);
                                 //Adds score to players total
                                 player.Score += NewCard.CardNumber;
+                                //Check if player has Ace on hand
+                                CheckAceValue(player);
                                 //Removes card from deck
                                 GameDeck.Remove(NewCard);
                                 Console.Clear();
@@ -229,6 +231,26 @@
                 }
             }
         }
+        /// <summary>
+        /// Check if user has Ace on hand and changes its value to 1 if total score is >21
+        /// </summary>
+        /// <param name="player">Active player</param>
+        private static void CheckAceValue(Player player)
+        {
+            if (player.Score > 21)
+            {
+                player.Score = 0;
+                foreach (var item in player.Cards)
+                {
+                    if (item.CardSymbolB == "A")
+                    {
+                        item.CardNumber = 1;
+                    }
+                    player.Score += item.CardNumber;
+                }
+            }
+        }
+
         /// <summary>
         /// Plays "House" automatic until score exceeds 16
         /// Philip
@@ -252,6 +274,8 @@
                         NewCard = Deck.GetCard(GameDeck);
                         player.Cards.Add(NewCard);
                         player.Score += NewCard.CardNumber;
+                        //Check if player has Ace on hand
+                        CheckAceValue(player);
                         GameDeck.Remove(NewCard);
                         Console.ReadKey();
                         Console.Clear();
