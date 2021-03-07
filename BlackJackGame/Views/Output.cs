@@ -77,23 +77,57 @@ namespace BlackJackGame
             Console.WriteLine($"{line}\n");
         }
 
-        public static void PlayerInfoOutput(List<Player> players)
+        public static void LogoMeddelandeTripple(string line1, string line2, string line3)
         {
             var line = new string('=', 120);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"{line}\n");
+            Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
+            Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
+            Console.WriteLine("                             *  #                                                   #  *");
+            Console.Write("                             *  #");
+            for (int i = 0; i < (51 - line1.Length) / 2; i++)
+                Console.Write(" ");
+            Console.Write(line1);
+            for (int i = 0; i < (52 - line1.Length) / 2; i++)
+                Console.Write(" ");
+            Console.WriteLine("#  *");
+            Console.Write("                             *  #");
+            for (int i = 0; i < (51 - line2.ToString().Length) / 2; i++)
+                Console.Write(" ");
+            Console.Write(line2);
+            for (int i = 0; i < (52 - line2.ToString().Length) / 2; i++)
+                Console.Write(" ");
+            Console.WriteLine("#  *");
+            Console.Write("                             *  #");
+            for (int i = 0; i < (51 - line3.ToString().Length) / 2; i++)
+                Console.Write(" ");
+            Console.Write(line3);
+            for (int i = 0; i < (52 - line3.ToString().Length) / 2; i++)
+                Console.Write(" ");
+            Console.WriteLine("#  *");
+            Console.WriteLine("                             *  #                                                   #  *");
+            Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
+            Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
+            Console.WriteLine($"{line}\n");
+        }
 
+        /// <summary>
+        /// Prints information about players bet and score to console
+        /// Philip
+        /// </summary>
+        /// <param name="players">List of active players</param>
+        public static void PlayerInfoOutput(List<Player> players)
+        {
             Console.WriteLine($"Player Name\tBet\tScore\n");
             foreach (var player in players)
             {
                 if (player.Name != "House")
-
                     Console.WriteLine($"{player.Name}\t{player.Bet}\t{player.Score}");
                 else
                     Console.WriteLine($"{player.Name}\t\t{player.Bet}\t{player.Score}");
             }
             Console.WriteLine();
-            Console.WriteLine(line);
-
-
         }
 
         public static void ShowMenu()
@@ -139,17 +173,26 @@ namespace BlackJackGame
             Console.Clear();
             LogoMeddelande("Select Table");
             Console.WriteLine("\n [Table (1) \t Min-Bet: 100 \t Max-Bet 1000 ]\n [Table (2) \t Min-Bet: 100 \t Max-Bet 2000 ]\n [Table (3) \t Min-Bet: 200 \t Max-Bet 5000 ]\n [Table (4) \t Min-Bet: 1000 \t Max-Bet 10000]");
-
         }
-
-
+        /// <summary>
+        /// Marcus posted this in Discord, not our own method
+        /// </summary>
+        /// <param name="y">Where to start printing on the x-axis</param>
+        /// <param name="x">Where to start printing on the y-axis</param>
+        /// <param name="text">Text to print</param>
         private static void PrintAt(int y, int x, string text)
         {
             Console.CursorTop = y;
             Console.CursorLeft = x;
             Console.Write(text);
         }
-
+        /// <summary>
+        /// Marcus posted this in Discord, not our own method
+        /// </summary>
+        /// <param name="y">y-value</param>
+        /// <param name="x">x-value</param>
+        /// <param name="value">Card value</param>
+        /// <param name="symbol">Card symbol</param>
         public static void PrintCard(int y, int x, int value, string symbol)
         {
             PrintAt(y++, x, "┌─────────┐");
@@ -162,6 +205,12 @@ namespace BlackJackGame
             PrintAt(y++, x, $"│   {value,6}│");
             PrintAt(y++, x, "└─────────┘");
         }
+        /// <summary>
+        /// Prints a card turned upside down as House's second card
+        /// Philip
+        /// </summary>
+        /// <param name="y"></param>
+        /// <param name="x"></param>
         public static void DarkCard(int y, int x)
         {
             PrintAt(y++, x, "┌─────────┐");
