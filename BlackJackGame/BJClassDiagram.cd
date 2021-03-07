@@ -1,42 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="BlackJackGame.Player">
-    <Position X="2.5" Y="2" Width="2" />
+    <Position X="1.25" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAEAAAAAAAgCAAAAAAQIAAAAAAAQAAAAAAAAAAA=</HashCode>
       <FileName>Models\Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BlackJackGame.Deck">
-    <Position X="5.75" Y="2" Width="1.5" />
+    <Position X="5.25" Y="1" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAQAAAAAAAAAAAAAgAAAAAQAAAAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAYQAgCAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\Deck.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BlackJackGame.PlayerInput">
     <Position X="7.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
       <FileName>Controllers\PlayerInput.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BlackJackGame.Output">
     <Position X="10" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <HashCode>IAAAQQAAAAAQAAAAAAAAEAAAGAAAAAAAAAACAAABAAA=</HashCode>
       <FileName>Views\Output.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BlackJackGame.Game">
     <Position X="12.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
-      <FileName>Game.cs</FileName>
+      <HashCode>AAAggAAABAAAAAAAAAAAACAACAAAIAAAAAQkAAQAAJQ=</HashCode>
+      <FileName>Controllers\Game.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="BlackJackGame.Result">
-    <Position X="4.25" Y="4.25" Width="1.5" />
+    <Position X="3.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAAAAAAAIAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\Result.cs</FileName>

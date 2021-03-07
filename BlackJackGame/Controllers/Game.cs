@@ -11,7 +11,9 @@
         public static int PlayerPrintY { get; set; } = 2;
         public static int HousePrintX { get; set; } = 1;
         public static int HousePrintY { get; set; } = 90;
-
+        /// <summary>
+        /// Runs the game.
+        /// </summary>
         public static void RunGame()
         {
             var gameRunning = true;
@@ -195,7 +197,12 @@
                 }
             }
         }
-
+        /// <summary>
+        /// Prints the players cards.
+        /// </summary>
+        /// <param name="player">The player.</param>
+        /// <param name="printX">The print x.</param>
+        /// <param name="printY">The print y.</param>
         private static void PrintPlayersCards(Player player, int printX, int printY)
         {
             for (int i = 0; i < player.Cards.Count; i++)
@@ -205,7 +212,6 @@
                 printY += 6;
             }
         }
-
         /// <summary>
         /// Plays "House" automatic until score exceeds 16
         /// </summary>
@@ -308,7 +314,13 @@
             Console.ReadKey();
             Console.Clear();
         }
-
+        /// <summary>
+        /// Places the bet.
+        /// </summary>
+        /// <param name="playerName">Name of the player.</param>
+        /// <param name="tableMin">The table minimum.</param>
+        /// <param name="tableMax">The table maximum.</param>
+        /// <returns></returns>
         private static int PlaceBet(string playerName, int tableMin, int tableMax)
         {
 
