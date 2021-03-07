@@ -2,19 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+
 
 namespace BlackJackGame
 {
     public static class Deck
     {
-        //private static string[] cards { get; set; } = new string[13] { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Q", "J", "K" };
-        //private static string[] cardType { get; set; } = new string[4] { "♥", "♣", "♠", "♦" };
+        
         private static int[] Cards { get; set; } = new int[13] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
         private static string[] CardType { get; set; } = new string[4] { "♥", "♣", "♠", "♦" };
         public static List<Card> CardsForGame { get; set; } = Deck.CreateMultipleDecks(Deck.GetDeck(), 4);
-
-
 
         /// <summary>
         /// Generates the deck(52 Cards).
@@ -79,10 +76,6 @@ namespace BlackJackGame
             return card;
         }
 
-        public static void RemoveUsedCard (Card usedCard)
-        {
-            Game.GameDeck.Remove(usedCard);
-        }
         
     }
 }
