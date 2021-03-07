@@ -96,8 +96,10 @@ namespace BlackJackGame
         /// <param name="line2">Sending the string massege in line two</param>
         /// <param name="line3">Sending the string massege in line three</param>
         public static void LogoMeddelandeTripple(string line1, string line2, string line3)
-        {
-            var line = new string('=', 120);
+
+            {
+            var line = new string('=',120);
+
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"{line}\n");
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
@@ -128,7 +130,9 @@ namespace BlackJackGame
             Console.WriteLine("                             *  # # # # # # # # # # # # # # # # # # # # # # # # # # #  *");
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
             Console.WriteLine($"{line}\n");
-        }
+
+            }
+
 
         public static void PlayerInfoOutput(List<Player> players)
 
