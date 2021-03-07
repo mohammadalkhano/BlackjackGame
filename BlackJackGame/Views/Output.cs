@@ -96,9 +96,8 @@ namespace BlackJackGame
         /// <param name="line2">Sending the string massege in line two</param>
         /// <param name="line3">Sending the string massege in line three</param>
         public static void LogoMeddelandeTripple(string line1, string line2, string line3)
-
-            {
-            var line = new string('=',120);
+        {
+            var line = new string('=', 120);
 
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"{line}\n");
@@ -131,19 +130,20 @@ namespace BlackJackGame
             Console.WriteLine("                             * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
             Console.WriteLine($"{line}\n");
 
-            }
+        }
 
-
+        /// <summary>
+        /// Prints a score board in console with players
+        /// name, bets and total score  /Philip
+        /// </summary>
+        /// <param name="players">List of players</param>
         public static void PlayerInfoOutput(List<Player> players)
-
         {
             var line = new string('=', 120);
-
             Console.WriteLine($"Player Name\tBet\tScore\n");
             foreach (var player in players)
             {
                 if (player.Name != "House")
-
                     Console.WriteLine($"{player.Name}\t{player.Bet}\t{player.Score}");
                 else
                     Console.WriteLine($"{player.Name}\t\t{player.Bet}\t{player.Score}");
@@ -210,14 +210,27 @@ namespace BlackJackGame
 
         }
 
-
+        /// <summary>
+        /// This method was posted by Marcus in Discord
+        /// Prints card to console
+        /// </summary>
+        /// <param name="y">y value</param>
+        /// <param name="x">x value</param>
+        /// <param name="text">Text to be printed</param>
         private static void PrintAt(int y, int x, string text)
         {
             Console.CursorTop = y;
             Console.CursorLeft = x;
             Console.Write(text);
         }
-
+        /// <summary>
+        /// This method was posted by Marcus in Discord
+        /// Prints card to console
+        /// </summary>
+        /// <param name="y">y value</param>
+        /// <param name="x">x value</param>
+        /// <param name="value">Cards value</param>
+        /// <param name="symbol">Card symbol</param>
         public static void PrintCard(int y, int x, int value, string symbol)
         {
             PrintAt(y++, x, "┌─────────┐");
@@ -230,6 +243,12 @@ namespace BlackJackGame
             PrintAt(y++, x, $"│   {value,6}│");
             PrintAt(y++, x, "└─────────┘");
         }
+        /// <summary>
+        /// Prints a card upside down (deales second card)
+        /// Philip
+        /// </summary>
+        /// <param name="y">y value</param>
+        /// <param name="x">x value</param>
         public static void DarkCard(int y, int x)
         {
             PrintAt(y++, x, "┌─────────┐");
