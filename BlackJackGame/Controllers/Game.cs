@@ -244,11 +244,23 @@
                 {
                     if (item.CardSymbolB == "A")
                     {
-                        item.CardNumber = 1;
+                        item.CardNumber = player.Score + 11 > 21 ? 1 : 11;
                     }
                     player.Score += item.CardNumber;
                 }
             }
+            //if (player.Score > 21)
+            //{
+            //    player.Score = 0;
+            //    foreach (var item in player.Cards)
+            //    {
+            //        if (item.CardSymbolB == "A")
+            //        {
+            //            item.CardNumber = 1;
+            //        }
+            //        player.Score += item.CardNumber;
+            //    }
+            //}
         }
 
         /// <summary>
