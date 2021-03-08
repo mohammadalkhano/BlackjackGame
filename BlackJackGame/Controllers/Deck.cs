@@ -25,7 +25,7 @@ namespace BlackJackGame
             {
                 for (int j = 0; j < Cards.Length; j++)
                 {
-                    var card = new Card(Cards[j], CardType[i]);
+                    var card = new Card(Cards[j], CardType[i],(int)Cards[j]+CardType[i]);
                     if (Cards[j] == 1)
                     {
                         card.CardSymbolB = "A";
@@ -94,7 +94,5 @@ namespace BlackJackGame
             }
             return card;
         }
-
-
     }
 }

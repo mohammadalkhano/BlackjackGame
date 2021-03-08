@@ -17,9 +17,10 @@ namespace BlackJackGame.Models
         /// </summary>
         /// <param name="CardNumber"></param>
         /// <param name="CardSymbol"></param>
-        public Card(int CardNumber, string CardSymbol)
+        public Card(int CardNumber, string CardSymbol, string cardSymbolB)
         {
             this.CardNumber = CardNumber;
+            this.CardSymbolB = cardSymbolB;
             this.CardSymbol = CardSymbol;
         }
 
