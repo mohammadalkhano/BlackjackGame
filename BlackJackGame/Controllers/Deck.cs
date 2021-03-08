@@ -80,16 +80,18 @@ namespace BlackJackGame
         /// </summary>
         /// <param name="cards">The cards.</param>
         /// <returns></returns>
-
         public static Card GetCard(List<Card> cards)
         {
             var rand = new Random();
             Card card = cards[rand.Next(0, cards.Count - 1)];
-            //if (card.CardNumber > 10)
-            //{
-            //    card.CardNumber = 10;
-            //}
-
+            if (card.CardNumber > 10)
+            {
+                card.CardNumber = 10;
+            }
+            else if (card.CardNumber == 1)
+            {
+                card.CardNumber = 11;
+            }
             return card;
         }
 
